@@ -24,9 +24,10 @@ class Admin extends BaseController
         $data['title'] = 'Data Santri';
 
         // builder for data santri
-        $this->builder->select('users.id as userid, username, fullname, email, user_image, jk, no_telp, wali, no_wali, thn_masuk, kamar');
+        $this->builder->select('users.id as userid, username, fullname, email, user_image, gender.sex AS jk, users.gender_id, no_telp, wali, no_wali, thn_masuk, kamar');
         $this->builder->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
         $this->builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
+        $this->builder->join('gender', 'users.gender_id = gender.id_gender');
         
         // $this->builder->join('kamar_santri', 'kamar_santri.gender_id = users.jk');
         // $this->santri->select('nama_kamar')->where('id_kamar', )
@@ -38,7 +39,6 @@ class Admin extends BaseController
         // builder for tambah santri
         $query = $this->gender->get();
         $data['genders'] = $query->getResult();
-
 
         return view('admin/data_santri', $data);
     }
