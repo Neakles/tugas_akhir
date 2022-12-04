@@ -49,6 +49,8 @@ $routes->group("admin", static function ($routes) {
     $routes->get("/index",          "Admin::index",         ["filter" => "role:admin"]);
     $routes->get("/data_santri",    "Admin::data_santri",   ["filter" => "role:admin"]);
     $routes->get("/(:num)",         "Admin::detail/$1",     ["filter" => "role:admin"]);
+
+    $routes->post("save", "Admin::save", ["filter" => "role:admin"]);
 });
 
 
