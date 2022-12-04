@@ -166,11 +166,3 @@
     });
 </script>
 <!-- end of ajax for tambah santri -->
-
-<script>
-    $(document).ready(function() {
-        $(document).on('click', '#modal_detail', function() {
-            var username = $(this).data('username');
-        })
-    })
-</script>

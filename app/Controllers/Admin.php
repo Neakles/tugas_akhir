@@ -24,13 +24,11 @@ class Admin extends BaseController
         $data['title'] = 'Data Santri';
 
         // builder for data santri
-        $this->builder->select('users.id as userid, username, fullname, email, user_image, gender.sex AS jk, users.gender_id, no_telp, wali, no_wali, thn_masuk, kamar');
+        $this->builder->select('users.id as userid, username, fullname, email, user_image, gender.sex AS jk, users.gender_id, no_telp, wali, no_wali, thn_masuk, kamar_santri.nama_kamar as kamar');
         $this->builder->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
         $this->builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
-        $this->builder->join('gender', 'users.gender_id = gender.id_gender');
-        
-        // $this->builder->join('kamar_santri', 'kamar_santri.gender_id = users.jk');
-        // $this->santri->select('nama_kamar')->where('id_kamar', )
+        $this->builder->join('gender', 'gender.id_gender = users.gender_id');
+        $this->builder->join('kamar_santri', 'kamar_santri.id_kamar = users.kamar');
 
         $this->builder->where('auth_groups.id', array('id' => 2));
         $query = $this->builder->get();
@@ -66,16 +64,6 @@ class Admin extends BaseController
 
     public function save()
     {
-        // $santri = $this->db->table('kamar_santri')->select('nama_kamar')->where('id_kamar', $id_kamar);
-        // $getIdKamar = $santri->get();
-        // d($id_kamar); die;
-        $this->builder->select('nama_kamar'); 
-        $this->builder->join('gender', 'gender.id_gender = users.jk');
-        $this->builder->join('kamar_santri', 'kamar_santri.gender_id = gender.id_gender');
-        $this->builder->where('kamar_santri.id_kamar', array('id' => 'kamar'));
-        $kamar = $this->builder->get();
-        d($kamar); die;
-
         $data = [
             'username'      => $this->request->getPost('username'),
             'fullname'      => $this->request->getPost('nama'),
@@ -99,12 +87,12 @@ class Admin extends BaseController
 
     public function edit()
     {
-        $this->builder->select('jk, kamar');
-        $query = $this->builder->get();
-        $data['users'] = $query->getResult();
+        // $this->builder->select('jk, kamar');
+        // $query = $this->builder->get();
+        // $data['users'] = $query->getResult();
 
-        $query = $this->gender->get();
-        $data['genders'] = $query->getResult();
+        // $query = $this->gender->get();
+        // $data['genders'] = $query->getResult();
 
         $id = $this->request->getPost('id');
         $data = [
