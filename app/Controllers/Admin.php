@@ -2,6 +2,10 @@
 
 namespace App\Controllers;
 
+use App\Models\UsersModel;
+use Exception;
+use Throwable;
+
 class Admin extends BaseController
 {
     protected $db, $builder;
@@ -9,130 +13,145 @@ class Admin extends BaseController
     public function __construct()
     {
         $this->db = \Config\Database::connect();
-        $this->builder = $this->db->table('users');
-        $this->gender = $this->db->table('gender');
+        $this->builder = $this->db->table("users");
+        $this->gender = $this->db->table("gender");
+        $this->userModel = new UsersModel();
     }
 
     public function index()
     {
-        $data['title'] = 'Dashboard';
-        return view('/admin/index', $data);
+        $data["title"] = "Dashboard";
+        return view("/admin/index", $data);
     }
 
     public function data_santri()
     {
-        $data['title'] = 'Data Santri';
+        $data["title"] = "Data Santri";
 
         // builder for data santri
-        $this->builder->select('users.id as userid, username, fullname, email, user_image, gender.sex AS jk, users.gender_id, no_telp, wali, no_wali, thn_masuk, kamar');
-        $this->builder->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
-        $this->builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
-        $this->builder->join('gender', 'users.gender_id = gender.id_gender');
+        $this->builder->select("users.id as userid, username, fullname, email, user_image, gender.sex AS jk, users.gender_id, no_telp, wali, no_wali, thn_masuk, kamar");
+        $this->builder->join("auth_groups_users", "auth_groups_users.user_id = users.id");
+        $this->builder->join("auth_groups", "auth_groups.id = auth_groups_users.group_id");
+        $this->builder->join("gender", "users.gender_id = gender.id_gender");
         
-        // $this->builder->join('kamar_santri', 'kamar_santri.gender_id = users.jk');
-        // $this->santri->select('nama_kamar')->where('id_kamar', )
+        // $this->builder->join("kamar_santri", "kamar_santri.gender_id = users.jk");
+        // $this->santri->select("nama_kamar")->where("id_kamar", )
 
-        $this->builder->where('auth_groups.id', array('id' => 2));
+        $this->builder->where("auth_groups.id", array("id" => 2));
         $query = $this->builder->get();
-        $data['users'] = $query->getResult();
+        $data["users"] = $query->getResult();
 
         // builder for tambah santri
         $query = $this->gender->get();
-        $data['genders'] = $query->getResult();
+        $data["genders"] = $query->getResult();
 
-        return view('admin/data_santri', $data);
+        return view("admin/data_santri", $data);
     }
 
     public function getKamar($id_kamar = null)
     {
-        $kamar_santri = $this->db->table('kamar_santri')->where('gender_id', $id_kamar)->get()->getResult();
+        $kamar_santri = $this->db->table("kamar_santri")->where("gender_id", $id_kamar)->get()->getResult();
         echo json_encode($kamar_santri);
     }
 
     public function detail($id = 0)
     {
-        $data['title'] = 'Detail Santri';
+        $data["title"] = "Detail Santri";
 
         // builder for detail santri
-        $this->builder->where('users.id', $id);
+        $this->builder->where("users.id", $id);
         $query = $this->builder->get();
-        $data['user'] = $query->getRow();
-        return view('admin/detail', $data);
+        $data["user"] = $query->getRow();
+        return view("admin/detail", $data);
 
-        if (empty($data['user'])) {
-            return redirect()->to('/admin/detail');
+        if (empty($data["user"])) {
+            return redirect()->to("/admin/detail");
         }
     }
 
     public function save()
     {
-        // $santri = $this->db->table('kamar_santri')->select('nama_kamar')->where('id_kamar', $id_kamar);
-        // $getIdKamar = $santri->get();
-        // d($id_kamar); die;
-        $this->builder->select('nama_kamar'); 
-        $this->builder->join('gender', 'gender.id_gender = users.jk');
-        $this->builder->join('kamar_santri', 'kamar_santri.gender_id = gender.id_gender');
-        $this->builder->where('kamar_santri.id_kamar', array('id' => 'kamar'));
-        $kamar = $this->builder->get();
-        d($kamar); die;
+        try{
+            // DB Transaction
+            $this->db->transBegin();
 
-        $data = [
-            'username'      => $this->request->getPost('username'),
-            'fullname'      => $this->request->getPost('nama'),
-            'no_telp'       => $this->request->getPost('no_tlp'),
-            'email'         => $this->request->getPost('email'),
-            'jk'            => $this->request->getPost('gender'),
-            'kamar'         => $this->request->getPost('kamar'),
-            'thn_masuk'     => $this->request->getPost('datepicker'),
-            'wali'          => $this->request->getPost('wali'),
-            'no_wali'       => $this->request->getPost('no_wali'),
-            'password_hash' => '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6',
-            'created_at'    => date('Y-m-d H-i-s', strtotime('+13 hours')),
-        ];
+            $data = [
+                "username"      => $this->request->getPost("username"),
+                "fullname"      => $this->request->getPost("nama"),
+                "no_telp"       => $this->request->getPost("no_tlp"),
+                "email"         => $this->request->getPost("email"),
+                "gender_id"     => $this->request->getPost("gender"),
+                "kamar"         => $this->request->getPost("kamar"),
+                "thn_masuk"     => $this->request->getPost("datepicker"),
+                "wali"          => $this->request->getPost("wali"),
+                "no_wali"       => $this->request->getPost("no_wali"),
+                "password_hash" => '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6',
+                // "password_hash" => password_hash("Rememberm3", PASSWORD_DEFAULT),
+                "active"        => 1,
+                "created_at"    => date("Y-m-d H-i-s"),
+            ];
 
-        $success = $this->builder->insert($data);
-        if ($success) {
-            session()->setFlashdata('pesan', 'ditambahkan');
-            return redirect()->to(base_url('/admin/data_santri'));
+            $this->userModel->set($data);
+            $idData = $this->userModel->insert($data);
+            $data = [
+                "group_id"  => 2,
+                "user_id"   => $idData
+            ];
+
+            $success = $this->db->table('auth_groups_users')->insert($data);
+
+            $this->db->transCommit();
+            if ($success) {
+                session()->setFlashdata("pesan", "ditambahkan");
+                return redirect()->to(base_url("/admin/data_santri"));
+            }
+        } catch (Throwable $th){
+            // Melakukan rollback, data tidak akan insert atau update jika code gagal dieksekusi
+            $this->db->transRollback();
+            session()->setFlashdata("pesan", "ditambahkan");
+            return [
+                "status"    => false,
+                "message"   => "Gagal melakukan insert data"
+            ];
         }
     }
 
     public function edit()
     {
-        $this->builder->select('jk, kamar');
+        $this->builder->select("jk, kamar");
         $query = $this->builder->get();
-        $data['users'] = $query->getResult();
+        $data["users"] = $query->getResult();
 
         $query = $this->gender->get();
-        $data['genders'] = $query->getResult();
+        $data["genders"] = $query->getResult();
 
-        $id = $this->request->getPost('id');
+        $id = $this->request->getPost("id");
         $data = [
-            'username'      => $this->request->getPost('username'),
-            'fullname'      => $this->request->getPost('nama'),
-            'no_telp'       => $this->request->getPost('no_tlp'),
-            'email'         => $this->request->getPost('email'),
-            'jk'            => $this->request->getPost('gender'),
-            'kamar'         => $this->request->getPost('kamar'),
-            'thn_masuk'     => $this->request->getPost('datepicker'),
-            'wali'          => $this->request->getPost('wali'),
-            'no_wali'       => $this->request->getPost('no_wali'),
+            "username"      => $this->request->getPost("username"),
+            "fullname"      => $this->request->getPost("nama"),
+            "no_telp"       => $this->request->getPost("no_tlp"),
+            "email"         => $this->request->getPost("email"),
+            "jk"            => $this->request->getPost("gender"),
+            "kamar"         => $this->request->getPost("kamar"),
+            "thn_masuk"     => $this->request->getPost("datepicker"),
+            "wali"          => $this->request->getPost("wali"),
+            "no_wali"       => $this->request->getPost("no_wali"),
         ];
-        $new = $this->builder->update($data, ['users.id' => $id]);
+        $new = $this->builder->update($data, ["users.id" => $id]);
 
         if ($new) {
-            session()->setFlashdata('pesan', 'diupdate');
-            return redirect()->to(base_url('/admin/data_santri'));
+            session()->setFlashdata("pesan", "diupdate");
+            return redirect()->to(base_url("/admin/data_santri"));
         }
     }
 
     public function delete($id)
     {
-        $drop = $this->builder->delete(['id' => $id]);
+        $drop = $this->builder->delete(["id" => $id]);
 
         if ($drop) {
-            session()->setFlashdata('pesan', 'dihapus');
-            return redirect()->to(base_url('/admin/data_santri'));
+            session()->setFlashdata("pesan", "dihapus");
+            return redirect()->to(base_url("/admin/data_santri"));
         }
     }
 }
