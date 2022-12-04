@@ -1,7 +1,0 @@
-CRITICAL - 2022-11-16 00:44:53 --> You do not have sufficient permissions to access that page.
-in VENDORPATH\myth\auth\src\Filters\RoleFilter.php on line 45.
- 1 SYSTEMPATH\Filters\Filters.php(173): Myth\Auth\Filters\RoleFilter->before(Object(CodeIgniter\HTTP\IncomingRequest), [...])
- 2 SYSTEMPATH\CodeIgniter.php(431): CodeIgniter\Filters\Filters->run('user/edit_profile', 'before')
- 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
- 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
- 5 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')

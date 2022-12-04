@@ -69,6 +69,12 @@ class Admin extends BaseController
         // $santri = $this->db->table('kamar_santri')->select('nama_kamar')->where('id_kamar', $id_kamar);
         // $getIdKamar = $santri->get();
         // d($id_kamar); die;
+        $this->builder->select('nama_kamar'); 
+        $this->builder->join('gender', 'gender.id_gender = users.jk');
+        $this->builder->join('kamar_santri', 'kamar_santri.gender_id = gender.id_gender');
+        $this->builder->where('kamar_santri.id_kamar', array('id' => 'kamar'));
+        $kamar = $this->builder->get();
+        d($kamar); die;
 
         $data = [
             'username'      => $this->request->getPost('username'),
