@@ -1,0 +1,238 @@
+CRITICAL - 2022-11-22 03:22:38 --> Call to a member function select() on array
+in APPPATH\Controllers\Admin.php on line 58.
+ 1 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\Admin->tambah_santri()
+ 2 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2022-11-22 03:23:26 --> Call to a member function select() on array
+in APPPATH\Controllers\Admin.php on line 58.
+ 1 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\Admin->tambah_santri()
+ 2 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2022-11-22 03:23:29 --> Call to a member function select() on array
+in APPPATH\Controllers\Admin.php on line 58.
+ 1 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\Admin->tambah_santri()
+ 2 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2022-11-22 03:23:39 --> Call to a member function get() on array
+in APPPATH\Controllers\Admin.php on line 58.
+ 1 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\Admin->tambah_santri()
+ 2 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2022-11-22 03:24:56 --> Call to a member function get() on array
+in APPPATH\Controllers\Admin.php on line 58.
+ 1 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\Admin->tambah_santri()
+ 2 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2022-11-22 12:39:58 --> Undefined variable: genders
+in APPPATH\Views\admin\data_santri.php on line 98.
+ 1 APPPATH\Views\admin\data_santri.php(98): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: genders', 'APPPATH\\Views\\admin\\data_santri.php', 98, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\data_santri.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1142): CodeIgniter\View\View->render('/admin/data_santri', [], true)
+ 5 APPPATH\Controllers\Admin.php(33): view('/admin/data_santri', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\Admin->data_santri()
+ 7 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2022-11-22 16:58:33 --> Too few arguments to function App\Controllers\Admin::tambah_santri(), 0 passed in C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\CodeIgniter.php on line 902 and exactly 1 expected
+in APPPATH\Controllers\Admin.php on line 56.
+ 1 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\Admin->tambah_santri()
+ 2 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2022-11-22 17:12:03 --> Undefined property: stdClass::$user_image
+in APPPATH\Views\admin\data_santri.php on line 168.
+ 1 APPPATH\Views\admin\data_santri.php(168): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$user_image', 'APPPATH\\Views\\admin\\data_santri.php', 168, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\data_santri.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1142): CodeIgniter\View\View->render('/admin/data_santri', [], true)
+ 5 APPPATH\Controllers\Admin.php(35): view('/admin/data_santri', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\Admin->data_santri()
+ 7 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2022-11-22 17:14:41 --> Undefined property: stdClass::$user_image
+in APPPATH\Views\admin\data_santri.php on line 165.
+ 1 APPPATH\Views\admin\data_santri.php(165): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$user_image', 'APPPATH\\Views\\admin\\data_santri.php', 165, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\data_santri.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1142): CodeIgniter\View\View->render('/admin/data_santri', [], true)
+ 5 APPPATH\Controllers\Admin.php(35): view('/admin/data_santri', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\Admin->data_santri()
+ 7 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2022-11-22 17:15:00 --> Undefined property: stdClass::$user_image
+in APPPATH\Views\admin\data_santri.php on line 165.
+ 1 APPPATH\Views\admin\data_santri.php(165): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$user_image', 'APPPATH\\Views\\admin\\data_santri.php', 165, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\data_santri.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1142): CodeIgniter\View\View->render('/admin/data_santri', [], true)
+ 5 APPPATH\Controllers\Admin.php(35): view('/admin/data_santri', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\Admin->data_santri()
+ 7 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2022-11-22 17:15:05 --> Undefined property: stdClass::$user_image
+in APPPATH\Views\admin\data_santri.php on line 165.
+ 1 APPPATH\Views\admin\data_santri.php(165): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$user_image', 'APPPATH\\Views\\admin\\data_santri.php', 165, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\data_santri.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1142): CodeIgniter\View\View->render('/admin/data_santri', [], true)
+ 5 APPPATH\Controllers\Admin.php(35): view('/admin/data_santri', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\Admin->data_santri()
+ 7 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2022-11-22 17:50:22 --> Undefined property: stdClass::$user_image
+in APPPATH\Views\admin\data_santri.php on line 165.
+ 1 APPPATH\Views\admin\data_santri.php(165): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$user_image', 'APPPATH\\Views\\admin\\data_santri.php', 165, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\data_santri.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1142): CodeIgniter\View\View->render('/admin/data_santri', [], true)
+ 5 APPPATH\Controllers\Admin.php(35): view('/admin/data_santri', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\Admin->data_santri()
+ 7 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2022-11-22 17:50:45 --> syntax error, unexpected ')', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$'
+in APPPATH\Views\admin\data_santri.php on line 165.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1142): CodeIgniter\View\View->render('/admin/data_santri', [], true)
+ 3 APPPATH\Controllers\Admin.php(35): view('/admin/data_santri', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\Admin->data_santri()
+ 5 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2022-11-22 17:52:19 --> Undefined variable: user
+in APPPATH\Views\admin\data_santri.php on line 165.
+ 1 APPPATH\Views\admin\data_santri.php(165): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: user', 'APPPATH\\Views\\admin\\data_santri.php', 165, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\data_santri.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1142): CodeIgniter\View\View->render('/admin/data_santri', [], true)
+ 5 APPPATH\Controllers\Admin.php(35): view('/admin/data_santri', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\Admin->data_santri()
+ 7 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2022-11-22 17:53:43 --> Undefined variable: user
+in APPPATH\Views\admin\data_santri.php on line 165.
+ 1 APPPATH\Views\admin\data_santri.php(165): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: user', 'APPPATH\\Views\\admin\\data_santri.php', 165, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\data_santri.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1142): CodeIgniter\View\View->render('/admin/data_santri', [], true)
+ 5 APPPATH\Controllers\Admin.php(35): view('/admin/data_santri', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\Admin->data_santri()
+ 7 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2022-11-22 17:53:45 --> Undefined variable: user
+in APPPATH\Views\admin\data_santri.php on line 165.
+ 1 APPPATH\Views\admin\data_santri.php(165): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: user', 'APPPATH\\Views\\admin\\data_santri.php', 165, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\data_santri.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1142): CodeIgniter\View\View->render('/admin/data_santri', [], true)
+ 5 APPPATH\Controllers\Admin.php(35): view('/admin/data_santri', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\Admin->data_santri()
+ 7 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2022-11-22 18:02:22 --> Undefined property: stdClass::$a
+in APPPATH\Views\admin\data_santri.php on line 39.
+ 1 APPPATH\Views\admin\data_santri.php(39): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$a', 'APPPATH\\Views\\admin\\data_santri.php', 39, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\data_santri.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1142): CodeIgniter\View\View->render('/admin/data_santri', [], true)
+ 5 APPPATH\Controllers\Admin.php(35): view('/admin/data_santri', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\Admin->data_santri()
+ 7 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+ERROR - 2022-11-22 18:34:25 --> mysqli_sql_exception: Unknown column 'auth_groups' in 'where clause' in C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `users`....', 0)
+#1 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `users`....')
+#2 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `users`....')
+#3 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `users`....', Array, false)
+#4 C:\xampp\htdocs\tugas_akhir\app\Controllers\Admin.php(31): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\CodeIgniter.php(902): App\Controllers\Admin->data_santri()
+#6 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#7 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\tugas_akhir\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(46): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2022-11-22 18:34:25 --> Unknown column 'auth_groups' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `users`.`id` as `userid`, `username`, `fullname`, `email`, `name`
+FROM `users`
+JOIN `auth_groups_users` ON `auth_groups_users`.`user_id` = `users`.`id`
+JOIN `auth_groups` ON `auth_groups`.`id` = `auth_groups_users`.`group_id`
+WHERE `auth_groups` = (2)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `users`.`id` as `userid`, `username`, `fullname`, `email`, `name`
+FROM `users`
+JOIN `auth_groups_users` ON `auth_groups_users`.`user_id` = `users`.`id`
+JOIN `auth_groups` ON `auth_groups`.`id` = `auth_groups_users`.`group_id`
+WHERE `auth_groups` = (2)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `users`.`id` as `userid`, `username`, `fullname`, `email`, `name`
+FROM `users`
+JOIN `auth_groups_users` ON `auth_groups_users`.`user_id` = `users`.`id`
+JOIN `auth_groups` ON `auth_groups`.`id` = `auth_groups_users`.`group_id`
+WHERE `auth_groups` = (2)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `users`.`id` as `userid`, `username`, `fullname`, `email`, `name`
+FROM `users`
+JOIN `auth_groups_users` ON `auth_groups_users`.`user_id` = `users`.`id`
+JOIN `auth_groups` ON `auth_groups`.`id` = `auth_groups_users`.`group_id`
+WHERE `auth_groups` = :auth_groups:', [...], false)
+ 5 APPPATH\Controllers\Admin.php(31): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\Admin->data_santri()
+ 7 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2022-11-22 19:10:27 --> Undefined property: stdClass::$jk
+in APPPATH\Views\admin\data_santri.php on line 39.
+ 1 APPPATH\Views\admin\data_santri.php(39): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$jk', 'APPPATH\\Views\\admin\\data_santri.php', 39, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\data_santri.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1142): CodeIgniter\View\View->render('/admin/data_santri', [], true)
+ 5 APPPATH\Controllers\Admin.php(46): view('/admin/data_santri', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\Admin->data_santri()
+ 7 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2022-11-22 19:32:18 --> Trying to get property 'user_image' of non-object
+in APPPATH\Views\layout\index.php on line 208.
+ 1 APPPATH\Views\layout\index.php(208): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get property \'user_image\' of non-object', 'APPPATH\\Views\\layout\\index.php', 208, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\layout\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->render('layout/index', [], true)
+ 5 SYSTEMPATH\Common.php(1142): CodeIgniter\View\View->render('/admin/data_santri', [], true)
+ 6 APPPATH\Controllers\Admin.php(46): view('/admin/data_santri', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\Admin->data_santri()
+ 8 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')

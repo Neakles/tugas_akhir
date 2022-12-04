@@ -1,0 +1,106 @@
+ERROR - 2022-10-08 21:28:10 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'tugas_akhir'@'localhost' (using password: NO) in C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:171
+Stack trace:
+#0 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(171): mysqli->real_connect('localhost', 'tugas_akhir', '', 'ci4', 3306, '', 0)
+#1 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Validation\Rules.php(142): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Validation\Validation.php(315): CodeIgniter\Validation\Rules->is_unique('mine', 'username', Array, NULL, 'username')
+#6 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Validation\Validation.php(175): CodeIgniter\Validation\Validation->processRules('username', 'username', 'mine', Array, Array)
+#7 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Controller.php(140): CodeIgniter\Validation\Validation->run()
+#8 C:\xampp\htdocs\tugas_akhir\vendor\myth\auth\src\Controllers\AuthController.php(154): CodeIgniter\Controller->validate(Array)
+#9 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\CodeIgniter.php(902): Myth\Auth\Controllers\AuthController->attemptRegister()
+#10 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#11 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\tugas_akhir\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(46): require_once('C:\\xampp\\htdocs...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: NO) in C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:215
+Stack trace:
+#0 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Validation\Rules.php(142): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Validation\Validation.php(315): CodeIgniter\Validation\Rules->is_unique('mine', 'username', Array, NULL, 'username')
+#5 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Validation\Validation.php(175): CodeIgniter\Validation\Validation->processRules('username', 'username', 'mine', Array, Array)
+#6 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Controller.php(140): CodeIgniter\Validation\Validation->run()
+#7 C:\xampp\htdocs\tugas_akhir\vendor\myth\auth\src\Controllers\AuthController.php(154): CodeIgniter\Controller->validate(Array)
+#8 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\CodeIgniter.php(902): Myth\Auth\Controllers\AuthController->attemptRegister()
+#9 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#10 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\tugas_akhir\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(46): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+CRITICAL - 2022-10-08 21:28:10 --> Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: NO)
+in SYSTEMPATH\Database\BaseConnection.php on line 418.
+ 1 SYSTEMPATH\Database\BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `users`
+WHERE `username` = :username:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Validation\Rules.php(142): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\Validation\Validation.php(315): CodeIgniter\Validation\Rules->is_unique('mine', 'username', [...], null, 'username')
+ 5 SYSTEMPATH\Validation\Validation.php(175): CodeIgniter\Validation\Validation->processRules('username', 'username', 'mine', [...], [...])
+ 6 SYSTEMPATH\Controller.php(140): CodeIgniter\Validation\Validation->run()
+ 7 VENDORPATH\myth\auth\src\Controllers\AuthController.php(154): CodeIgniter\Controller->validate([...])
+ 8 SYSTEMPATH\CodeIgniter.php(902): Myth\Auth\Controllers\AuthController->attemptRegister()
+ 9 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+ERROR - 2022-10-08 21:39:59 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'tugas_akhir'@'localhost' (using password: NO) in C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:171
+Stack trace:
+#0 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(171): mysqli->real_connect('localhost', 'tugas_akhir', '', 'ci4', 3306, '', 0)
+#1 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\BaseConnection.php(1387): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#4 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\BaseConnection.php(1421): CodeIgniter\Database\BaseConnection->listTables()
+#5 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\MigrationRunner.php(759): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#6 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\MigrationRunner.php(167): CodeIgniter\Database\MigrationRunner->ensureTable()
+#7 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\CLI\Commands.php(63): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\CLI\CommandRunner.php(65): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\CLI\CommandRunner.php(51): CodeIgniter\CLI\CommandRunner->index(Array)
+#11 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\CodeIgniter.php(895): CodeIgniter\CLI\CommandRunner->_remap('index', Array)
+#12 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(CodeIgniter\CLI\CommandRunner))
+#13 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\CodeIgniter.php(336): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\CLI\Console.php(48): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\tugas_akhir\spark(98): CodeIgniter\CLI\Console->run()
+#16 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: NO) in C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:215
+Stack trace:
+#0 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\BaseConnection.php(1387): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#3 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\BaseConnection.php(1421): CodeIgniter\Database\BaseConnection->listTables()
+#4 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\MigrationRunner.php(759): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#5 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Database\MigrationRunner.php(167): CodeIgniter\Database\MigrationRunner->ensureTable()
+#6 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#7 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\CLI\Commands.php(63): CodeIgniter\Commands\Database\Migrate->run(Array)
+#8 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\CLI\CommandRunner.php(65): CodeIgniter\CLI\Commands->run('migrate', Array)
+#9 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\CLI\CommandRunner.php(51): CodeIgniter\CLI\CommandRunner->index(Array)
+#10 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\CodeIgniter.php(895): CodeIgniter\CLI\CommandRunner->_remap('index', Array)
+#11 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(CodeIgniter\CLI\CommandRunner))
+#12 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\CodeIgniter.php(336): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\CLI\Console.php(48): CodeIgniter\CodeIgniter->run()
+#14 C:\xampp\htdocs\tugas_akhir\spark(98): CodeIgniter\CLI\Console->run()
+#15 {main}
+ERROR - 2022-10-08 21:48:48 --> Email: sendWithMail throwed ErrorException: mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Email\Email.php:1730
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mail(): Failed ...', 'C:\\xampp\\htdocs...', 1730, Array)
+#1 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Email\Email.php(1730): mail('mine@gmail.com', '=?UTF-8?Q?Activ...', 'This is a multi...', 'Date: Sat, 8 Oc...', '-f ponpesaljiha...')
+#2 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Email\Email.php(1662): CodeIgniter\Email\Email->sendWithMail()
+#3 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Email\Email.php(1560): CodeIgniter\Email\Email->spoolEmail()
+#4 C:\xampp\htdocs\tugas_akhir\vendor\myth\auth\src\Authentication\Activators\EmailActivator.php(32): CodeIgniter\Email\Email->send()
+#5 C:\xampp\htdocs\tugas_akhir\vendor\myth\auth\src\Controllers\AuthController.php(185): Myth\Auth\Authentication\Activators\EmailActivator->send(Object(Myth\Auth\Entities\User))
+#6 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\CodeIgniter.php(902): Myth\Auth\Controllers\AuthController->attemptRegister()
+#7 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#8 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\tugas_akhir\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\tugas_akhir\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(46): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+ERROR - 2022-10-08 21:48:48 --> Email: Unable to send email using PHP mail(). Your server might not be configured to send mail using this method.
+ERROR - 2022-10-08 21:48:48 --> 
