@@ -1017,3 +1017,100 @@ in APPPATH/Views/user/edit_profile.php on line 25.
  8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH/Commands/Server/rewrite.php(46): require_once('FCPATH/index.php')
+CRITICAL - 2022-12-03 22:29:45 --> Call to undefined method CodeIgniter\Database\MySQLi\Connection::last_query()
+in APPPATH/Controllers/Admin.php on line 36.
+ 1 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Admin->data_santri()
+ 2 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Commands/Server/rewrite.php(46): require_once('FCPATH/index.php')
+ERROR - 2022-12-03 23:16:03 --> mysqli_sql_exception: Unknown column 'gender.id' in 'on clause' in /Applications/XAMPP/xamppfiles/htdocs/tugas_akhir/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/tugas_akhir/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT `users`....', 0)
+#1 /Applications/XAMPP/xamppfiles/htdocs/tugas_akhir/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `users`....')
+#2 /Applications/XAMPP/xamppfiles/htdocs/tugas_akhir/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `users`....')
+#3 /Applications/XAMPP/xamppfiles/htdocs/tugas_akhir/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `users`....', Array, false)
+#4 /Applications/XAMPP/xamppfiles/htdocs/tugas_akhir/app/Controllers/Admin.php(36): CodeIgniter\Database\BaseBuilder->get()
+#5 /Applications/XAMPP/xamppfiles/htdocs/tugas_akhir/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Admin->data_santri()
+#6 /Applications/XAMPP/xamppfiles/htdocs/tugas_akhir/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#7 /Applications/XAMPP/xamppfiles/htdocs/tugas_akhir/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /Applications/XAMPP/xamppfiles/htdocs/tugas_akhir/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#9 /Applications/XAMPP/xamppfiles/htdocs/tugas_akhir/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(46): require_once('/Applications/X...')
+#10 {main}
+CRITICAL - 2022-12-03 23:16:03 --> Unknown column 'gender.id' in 'on clause'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT `users`.`id` as `userid`, `username`, `fullname`, `email`, `user_image`, `gender`.`sex` AS `jk`, `users`.`gender_id`, `no_telp`, `wali`, `no_wali`, `thn_masuk`, `kamar`
+FROM `users`
+JOIN `auth_groups_users` ON `auth_groups_users`.`user_id` = `users`.`id`
+JOIN `auth_groups` ON `auth_groups`.`id` = `auth_groups_users`.`group_id`
+JOIN `gender` ON `users`.`gender_id` = `gender`.`id`
+WHERE `auth_groups`.`id` = (2)', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `users`.`id` as `userid`, `username`, `fullname`, `email`, `user_image`, `gender`.`sex` AS `jk`, `users`.`gender_id`, `no_telp`, `wali`, `no_wali`, `thn_masuk`, `kamar`
+FROM `users`
+JOIN `auth_groups_users` ON `auth_groups_users`.`user_id` = `users`.`id`
+JOIN `auth_groups` ON `auth_groups`.`id` = `auth_groups_users`.`group_id`
+JOIN `gender` ON `users`.`gender_id` = `gender`.`id`
+WHERE `auth_groups`.`id` = (2)')
+ 3 SYSTEMPATH/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `users`.`id` as `userid`, `username`, `fullname`, `email`, `user_image`, `gender`.`sex` AS `jk`, `users`.`gender_id`, `no_telp`, `wali`, `no_wali`, `thn_masuk`, `kamar`
+FROM `users`
+JOIN `auth_groups_users` ON `auth_groups_users`.`user_id` = `users`.`id`
+JOIN `auth_groups` ON `auth_groups`.`id` = `auth_groups_users`.`group_id`
+JOIN `gender` ON `users`.`gender_id` = `gender`.`id`
+WHERE `auth_groups`.`id` = (2)')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `users`.`id` as `userid`, `username`, `fullname`, `email`, `user_image`, `gender`.`sex` AS `jk`, `users`.`gender_id`, `no_telp`, `wali`, `no_wali`, `thn_masuk`, `kamar`
+FROM `users`
+JOIN `auth_groups_users` ON `auth_groups_users`.`user_id` = `users`.`id`
+JOIN `auth_groups` ON `auth_groups`.`id` = `auth_groups_users`.`group_id`
+JOIN `gender` ON `users`.`gender_id` = `gender`.`id`
+WHERE `auth_groups`.`id` = :auth_groups.id:', [...], false)
+ 5 APPPATH/Controllers/Admin.php(36): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Admin->data_santri()
+ 7 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Commands/Server/rewrite.php(46): require_once('FCPATH/index.php')
+ERROR - 2022-12-03 23:16:34 --> mysqli_sql_exception: Unknown column 'gender.id' in 'on clause' in /Applications/XAMPP/xamppfiles/htdocs/tugas_akhir/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/tugas_akhir/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT `users`....', 0)
+#1 /Applications/XAMPP/xamppfiles/htdocs/tugas_akhir/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `users`....')
+#2 /Applications/XAMPP/xamppfiles/htdocs/tugas_akhir/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `users`....')
+#3 /Applications/XAMPP/xamppfiles/htdocs/tugas_akhir/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `users`....', Array, false)
+#4 /Applications/XAMPP/xamppfiles/htdocs/tugas_akhir/app/Controllers/Admin.php(36): CodeIgniter\Database\BaseBuilder->get()
+#5 /Applications/XAMPP/xamppfiles/htdocs/tugas_akhir/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Admin->data_santri()
+#6 /Applications/XAMPP/xamppfiles/htdocs/tugas_akhir/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#7 /Applications/XAMPP/xamppfiles/htdocs/tugas_akhir/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /Applications/XAMPP/xamppfiles/htdocs/tugas_akhir/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#9 /Applications/XAMPP/xamppfiles/htdocs/tugas_akhir/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(46): require_once('/Applications/X...')
+#10 {main}
+CRITICAL - 2022-12-03 23:16:34 --> Unknown column 'gender.id' in 'on clause'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT `users`.`id` as `userid`, `username`, `fullname`, `email`, `user_image`, `gender`.`sex` AS `jk`, `users`.`gender_id`, `no_telp`, `wali`, `no_wali`, `thn_masuk`, `kamar`
+FROM `users`
+JOIN `auth_groups_users` ON `auth_groups_users`.`user_id` = `users`.`id`
+JOIN `auth_groups` ON `auth_groups`.`id` = `auth_groups_users`.`group_id`
+JOIN `gender` ON `users`.`gender_id` = `gender`.`id`
+WHERE `auth_groups`.`id` = (2)', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `users`.`id` as `userid`, `username`, `fullname`, `email`, `user_image`, `gender`.`sex` AS `jk`, `users`.`gender_id`, `no_telp`, `wali`, `no_wali`, `thn_masuk`, `kamar`
+FROM `users`
+JOIN `auth_groups_users` ON `auth_groups_users`.`user_id` = `users`.`id`
+JOIN `auth_groups` ON `auth_groups`.`id` = `auth_groups_users`.`group_id`
+JOIN `gender` ON `users`.`gender_id` = `gender`.`id`
+WHERE `auth_groups`.`id` = (2)')
+ 3 SYSTEMPATH/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `users`.`id` as `userid`, `username`, `fullname`, `email`, `user_image`, `gender`.`sex` AS `jk`, `users`.`gender_id`, `no_telp`, `wali`, `no_wali`, `thn_masuk`, `kamar`
+FROM `users`
+JOIN `auth_groups_users` ON `auth_groups_users`.`user_id` = `users`.`id`
+JOIN `auth_groups` ON `auth_groups`.`id` = `auth_groups_users`.`group_id`
+JOIN `gender` ON `users`.`gender_id` = `gender`.`id`
+WHERE `auth_groups`.`id` = (2)')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `users`.`id` as `userid`, `username`, `fullname`, `email`, `user_image`, `gender`.`sex` AS `jk`, `users`.`gender_id`, `no_telp`, `wali`, `no_wali`, `thn_masuk`, `kamar`
+FROM `users`
+JOIN `auth_groups_users` ON `auth_groups_users`.`user_id` = `users`.`id`
+JOIN `auth_groups` ON `auth_groups`.`id` = `auth_groups_users`.`group_id`
+JOIN `gender` ON `users`.`gender_id` = `gender`.`id`
+WHERE `auth_groups`.`id` = :auth_groups.id:', [...], false)
+ 5 APPPATH/Controllers/Admin.php(36): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Admin->data_santri()
+ 7 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Commands/Server/rewrite.php(46): require_once('FCPATH/index.php')

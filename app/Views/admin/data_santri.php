@@ -51,7 +51,17 @@
                                 <td>
                                     <a href="<?= base_url('admin/detail/' . $user_list->userid); ?>" class="btn btn-info rounded-circle mx-1"><i class="fas fa-eye"></i></a>
                                     <!-- <a href="<?= base_url('admin/edit/' . $user_list->userid); ?>" class="btn btn-warning rounded-circle mx-1"><i class="fas fa-edit"></i></a> -->
-                                    <button type="button" class="btn btn-warning rounded-circle" data-toggle="modal" data-target="#modal_edit" id="btn-edit" data-id="<?= $user_list->userid; ?>" data-username="<?= $user_list->username; ?>" data-fullname="<?= $user_list->fullname; ?>" data-email="<?= $user_list->email; ?>" data-no_telp="<?= $user_list->no_telp; ?>" data-wali="<?= $user_list->wali; ?>" data-no_wali="<?= $user_list->no_wali; ?>" data-thn_masuk="<?= $user_list->thn_masuk; ?>"><i class="fas fa-edit"></i></button>
+                                    <button type="button" class="btn btn-warning rounded-circle" data-toggle="modal" data-target="#modal_edit" id="btn-edit"
+                                        data-id="<?= $user_list->userid; ?>"
+                                        data-username="<?= $user_list->username; ?>"
+                                        data-fullname="<?= $user_list->fullname; ?>"
+                                        data-email="<?= $user_list->email; ?>"
+                                        data-no_telp="<?= $user_list->no_telp; ?>"
+                                        data-gender="<?= $user_list->gender_id ?>"
+                                        data-wali="<?= $user_list->wali; ?>"
+                                        data-no_wali="<?= $user_list->no_wali; ?>"
+                                        data-thn_masuk="<?= $user_list->thn_masuk; ?>"
+                                    ><i class="fas fa-edit"></i></button>
                                     <a href="<?= base_url('admin/delete/' . $user_list->userid); ?>" class="btn btn-danger rounded-circle mx-1"><i class="fas fa-trash"></i></a>
                                     <!-- <button type="button" class="btn btn-danger rounded-circle" data-toggle="modal" data-target="#modal_delete"><i class="fas fa-trash"></i></button> -->
                                 </td>
@@ -228,9 +238,9 @@
                                                         <div class="row justify-content-center mb-3">
                                                             <div class="col">
                                                                 <div class="form-group">
-                                                                    <label for="gender">Jenis Kelamin</label>
+                                                                    <label for="gender">Jenis Kelamin <?= $user_list->jk ?></label>
                                                                     <select id="gender" name="gender" class="form-control" required>
-                                                                        <option value="" selected disabled>Pilih Jenis Kelamin</option>
+                                                                    <option value="" selected disabled>Pilih Jenis Kelamin</option>
                                                                         <?php foreach ($genders as $gender) { ?>
                                                                             <option value="<?php echo $gender->id_gender; ?>"><?php echo $gender->sex; ?></option>
                                                                         <?php } ?>
