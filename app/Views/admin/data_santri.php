@@ -20,7 +20,7 @@
     <!-- End of Page Heading -->
 
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
+        <div class="card-header py-3 d-flex justify-content-end">
             <a href="/admin/tambah_santri" class="btn btn-warning .btn-icon-split py-1 .col-auto mr-2"><i class="fa-solid fa-file-pdf mr-2"></i>Export PDF</a>
             <button type="button" class="btn btn-primary py-1 .col-auto mx-1" data-toggle="modal" data-target="#modal_tambah"><i class="fa-solid fa-fw fa-user-plus mr-2"></i>Tambah Santri</button>
         </div>
@@ -48,7 +48,7 @@
                                 <td><?= $user_list->email; ?></td>
                                 <td><?= $user_list->jk; ?></td>
                                 <td><?= $user_list->kamar; ?></td>
-                                <td>
+                                <td class="d-flex justify-content-end">
                                     <a href="<?= base_url('admin/detail/' . $user_list->userid); ?>" class="btn btn-info rounded-circle mx-1"><i class="fas fa-eye"></i></a>
                                     <!-- <a href="<?= base_url('admin/edit/' . $user_list->userid); ?>" class="btn btn-warning rounded-circle mx-1"><i class="fas fa-edit"></i></a> -->
                                     <button type="button" class="btn btn-warning rounded-circle" data-toggle="modal" data-target="#modal_edit" id="btn-edit"

@@ -3,19 +3,20 @@
 namespace App\Controllers;
 
 use App\Models\UsersModel;
-use Exception;
+use App\Traits\GlobalTrait;
 use Throwable;
 
 class Admin extends BaseController
 {
+    use GlobalTrait;
     protected $db, $builder;
 
     public function __construct()
     {
-        $this->db = \Config\Database::connect();
-        $this->builder = $this->db->table("users");
-        $this->gender = $this->db->table("gender");
-        $this->userModel = new UsersModel();
+        $this->db           = \Config\Database::connect();
+        $this->builder      = $this->db->table("users");
+        $this->gender       = $this->db->table("gender");
+        $this->userModel    = new UsersModel();
     }
 
     public function index()
@@ -105,6 +106,7 @@ class Admin extends BaseController
             }
         } catch (Throwable $th){
             // Melakukan rollback, data tidak akan insert atau update jika code gagal dieksekusi
+            $this->logError($th);
             $this->db->transRollback();
             session()->setFlashdata("pesan", "ditambahkan");
             return [
