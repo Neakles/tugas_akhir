@@ -34,9 +34,21 @@
         </li>
 
         <li class="nav-item">
+            <a class="nav-link" href="/admin/tagihan">
+            <i class="fa-solid fa-money-bill-wave"></i>
+                <span>Tagihan</span></a>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link" href="/admin/">
             <i class="fa-solid fa-rupiah-sign"></i>
-                <span>Tagihan</span></a>
+                <span>Laporan Pembayaran</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/">
+            <i class="fa-solid fa-gear"></i>
+                <span>Role Management</span></a>
         </li>
         <hr class="sidebar-divider ">
         
@@ -50,12 +62,6 @@
         <a class="nav-link" href="<?= base_url(); ?>">
             <i class="fas fa-fw fa-user"></i>
             <span>My Profile</span></a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="user/edit_profile">
-            <i class="fas fa-fw fa-user-edit"></i>
-            <span>Edit Profile</span></a>
     </li>
 
     <!-- Divider -->
