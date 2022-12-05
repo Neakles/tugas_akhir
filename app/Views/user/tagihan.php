@@ -16,25 +16,27 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Nama</th>
-                            <th scope="col">Jenis Kelamin</th>
-                            <th scope="col">Kamar</th>
+                            <th scope="col">Tahun</th>
+                            <th scope="col">Bulan</th>
+                            <th scope="col">Biaya</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $i = 1;
-                        // foreach ($users as $user_list) : ?>
+                        foreach ($tagihan as $bill) : ?>
                             <tr>
                                 <th scope="row"><?= $i++; ?></th>
-                                <td>Tri Cahyo</td>
-                                <td>Laki-laki</td>
-                                <td>Sunan Kalijaga</td>
+                                <td><?= $bill->tahun; ?></td>
+                                <td><?= $bill->bulan; ?></td>
+                                <td>Rp <?= $bill->biaya; ?></td>
+                                <td><?= $bill->status; ?></td>
                                 <td class="d-flex">
                                     <a href="<?= base_url('user/santri/'); ?>" class="btn btn-success"><i class="fas fa-money-bills mr-2"></i>bayar</a>
                                 </td>
                             </tr>
-                        <?php // endforeach; ?>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

@@ -16,6 +16,7 @@ class Admin extends BaseController
         $this->db           = \Config\Database::connect();
         $this->builder      = $this->db->table("users");
         $this->gender       = $this->db->table("gender");
+        $this->bill         = $this->db->table("tagihan");
         $this->userModel    = new UsersModel();
     }
 
@@ -36,13 +37,11 @@ class Admin extends BaseController
         $this->builder->join('gender', 'gender.id_gender = users.gender_id');
         $this->builder->join('kamar_santri', 'kamar_santri.id_kamar = users.kamar');
 
-        $this->builder->where("auth_groups.id", array("id" => 2));
-        $query = $this->builder->get();
-        $data["users"] = $query->getResult();
+        $this->builder->where("auth_groups.id", array("id" => 2));  // id = 2, for show user 
+        $data["users"] = $this->builder->get()->getResult();
 
         // builder for tambah santri
-        $query = $this->gender->get();
-        $data["genders"] = $query->getResult();
+        $data["genders"] = $this->gender->get()->getResult();
 
         return view("admin/data_santri", $data);
     }
@@ -59,8 +58,7 @@ class Admin extends BaseController
 
         // builder for detail santri
         $this->builder->where("users.id", $id);
-        $query = $this->builder->get();
-        $data["user"] = $query->getRow();
+        $data["user"] = $this->builder->get()->getRow();
         return view("admin/detail", $data);
 
         if (empty($data["user"])) {
@@ -70,7 +68,7 @@ class Admin extends BaseController
 
     public function save()
     {
-        try{
+        try {
             // DB Transaction
             $this->db->transBegin();
 
@@ -104,7 +102,7 @@ class Admin extends BaseController
                 session()->setFlashdata("pesan", "ditambahkan");
                 return redirect()->to(base_url("/admin/data_santri"));
             }
-        } catch (Throwable $th){
+        } catch (Throwable $th) {
             // Melakukan rollback, data tidak akan insert atau update jika code gagal dieksekusi
             $this->logError($th);
             $this->db->transRollback();
@@ -119,11 +117,9 @@ class Admin extends BaseController
     public function edit()
     {
         $this->builder->select("jk, kamar");
-        $query = $this->builder->get();
-        $data["users"] = $query->getResult();
+        $data["users"] = $this->builder->get()->getResult();
 
-        $query = $this->gender->get();
-        $data["genders"] = $query->getResult();
+        $data["genders"] = $this->gender->get()->getResult();
 
         $id = $this->request->getPost("id");
         $data = [
@@ -158,7 +154,7 @@ class Admin extends BaseController
     public function laporan()
     {
         $data["title"] = "Laporan Syahriah";
-        
+
         // builder for data santri
         $this->builder->select('users.id as userid, fullname, gender.sex AS jk, users.gender_id, kamar_santri.nama_kamar as kamar');
         $this->builder->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
@@ -167,11 +163,9 @@ class Admin extends BaseController
         $this->builder->join('kamar_santri', 'kamar_santri.id_kamar = users.kamar');
 
         $this->builder->where("auth_groups.id", array("id" => 2));
-        $query = $this->builder->get();
-        $data["users"] = $query->getResult();
+        $data["users"] = $this->builder->get()->getResult();
 
-        $query = $this->gender->get();
-        $data["genders"] = $query->getResult();
+        $data["genders"] = $this->gender->get()->getResult();
 
         return view('/admin/laporan', $data);
     }
@@ -182,21 +176,19 @@ class Admin extends BaseController
 
         // builder for detail santri
         $this->builder->where("users.id", $id);
-        $query = $this->builder->get();
-        $data["user"] = $query->getRow();
+        $data["user"] = $this->builder->get()->getRow();
         return view("admin/laporan_syahriah", $data);
 
         if (empty($data["user"])) {
             return redirect()->to("/admin/laporan");
         }
     }
-    
+
     public function tagihan()
     {
         $data["title"] = "Tagihan Santri";
-        
-        $query = $this->db->table("tagihan")->get();
-        $data["tagihan"] = $query->getResult();
+
+        $data["tagihan"] = $this->bill->get()->getResult();
 
         return view('/admin/tagihan', $data);
     }
