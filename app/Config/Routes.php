@@ -38,19 +38,21 @@ $routes->setAutoRoute(true);
 // route since we don"t have to scan directories.
 
 // View index
-$routes->get("/", "User::index");
+$routes->get("/", "Home::index");
 
 // Routes for User
-$routes->get("/user/edit_profile", "User::edit_profile");
+// $routes->get("/user/edit_profile", "User::edit_profile");
+$routes->get("/tagihan",            "User::tagihan",                    ["filter" => "role:user"]);
 
 // Routes for Admin
 $routes->group("admin", static function ($routes) {
-    $routes->get("/",               "Admin::index",             ["filter" => "role:admin"]);
-    $routes->get("/index",          "Admin::index",             ["filter" => "role:admin"]);
-    $routes->get("/data_santri",    "Admin::data_santri",       ["filter" => "role:admin"]);
-    $routes->get("/(:num)",         "Admin::detail/$1",         ["filter" => "role:admin"]);
-    $routes->get("/tagihan",        "Admin::tagihan",           ["filter" => "role:admin"]);
-    $routes->get("/santri/(:num)",  "Admin::santri/$1",         ["filter" => "role:admin"]);
+    $routes->get("/",               "Admin::index",                     ["filter" => "role:admin"]);
+    $routes->get("/index",          "Admin::index",                     ["filter" => "role:admin"]);
+    $routes->get("/data_santri",    "Admin::data_santri",               ["filter" => "role:admin"]);
+    $routes->get("/(:num)",         "Admin::detail/$1",                 ["filter" => "role:admin"]);
+    $routes->get("/tagihan",        "Admin::tagihan",                   ["filter" => "role:admin"]);
+    $routes->get("/laporan",        "Admin::laporan",                   ["filter" => "role:admin"]);
+    $routes->get("/santri/(:num)",  "Admin::laporan_syahriah/$1",       ["filter" => "role:admin"]);
 
     $routes->post("save", "Admin::save", ["filter" => "role:admin"]);
 });

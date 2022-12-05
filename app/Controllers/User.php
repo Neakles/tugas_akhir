@@ -23,4 +23,10 @@ class User extends BaseController
 
         return view('/user/edit_profile', $data);
     }
+
+    public function tagihan()
+    {
+        $data['title'] = 'Tagihan';
+        return view('/user/tagihan', $data);
+    }
 }

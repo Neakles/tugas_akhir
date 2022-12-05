@@ -3,14 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2022 at 03:12 PM
+-- Generation Time: Dec 05, 2022 at 01:17 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -100,9 +99,18 @@ CREATE TABLE `auth_groups_users` (
 
 INSERT INTO `auth_groups_users` (`group_id`, `user_id`) VALUES
 (1, 2),
-(2, 1),
-(2, 3),
-(2, 6);
+(2, 49),
+(2, 50),
+(2, 52),
+(2, 53),
+(2, 54),
+(2, 56),
+(2, 59),
+(2, 60),
+(2, 64),
+(2, 65),
+(2, 66),
+(2, 67);
 
 -- --------------------------------------------------------
 
@@ -276,7 +284,52 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (150, '::1', 'elscine@gmail.com', NULL, '2022-11-23 03:21:14', 0),
 (151, '::1', 'elscine@gmail.com', NULL, '2022-11-23 03:21:19', 0),
 (152, '::1', 'elscine@gmail.com', 2, '2022-11-23 03:21:27', 1),
-(153, '::1', 'elscine@gmail.com', 2, '2022-11-23 06:38:25', 1);
+(153, '::1', 'elscine@gmail.com', 2, '2022-11-23 06:38:25', 1),
+(154, '::1', 'tric201@gmail.com', 6, '2022-11-23 10:14:16', 1),
+(155, '::1', 'elscine@gmail.com', 2, '2022-11-23 10:14:44', 1),
+(156, '::1', 'elscine@gmail.com', NULL, '2022-11-23 12:41:54', 0),
+(157, '::1', 'elscine@gmail.com', 2, '2022-11-23 12:42:00', 1),
+(158, '::1', 'elscine@gmail.com', 2, '2022-11-24 16:08:04', 1),
+(159, '::1', 'elscine@gmail.com', 2, '2022-11-28 07:31:08', 1),
+(160, '::1', 'elscine@gmail.com', 2, '2022-11-28 13:54:44', 1),
+(161, '::1', 'elscine@gmail.com', 2, '2022-11-29 01:26:12', 1),
+(162, '::1', 'elscine@gmail.com', 2, '2022-11-29 13:58:12', 1),
+(163, '::1', 'elscine@gmail.com', 2, '2022-11-29 14:00:10', 1),
+(164, '::1', 'tric201@gmail.com', 6, '2022-11-29 14:12:32', 1),
+(165, '::1', 'elscine@gmail.com', 2, '2022-11-29 14:32:16', 1),
+(166, '::1', 'elscine@gmail.com', 2, '2022-11-29 21:17:02', 1),
+(167, '::1', 'elscine@gmail.com', 2, '2022-11-30 11:42:14', 1),
+(168, '::1', 'elscine@gmail.com', 2, '2022-11-30 15:54:10', 1),
+(169, '::1', 'elscine@gmail.com', 2, '2022-11-30 18:59:13', 1),
+(170, '::1', 'elscine@gmail.com', 2, '2022-12-01 02:38:43', 1),
+(171, '::1', 'elscine@gmail.com', 2, '2022-12-01 07:00:48', 1),
+(172, '::1', 'elscine@gmail.com', NULL, '2022-12-01 16:12:04', 0),
+(173, '::1', 'elscine@gmail.com', NULL, '2022-12-01 16:12:04', 0),
+(174, '::1', 'elscine@gmail.com', 2, '2022-12-01 16:12:10', 1),
+(175, '::1', 'elscine@gmail.com', 2, '2022-12-01 20:54:36', 1),
+(176, '::1', 'elscine@gmail.com', NULL, '2022-12-02 17:06:59', 0),
+(177, '::1', 'elscine@gmail.com', 2, '2022-12-02 17:07:05', 1),
+(178, '::1', 'elscine@gmail.com', 2, '2022-12-02 23:51:33', 1),
+(179, '::1', 'elscine@gmail.com', 2, '2022-12-03 11:24:00', 1),
+(180, '::1', 'elscine@gmail.com', 2, '2022-12-03 20:18:35', 1),
+(181, '::1', 'elscine@gmail.com', 2, '2022-12-03 21:45:24', 1),
+(182, '::1', 'asd@gmail.com', 52, '2022-12-03 21:54:29', 0),
+(183, '::1', 'cahyo', 50, '2022-12-03 21:55:08', 0),
+(184, '::1', 'elscine@gmail.com', 2, '2022-12-03 21:55:25', 1),
+(185, '::1', 'trica', NULL, '2022-12-03 21:57:15', 0),
+(186, '::1', 'am_tricahyo', 49, '2022-12-03 21:57:47', 0),
+(187, '::1', 'elscine@gmail.com', 2, '2022-12-03 22:02:21', 1),
+(188, '::1', 'qwerty', 53, '2022-12-04 00:57:41', 0),
+(189, '::1', 'tric201@gmail.com', 49, '2022-12-04 01:04:52', 1),
+(190, '::1', 'elscine@gmail.com', 2, '2022-12-04 15:35:04', 1),
+(191, '::1', 'elscine@gmail.com', 2, '2022-12-04 16:23:28', 1),
+(192, '::1', 'cahyo', 50, '2022-12-04 16:24:02', 0),
+(193, '::1', 'cahyo@gmail.com', 50, '2022-12-04 16:25:47', 1),
+(194, '::1', 'elscine@gmail.com', NULL, '2022-12-04 18:24:10', 0),
+(195, '::1', 'elscine@gmail.com', 2, '2022-12-04 18:24:16', 1),
+(196, '::1', 'elscine@gmail.com', 2, '2022-12-04 18:26:39', 1),
+(197, '::1', 'elscine@gmail.com', 2, '2022-12-05 10:53:42', 1),
+(198, '::1', 'elscine@gmail.com', 2, '2022-12-05 17:38:08', 1);
 
 -- --------------------------------------------------------
 
@@ -452,7 +505,8 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`, `batch`) VALUES
-(1, '2017-11-20-223112', 'Myth\\Auth\\Database\\Migrations\\CreateAuthTables', 'default', 'Myth\\Auth', 1665283429, 1);
+(1, '2017-11-20-223112', 'Myth\\Auth\\Database\\Migrations\\CreateAuthTables', 'default', 'Myth\\Auth', 1665283429, 1),
+(2, '2022-12-04-050647', 'App\\Database\\Migrations\\UsersAddGenderId', 'default', 'App', 1670131539, 2);
 
 -- --------------------------------------------------------
 
@@ -466,11 +520,12 @@ CREATE TABLE `users` (
   `username` varchar(30) DEFAULT NULL,
   `fullname` varchar(255) DEFAULT NULL,
   `user_image` varchar(255) NOT NULL DEFAULT 'default.svg',
-  `no_telp` int(15) DEFAULT NULL,
-  `jk` varchar(10) DEFAULT NULL,
-  `kamar` varchar(30) DEFAULT NULL,
+  `no_telp` varchar(15) DEFAULT NULL,
+  `jk` int(11) DEFAULT NULL,
+  `gender_id` int(5) DEFAULT NULL,
+  `kamar` int(11) DEFAULT NULL,
   `wali` varchar(30) DEFAULT NULL,
-  `no_wali` int(13) DEFAULT NULL,
+  `no_wali` varchar(15) DEFAULT NULL,
   `thn_masuk` year(4) DEFAULT NULL,
   `password_hash` varchar(255) NOT NULL,
   `reset_hash` varchar(255) DEFAULT NULL,
@@ -490,11 +545,21 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `username`, `fullname`, `user_image`, `no_telp`, `jk`, `kamar`, `wali`, `no_wali`, `thn_masuk`, `password_hash`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'mine@gmail.com', 'mine', 'Mine', 'default.svg', 12345, 'Laki-laki', 'KH. Abd Muiz', 'qwerty', 123456, 2020, '$2y$10$Dl.WYq/yERQA4xbULYYZsO9UqXRLNtcIuasDEPCFlrZKwE5lDACg.', NULL, NULL, NULL, '5e421b8302efadb5c030b33b90a53cd0', NULL, NULL, 1, 0, '2022-10-08 21:48:46', '2022-10-08 21:48:46', NULL),
-(2, 'elscine@gmail.com', 'elscine', 'Elscine', 'default.svg', 21345, 'Perempuan', 'Sunan Bonang', 'ertyui', 123456, 2022, '$2y$10$eSiaslzDYr07zTaFPT0Ix.kbLO12DwExSFiWwidEt1iyXsfx30n22', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-10-08 23:16:52', '2022-10-08 23:16:52', NULL),
-(3, 'neakles@gmail.com', 'neakles', 'Neakles', 'default.svg', 12345, 'Laki-laki', 'Sunan Kalijaga', 'mkoh', 12345, 2019, '$2y$10$Ap8yd.lujV63E.ELHEFSfOpFohyG2G5Js3chMaPTZeJPQD46eLHF6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-10-09 04:27:59', '2022-10-09 04:27:59', NULL),
-(6, 'tric201@gmail.com', 'amtricahyo', NULL, 'default.svg', 12345, 'Perempuan', 'Abah Habib', 'eawfaf', 1241234, 2021, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-11-09 00:57:04', '2022-11-09 00:57:04', NULL);
+INSERT INTO `users` (`id`, `email`, `username`, `fullname`, `user_image`, `no_telp`, `jk`, `gender_id`, `kamar`, `wali`, `no_wali`, `thn_masuk`, `password_hash`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(2, 'elscine@gmail.com', 'elscine', 'Elscine', 'default.svg', '21345', 2, 2, 32, 'ertyui', '123456', 2022, '$2y$10$eSiaslzDYr07zTaFPT0Ix.kbLO12DwExSFiWwidEt1iyXsfx30n22', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-10-08 23:16:52', '2022-10-08 23:16:52', NULL),
+(49, 'tric201@gmail.com', 'am_tricahyo', 'Ahmad Muhlish Tri Cahyo', 'default.svg', '8388607', 1, 1, 19, 'wali', '8388607', 2018, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
+(50, 'cahyo@gmail.com', 'cahyo', 'Cahyo', 'default.svg', '1276', 1, 1, 17, 'wali', '5864354', 2020, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
+(52, 'asd@gmail.com', 'asd', 'asd', 'default.svg', '8388607', 1, 1, 4, 'asd', '8388607', 2011, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
+(53, 'qwerty@qwq', 'qwerty', 'qwerty', 'default.svg', '8388607', 2, 2, 49, 'qwerty', '8388607', 2012, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
+(54, 'tricahyo@gmail.com', 'tricahyo', 'Tri Cahyo', '', '8388607', 1, 1, 12, 'bapak', '8388607', 2013, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
+(56, 'sdfsd@gdfgd', 'sfdfsdf', 'sddsg', 'default.svg', '089673671520', 1, 1, 14, 'dsfds', '089673671520', 2019, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
+(59, 'qwerty@qwqds', 'qwertyuiop', 'qwerty', 'default.svg', '0987654321', 2, 2, 34, 'qwerty', '0987654321', 2012, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
+(60, 'q@q', 'q', 'Q', 'default.svg', '082331203169', 2, 2, 51, 'qq', '082331203169', 2019, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-12-03 11:24:26', NULL, NULL),
+(64, 'elscine@elscine', 'qwqw', 'Elscine', 'default.svg', '082331203169', 1, 1, 17, 'wali', '082331203169', 2015, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-12-04 00:33:07', NULL, NULL),
+(65, 'tric@hyo', 'trica', 'tri', 'default.svg', '09876543212', 2, 2, 37, 'santri', '09876543212', 2020, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-12-04 00:48:49', NULL, NULL),
+(66, 'mutiara@q', 'mutiara', 'mutiara q', 'default.svg', '098765434567', 2, 2, 37, 'asd', '098765434567', 2019, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-12-04 00:53:29', NULL, NULL),
+(67, '123@gmail', 'am', 'mine', 'default.svg', '082331203169', 1, 1, 12, 'sadasd', '082331203169', 2020, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-12-04 01:22:07', NULL, NULL),
+(79, 'mko@mko', 'mko', 'mko', 'default.svg', '09867268215', 1, 1, 12, 'mko', '9876543', 2020, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-12-04 11:33:48', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -523,8 +588,8 @@ ALTER TABLE `auth_groups_permissions`
 -- Indexes for table `auth_groups_users`
 --
 ALTER TABLE `auth_groups_users`
-  ADD KEY `auth_groups_users_user_id_foreign` (`user_id`),
-  ADD KEY `group_id_user_id` (`group_id`,`user_id`);
+  ADD KEY `group_id_user_id` (`group_id`,`user_id`),
+  ADD KEY `auth_groups_users_user_id_foreign` (`user_id`);
 
 --
 -- Indexes for table `auth_logins`
@@ -607,7 +672,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=199;
 
 --
 -- AUTO_INCREMENT for table `auth_permissions`
@@ -643,13 +708,13 @@ ALTER TABLE `kamar_santri`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- Constraints for dumped tables
@@ -667,7 +732,7 @@ ALTER TABLE `auth_groups_permissions`
 --
 ALTER TABLE `auth_groups_users`
   ADD CONSTRAINT `auth_groups_users_group_id_foreign` FOREIGN KEY (`group_id`) REFERENCES `auth_groups` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `auth_groups_users_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `auth_groups_users_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `auth_tokens`

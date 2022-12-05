@@ -12,7 +12,7 @@ class Home extends BaseController
 
     public function index()
     {
-        if ("role:user") {
+        if (in_groups('admin')) {
             return redirect()->to("/admin");
         } else {
             return redirect()->to("/user");

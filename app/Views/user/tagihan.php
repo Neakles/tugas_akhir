@@ -24,17 +24,17 @@
                     </thead>
                     <tbody>
                         <?php $i = 1;
-                        foreach ($users as $user_list) : ?>
+                        // foreach ($users as $user_list) : ?>
                             <tr>
                                 <th scope="row"><?= $i++; ?></th>
-                                <td><?= $user_list->fullname; ?></td>
-                                <td><?= $user_list->jk; ?></td>
-                                <td><?= $user_list->kamar; ?></td>
+                                <td>Tri Cahyo</td>
+                                <td>Laki-laki</td>
+                                <td>Sunan Kalijaga</td>
                                 <td class="d-flex">
-                                    <a href="<?= base_url('admin/tagihan_syahriah/' . $user_list->userid); ?>" class="btn btn-info"><i class="fas fa-info-circle mr-2"></i>tagihan</a>
+                                    <a href="<?= base_url('user/santri/'); ?>" class="btn btn-success"><i class="fas fa-money-bills mr-2"></i>bayar</a>
                                 </td>
                             </tr>
-                        <?php endforeach; ?>
+                        <?php // endforeach; ?>
                     </tbody>
                 </table>
             </div>

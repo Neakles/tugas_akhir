@@ -12,6 +12,7 @@
     <!-- <hr class="sidebar-divider "> -->
     <hr class="sidebar-divider ">
 
+    <!-- Sidebar of Admin -->
     <?php if (in_groups('admin')) : ?>
 
         <div class="sidebar-heading">
@@ -20,13 +21,11 @@
 
         <li class="nav-item">
             <a class="nav-link" href=" <?= base_url('admin'); ?>">
-                <!-- <i class="fas fa-house"></i> -->
                 <i class="fas fa-solid fa-home"></i>
                 <span>Dashboard</span>
             </a>
         </li>
 
-        <!-- Nav Item - My Profile -->
         <li class="nav-item">
             <a class="nav-link" href="/admin/data_santri">
                 <i class="fas fa-fw fa-users"></i>
@@ -35,23 +34,39 @@
 
         <li class="nav-item">
             <a class="nav-link" href="/admin/tagihan">
-            <i class="fa-solid fa-money-bill-wave"></i>
+                <i class="fa-solid fa-money-bill-wave"></i>
                 <span>Tagihan</span></a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="/admin/">
-            <i class="fa-solid fa-rupiah-sign"></i>
-                <span>Laporan Pembayaran</span></a>
+            <a class="nav-link" href="/admin/laporan">
+                <i class="fa-solid fa-rupiah-sign"></i>
+                <span>Laporan Syahriah</span></a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link" href="/admin/">
-            <i class="fa-solid fa-gear"></i>
+                <i class="fa-solid fa-gear"></i>
                 <span>Role Management</span></a>
         </li>
         <hr class="sidebar-divider ">
-        
+
+    <?php endif; ?>
+
+    <!-- Sidebar of User -->
+    <?php if (in_groups('user')) : ?>
+
+        <div class="sidebar-heading">
+            Santri
+        </div>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/user/tagihan">
+                <i class="fa-solid fa-money-bill-wave"></i>
+                <span>Tagihan</span></a>
+        </li>
+        <hr class="sidebar-divider ">
+
     <?php endif; ?>
 
     <div class="sidebar-heading">

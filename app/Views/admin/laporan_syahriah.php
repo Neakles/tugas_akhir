@@ -89,7 +89,6 @@
                             <th scope="col">Bulan</th>
                             <th scope="col">Biaya</th>
                             <th scope="col">Status</th>
-                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -102,9 +101,6 @@
                             <td>Januari</td>
                             <td>Rp 250.000</td>
                             <td>Belum Lunas</td>
-                            <td class="d-flex">
-                                <a href="<?= base_url('admin/santri/' . $user->id); ?>" class="btn btn-success"><i class="fas fa-money-bills mr-2"></i>bayar</a>
-                            </td>
                         </tr>
                         <?php // endforeach; 
                         ?>

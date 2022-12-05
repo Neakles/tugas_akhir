@@ -155,9 +155,45 @@ class Admin extends BaseController
         }
     }
 
-    public function Tagihan()
+    public function laporan()
     {
-        $data["title"] = "Data Tagihan";
+        $data["title"] = "Laporan Syahriah";
+        
+        // builder for data santri
+        $this->builder->select('users.id as userid, fullname, gender.sex AS jk, users.gender_id, kamar_santri.nama_kamar as kamar');
+        $this->builder->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
+        $this->builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
+        $this->builder->join('gender', 'gender.id_gender = users.gender_id');
+        $this->builder->join('kamar_santri', 'kamar_santri.id_kamar = users.kamar');
+
+        $this->builder->where("auth_groups.id", array("id" => 2));
+        $query = $this->builder->get();
+        $data["users"] = $query->getResult();
+
+        $query = $this->gender->get();
+        $data["genders"] = $query->getResult();
+
+        return view('/admin/laporan', $data);
+    }
+
+    public function laporan_syahriah($id = 0)
+    {
+        $data["title"] = "Tagihan Syahriah";
+
+        // builder for detail santri
+        $this->builder->where("users.id", $id);
+        $query = $this->builder->get();
+        $data["user"] = $query->getRow();
+        return view("admin/laporan_syahriah", $data);
+
+        if (empty($data["user"])) {
+            return redirect()->to("/admin/laporan");
+        }
+    }
+    
+    public function tagihan()
+    {
+        $data["title"] = "Tagihan Santri";
         
         // builder for data santri
         $this->builder->select('users.id as userid, fullname, gender.sex AS jk, users.gender_id, kamar_santri.nama_kamar as kamar');
@@ -174,20 +210,5 @@ class Admin extends BaseController
         $data["genders"] = $query->getResult();
 
         return view('/admin/tagihan', $data);
-    }
-
-    public function santri($id = 0)
-    {
-        $data["title"] = "Tagihan Syahriah Santri";
-
-        // builder for detail santri
-        $this->builder->where("users.id", $id);
-        $query = $this->builder->get();
-        $data["user"] = $query->getRow();
-        return view("admin/detail_tagihan", $data);
-
-        if (empty($data["user"])) {
-            return redirect()->to("/admin/tagihan");
-        }
     }
 }

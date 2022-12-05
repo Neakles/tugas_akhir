@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
-        <h1 class="h3 mb-0 text-gray-800">Tagihan Santri</h1>
+        <h1 class="h3 mb-0 text-gray-800">Laporan Syahriah</h1>
     </div>
     <p class="mb-4">Pondok Pesantren Al-Jihad Surabaya</a>.</p>
     <!-- End of Page Heading -->
@@ -31,7 +31,7 @@
                                 <td><?= $user_list->jk; ?></td>
                                 <td><?= $user_list->kamar; ?></td>
                                 <td class="d-flex">
-                                    <a href="<?= base_url('admin/tagihan_syahriah/' . $user_list->userid); ?>" class="btn btn-info"><i class="fas fa-info-circle mr-2"></i>tagihan</a>
+                                    <a href="<?= base_url('admin/laporan_syahriah/' . $user_list->userid); ?>" class="btn btn-info"><i class="fas fa-info-circle mr-2"></i>detail</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
