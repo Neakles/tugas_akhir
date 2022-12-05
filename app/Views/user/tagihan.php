@@ -20,7 +20,7 @@
                             <th scope="col">Bulan</th>
                             <th scope="col">Biaya</th>
                             <th scope="col">Status</th>
-                            <th scope="col">Action</th>
+                            <th scope="col" style="width:13%">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,8 +31,8 @@
                                 <td><?= $bill->tahun; ?></td>
                                 <td><?= $bill->bulan; ?></td>
                                 <td>Rp <?= $bill->biaya; ?></td>
-                                <td><?= $bill->status; ?></td>
-                                <td class="d-flex">
+                                <td></td>
+                                <td class="d-flex justify-content-center">
                                     <a href="<?= base_url('user/santri/'); ?>" class="btn btn-success"><i class="fas fa-money-bills mr-2"></i>bayar</a>
                                 </td>
                             </tr>

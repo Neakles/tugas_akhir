@@ -25,6 +25,7 @@ class UsersModel extends Model
         "wali",
         "no_wali",
         "thn_masuk",
+        "active",
         "password_hash"
     ];
 

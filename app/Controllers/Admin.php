@@ -82,8 +82,8 @@ class Admin extends BaseController
                 "thn_masuk"     => $this->request->getPost("datepicker"),
                 "wali"          => $this->request->getPost("wali"),
                 "no_wali"       => $this->request->getPost("no_wali"),
-                // "password_hash" => '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6',
-                "password_hash" => password_hash("12345678", PASSWORD_DEFAULT),
+                "password_hash" => '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6',           //Rememberm3
+                // "password_hash" => password_hash("12345678", PASSWORD_DEFAULT),
                 "active"        => 1,
                 "created_at"    => date("Y-m-d H-i-s"),
             ];
