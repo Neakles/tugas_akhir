@@ -10,29 +10,28 @@
     <!-- End of Page Heading -->
 
     <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex justify-content-end">
+            <button type="button" class="btn btn-primary py-1 .col-auto mx-1" data-toggle="modal" data-target="#tambah_tagihan"><i class="fa-solid fa-fw fa-plus mr-2"></i>Tambah Tagihan</button>
+        </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Nama</th>
-                            <th scope="col">Jenis Kelamin</th>
-                            <th scope="col">Kamar</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Tahun</th>
+                            <th scope="col">Bulan</th>
+                            <th scope="col">Biaya</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $i = 1;
-                        foreach ($users as $user_list) : ?>
+                        foreach ($tagihan as $bill) : ?>
                             <tr>
                                 <th scope="row"><?= $i++; ?></th>
-                                <td><?= $user_list->fullname; ?></td>
-                                <td><?= $user_list->jk; ?></td>
-                                <td><?= $user_list->kamar; ?></td>
-                                <td class="d-flex">
-                                    <a href="<?= base_url('admin/tagihan_syahriah/' . $user_list->userid); ?>" class="btn btn-info"><i class="fas fa-info-circle mr-2"></i>tagihan</a>
-                                </td>
+                                <td><?= $bill->tahun; ?></td>
+                                <td><?= $bill->bulan; ?></td>
+                                <td>Rp <?= $bill->biaya; ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

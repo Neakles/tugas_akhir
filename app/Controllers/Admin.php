@@ -84,8 +84,8 @@ class Admin extends BaseController
                 "thn_masuk"     => $this->request->getPost("datepicker"),
                 "wali"          => $this->request->getPost("wali"),
                 "no_wali"       => $this->request->getPost("no_wali"),
-                "password_hash" => '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6',
-                // "password_hash" => password_hash("Rememberm3", PASSWORD_DEFAULT),
+                // "password_hash" => '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6',
+                "password_hash" => password_hash("12345678", PASSWORD_DEFAULT),
                 "active"        => 1,
                 "created_at"    => date("Y-m-d H-i-s"),
             ];
@@ -195,19 +195,8 @@ class Admin extends BaseController
     {
         $data["title"] = "Tagihan Santri";
         
-        // builder for data santri
-        $this->builder->select('users.id as userid, fullname, gender.sex AS jk, users.gender_id, kamar_santri.nama_kamar as kamar');
-        $this->builder->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
-        $this->builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
-        $this->builder->join('gender', 'gender.id_gender = users.gender_id');
-        $this->builder->join('kamar_santri', 'kamar_santri.id_kamar = users.kamar');
-
-        $this->builder->where("auth_groups.id", array("id" => 2));
-        $query = $this->builder->get();
-        $data["users"] = $query->getResult();
-
-        $query = $this->gender->get();
-        $data["genders"] = $query->getResult();
+        $query = $this->db->table("tagihan")->get();
+        $data["tagihan"] = $query->getResult();
 
         return view('/admin/tagihan', $data);
     }
