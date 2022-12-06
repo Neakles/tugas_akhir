@@ -7,11 +7,18 @@ class User extends BaseController
     public function __construct()
     {
         $this->db           = \Config\Database::connect();
+        $this->builder      = $this->db->table("users");
         $this->bill         = $this->db->table("tagihan");
     }
-    public function index()
+    public function profile()
     {
         $data['title'] = 'My Profile';
+        $this->builder->select('users.id as userid, gender.sex AS jk, kamar_santri.nama_kamar as kamar');
+        $this->builder->join('gender', 'gender.id_gender = users.gender_id');
+        $this->builder->join('kamar_santri', 'kamar_santri.id_kamar = users.kamar');
+        $data["users"] = $this->builder->get()->getResult();
+
+        // $data["user"] = $this->builder->get()->getRow();
 
         return view('/user/index', $data);
     }

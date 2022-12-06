@@ -74,7 +74,7 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url(); ?>">
+        <a class="nav-link" href="<?= base_url('/user/profile'); ?>">
             <i class="fas fa-fw fa-user"></i>
             <span>My Profile</span></a>
     </li>
