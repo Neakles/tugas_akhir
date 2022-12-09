@@ -47,12 +47,6 @@
                 <i class="fa-solid fa-rupiah-sign"></i>
                 <span>Laporan Syahriah</span></a>
         </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="/admin/">
-                <i class="fa-solid fa-gear"></i>
-                <span>Role Management</span></a>
-        </li>
         <hr class="sidebar-divider ">
 
     <?php endif; ?>
