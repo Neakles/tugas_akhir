@@ -1,5 +1,5 @@
-<?= $this->extend('layout/index'); ?>
-<?= $this->section('page-content'); ?>
+<?= $this->extend('layout/index') ?>
+<?= $this->section('page-content') ?>
 
 <div class="container-fluid">
     <!-- Page Heading -->
@@ -19,21 +19,24 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
+                            <th scope="col">Nis</th>
+                            <th scope="col">Jenis Pembayaran</th>
                             <th scope="col">Tahun</th>
-                            <th scope="col">Bulan</th>
-                            <th scope="col">Biaya</th>
+                            <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $i = 1;
-                        foreach ($tagihan as $bill) : ?>
+                        <?php
+                        $i = 1;
+                        foreach ($tagihan as $bill): ?>
                             <tr>
-                                <th scope="row"><?= $i++; ?></th>
-                                <td><?= $bill->tahun; ?></td>
-                                <td><?= $bill->bulan; ?></td>
-                                <td>Rp <?= $bill->biaya; ?></td>
+                                <th scope="row"><?= $i++ ?></th>
+                                <td><?= $bill->nis ?></td>
+                                <td><?= $bill->jenis_pembayaran ?></td>
+                                <td><?= $bill->tahun_ajaran ?></td>
                             </tr>
-                        <?php endforeach; ?>
+                        <?php endforeach;
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -41,4 +44,4 @@
     </div>
 </div>
 
-<?= $this->endSection(); ?>
+<?= $this->endSection() ?>

@@ -1,14 +1,14 @@
-<?= $this->extend('layout/index'); ?>
-<?= $this->section('page-content'); ?>
+<?= $this->extend('layout/index') ?>
+<?= $this->section('page-content') ?>
 
 <div class="container-fluid">
     <!-- session -->
-    <?php if (session()->get('pesan')) : ?>
+    <?php if (session()->get('pesan')): ?>
         <div class="alert alert-success" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <h6> Data berhasil <?= session()->getFlashdata('pesan'); ?></h6>
+            <h6> Data berhasil <?= session()->getFlashdata('pesan') ?></h6>
         </div>
     <?php endif; ?>
 
@@ -39,30 +39,37 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $i = 1;
-                        foreach ($users as $user_list) : ?>
+                        <?php
+                        $i = 1;
+                        foreach ($users as $user_list): ?>
                             <tr>
-                                <th scope="row"><?= $i++; ?></th>
-                                <td><?= $user_list->username; ?></td>
-                                <td><?= $user_list->fullname; ?></td>
-                                <td><?= $user_list->email; ?></td>
-                                <td><?= $user_list->jk; ?></td>
-                                <td><?= $user_list->kamar; ?></td>
+                                <th scope="row"><?= $i++ ?></th>
+                                <td><?= $user_list->nis ?></td>
+                                <td><?= $user_list->fullname ?></td>
+                                <td><?= $user_list->email ?></td>
+                                <td><?= $user_list->jk ?></td>
+                                <td><?= $user_list->kamar ?></td>
                                 <td class="d-flex justify-content-end">
-                                    <a href="<?= base_url('admin/detail/' . $user_list->userid); ?>" class="btn btn-info rounded-circle mx-1"><i class="fas fa-eye"></i></a>
-                                    <!-- <a href="<?= base_url('admin/edit/' . $user_list->userid); ?>" class="btn btn-warning rounded-circle mx-1"><i class="fas fa-edit"></i></a> -->
+                                    <a href="<?= base_url(
+                                        'admin/detail/' . $user_list->userid
+                                    ) ?>" class="btn btn-info rounded-circle mx-1"><i class="fas fa-eye"></i></a>
+                                    <!-- <a href="<?= base_url(
+                                        'admin/edit/' . $user_list->userid
+                                    ) ?>" class="btn btn-warning rounded-circle mx-1"><i class="fas fa-edit"></i></a> -->
                                     <button type="button" class="btn btn-warning rounded-circle" data-toggle="modal" data-target="#modal_edit" id="btn-edit"
-                                        data-id="<?= $user_list->userid; ?>"
-                                        data-username="<?= $user_list->username; ?>"
-                                        data-fullname="<?= $user_list->fullname; ?>"
-                                        data-email="<?= $user_list->email; ?>"
-                                        data-no_telp="<?= $user_list->no_telp; ?>"
+                                        data-id="<?= $user_list->userid ?>"
+                                        data-username="<?= $user_list->username ?>"
+                                        data-fullname="<?= $user_list->fullname ?>"
+                                        data-email="<?= $user_list->email ?>"
+                                        data-no_telp="<?= $user_list->no_telp ?>"
                                         data-gender="<?= $user_list->gender_id ?>"
-                                        data-wali="<?= $user_list->wali; ?>"
-                                        data-no_wali="<?= $user_list->no_wali; ?>"
-                                        data-thn_masuk="<?= $user_list->thn_masuk; ?>"
+                                        data-wali="<?= $user_list->wali ?>"
+                                        data-no_wali="<?= $user_list->no_wali ?>"
+                                        data-thn_masuk="<?= $user_list->thn_masuk ?>"
                                     ><i class="fas fa-edit"></i></button>
-                                    <a href="<?= base_url('admin/delete/' . $user_list->userid); ?>" class="btn btn-danger rounded-circle mx-1"><i class="fas fa-trash"></i></a>
+                                    <a href="<?= base_url(
+                                        'admin/delete/' . $user_list->userid
+                                    ) ?>" class="btn btn-danger rounded-circle mx-1"><i class="fas fa-trash"></i></a>
                                     <!-- <button type="button" class="btn btn-danger rounded-circle" data-toggle="modal" data-target="#modal_delete"><i class="fas fa-trash"></i></button> -->
                                 </td>
                             </tr>
@@ -81,7 +88,7 @@
                                             <div class="row">
                                                 <div class="col">
                                                     <form action="/admin/save" method="post">
-                                                        <?= csrf_field(); ?>
+                                                        <?= csrf_field() ?>
 
                                                         <div class="row justify-content-center mt-3 mb-4">
                                                             <div class="col">
@@ -115,7 +122,10 @@
                                                                     <label for="gender">Jenis Kelamin</label>
                                                                     <select id="gender" name="gender" class="form-control" required>
                                                                         <option value="" selected disabled>Pilih Jenis Kelamin</option>
-                                                                        <?php foreach ($genders as $gender) { ?>
+                                                                        <?php foreach (
+                                                                            $genders
+                                                                            as $gender
+                                                                        ) { ?>
                                                                             <option value="<?php echo $gender->id_gender; ?>"><?php echo $gender->sex; ?></option>
                                                                         <?php } ?>
                                                                     </select>
@@ -185,7 +195,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                                             <a href="/admin/delete/<?= $user_list->userid ?>" class="btn btn-primary"> Yakin</a>
-                                            <?= d($user_list->userid); ?>
+                                            <?= d($user_list->userid) ?>
                                         </div>
                                         </form>
                                     </div>
@@ -207,18 +217,18 @@
                                             <div class="row">
                                                 <div class="col">
                                                     <form action="/admin/edit" method="post">
-                                                        <?= csrf_field(); ?>
-                                                        <input type="hidden" name="id" id="id-santri" value="<?= $user_list->userid; ?>">
+                                                        <?= csrf_field() ?>
+                                                        <input type="hidden" name="id" id="id-santri" value="<?= $user_list->userid ?>">
                                                         <div class="row justify-content-center mt-3 mb-4">
                                                             <div class="col">
                                                                 <label for="nama" class="form-label">Nama Santri
                                                                 </label>
-                                                                <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Santri" value="<?= $user_list->fullname; ?>" required>
+                                                                <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Santri" value="<?= $user_list->fullname ?>" required>
                                                             </div>
                                                             <div class="col">
                                                                 <label for="username" class="form-label">Username / NIS
                                                                 </label>
-                                                                <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username / NIS" value="<?= $user_list->username; ?>" required>
+                                                                <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username / NIS" value="<?= $user_list->username ?>" required>
                                                             </div>
                                                         </div>
 
@@ -226,12 +236,12 @@
                                                             <div class="col">
                                                                 <label for="email" class="form-label">Email
                                                                 </label>
-                                                                <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email" value="<?= $user_list->email; ?>" required>
+                                                                <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email" value="<?= $user_list->email ?>" required>
                                                             </div>
                                                             <div class="col">
                                                                 <label for="no_tlp" class="form-label">No Telepon Santri
                                                                 </label>
-                                                                <input type="number" class="form-control" id="no_tlp" name="no_tlp" placeholder="Masukkan No Telepon Santri" value="<?= $user_list->no_telp; ?>" required>
+                                                                <input type="number" class="form-control" id="no_tlp" name="no_tlp" placeholder="Masukkan No Telepon Santri" value="<?= $user_list->no_telp ?>" required>
                                                             </div>
                                                         </div>
 
@@ -241,7 +251,10 @@
                                                                     <label for="gender">Jenis Kelamin <?= $user_list->jk ?></label>
                                                                     <select id="gender" name="gender" class="form-control" required>
                                                                     <option value="" selected disabled>Pilih Jenis Kelamin</option>
-                                                                        <?php foreach ($genders as $gender) { ?>
+                                                                        <?php foreach (
+                                                                            $genders
+                                                                            as $gender
+                                                                        ) { ?>
                                                                             <option value="<?php echo $gender->id_gender; ?>"><?php echo $gender->sex; ?></option>
                                                                         <?php } ?>
                                                                     </select>
@@ -262,12 +275,12 @@
                                                             <div class="col">
                                                                 <label for="text" class="form-label">Nama Wali Santri
                                                                 </label>
-                                                                <input type="wali" class="form-control" id="wali" name="wali" placeholder="Masukkan Nama Wali Santri" value="<?= $user_list->wali; ?>" required>
+                                                                <input type="wali" class="form-control" id="wali" name="wali" placeholder="Masukkan Nama Wali Santri" value="<?= $user_list->wali ?>" required>
                                                             </div>
                                                             <div class="col">
                                                                 <label for="no_wali" class="form-label">No Telepon Wali Santri
                                                                 </label>
-                                                                <input type="number" class="form-control" id="no_wali" name="no_wali" placeholder="Masukkan No Telepon Wali Santri" value="<?= $user_list->no_wali; ?>" required>
+                                                                <input type="number" class="form-control" id="no_wali" name="no_wali" placeholder="Masukkan No Telepon Wali Santri" value="<?= $user_list->no_wali ?>" required>
                                                             </div>
                                                         </div>
 
@@ -275,7 +288,7 @@
                                                             <div class="col-3">
                                                                 <label for="datepicker" class="form-label">Tahun Masuk
                                                                 </label>
-                                                                <input type="text" class="form-control" id="datepicker" name="datepicker" placeholder="Pilih Tahun Masuk" value="<?= $user_list->thn_masuk; ?>" required>
+                                                                <input type="text" class="form-control" id="datepicker" name="datepicker" placeholder="Pilih Tahun Masuk" value="<?= $user_list->thn_masuk ?>" required>
                                                             </div>
                                                             <div class="col-9">
                                                             </div>
@@ -293,7 +306,8 @@
                             </div>
                             <!-- End of Modal Edit -->
 
-                        <?php endforeach; ?>
+                        <?php endforeach;
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -301,4 +315,4 @@
     </div>
 </div>
 
-<?= $this->endSection(); ?>
+<?= $this->endSection() ?>

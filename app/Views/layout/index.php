@@ -9,19 +9,21 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title> <?= $title; ?> </title>
-
+    <title> <?= $title ?> </title>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <!-- Custom fonts for this template-->
     <script src="https://kit.fontawesome.com/db16c7444a.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="<?= base_url(); ?>/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="<?= base_url() ?>/css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="<?= base_url(); ?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
+    <link href="<?= base_url() ?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/vendor/bootstrap-select/dist/css/bootstrap-select.css">
 </head>
 
 <body id="page-top">
@@ -30,7 +32,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <?= $this->include('layout/sidebar'); ?>
+        <?= $this->include('layout/sidebar') ?>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -40,11 +42,11 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <?= $this->include('layout/topbar'); ?>
+                <?= $this->include('layout/topbar') ?>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <?= $this->renderSection('page-content'); ?>
+                <?= $this->renderSection('page-content') ?>
                 <!-- /.container-fluid -->
             </div>
             <!-- End of Main Content -->
@@ -53,7 +55,9 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Pondok Pesantren Al-Jihad Surabaya <?= date('Y'); ?></span>
+                        <span>Copyright &copy; Pondok Pesantren Al-Jihad Surabaya <?= date(
+                            'Y'
+                        ) ?></span>
                     </div>
                 </div>
             </footer>
@@ -83,7 +87,9 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="<?= base_url('logout') ?>">Logout</a>
+                    <a class="btn btn-primary" href="<?= base_url(
+                        'logout'
+                    ) ?>">Logout</a>
                 </div>
             </div>
         </div>
@@ -91,22 +97,22 @@
 
     <!-- Bootstrap core JavaScript-->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-    <script src="<?= base_url(); ?>/vendor/jquery/jquery.min.js"></script>
-    <script src="<?= base_url(); ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= base_url() ?>/vendor/jquery/jquery.min.js"></script>
+    <script src="<?= base_url() ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="<?= base_url(); ?>/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="<?= base_url() ?>/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="<?= base_url(); ?>/js/sb-admin-2.min.js"></script>
-    <script src="<?= base_url(); ?>/js/script.js"></script>
+    <script src="<?= base_url() ?>/js/sb-admin-2.min.js"></script>
+    <script src="<?= base_url() ?>/js/script.js"></script>
 
     <!-- Page level plugins -->
-    <script src="<?= base_url(); ?>/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="<?= base_url(); ?>/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
+    <script src="<?= base_url() ?>/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?= base_url() ?>/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="<?= base_url() ?>/vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
     <!-- Page level custom scripts -->
-    <script src="<?= base_url(); ?>/js/demo/datatables-demo.js"></script>
+    <script src="<?= base_url() ?>/js/demo/datatables-demo.js"></script>
 
     <!-- Scripts datePicker year -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">

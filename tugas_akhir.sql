@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2022 at 01:17 PM
+-- Generation Time: Dec 06, 2022 at 12:07 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -105,12 +105,7 @@ INSERT INTO `auth_groups_users` (`group_id`, `user_id`) VALUES
 (2, 53),
 (2, 54),
 (2, 56),
-(2, 59),
-(2, 60),
-(2, 64),
-(2, 65),
-(2, 66),
-(2, 67);
+(2, 59);
 
 -- --------------------------------------------------------
 
@@ -329,7 +324,39 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (195, '::1', 'elscine@gmail.com', 2, '2022-12-04 18:24:16', 1),
 (196, '::1', 'elscine@gmail.com', 2, '2022-12-04 18:26:39', 1),
 (197, '::1', 'elscine@gmail.com', 2, '2022-12-05 10:53:42', 1),
-(198, '::1', 'elscine@gmail.com', 2, '2022-12-05 17:38:08', 1);
+(198, '::1', 'elscine@gmail.com', 2, '2022-12-05 17:38:08', 1),
+(199, '::1', 'elscine@gmail.com', 2, '2022-12-05 19:36:43', 1),
+(200, '::1', 'tric201@gmail.com', 49, '2022-12-05 19:36:57', 1),
+(201, '::1', 'tric201@gmail.com', 49, '2022-12-05 19:37:41', 1),
+(202, '::1', 'elscine@gmail.com', 2, '2022-12-05 19:37:52', 1),
+(203, '::1', 'mine@gmail.com', NULL, '2022-12-05 19:38:13', 0),
+(204, '::1', 'asd@gmail.com', 52, '2022-12-05 19:38:22', 1),
+(205, '::1', 'elscine@gmail.com', 2, '2022-12-05 19:46:23', 1),
+(206, '::1', 'elscine@gmail.com', 2, '2022-12-05 19:53:58', 1),
+(207, '::1', 'mine@gmail.com', NULL, '2022-12-05 20:13:53', 0),
+(208, '::1', 'tric201@gmail.com', 49, '2022-12-05 20:13:58', 1),
+(209, '::1', 'saya', NULL, '2022-12-05 23:08:30', 0),
+(210, '::1', 'saya', NULL, '2022-12-05 23:08:46', 0),
+(211, '::1', 'saya', NULL, '2022-12-05 23:08:55', 0),
+(212, '::1', 'mine@gmail.com', NULL, '2022-12-05 23:11:00', 0),
+(213, '::1', 'asd@gmail.com', 52, '2022-12-05 23:11:06', 1),
+(214, '::1', 'saya', NULL, '2022-12-05 23:18:15', 0),
+(215, '::1', 'saya', NULL, '2022-12-05 23:20:58', 0),
+(216, '::1', 'saya', NULL, '2022-12-05 23:21:49', 0),
+(217, '::1', 'new', NULL, '2022-12-05 23:23:13', 0),
+(218, '::1', 'new', NULL, '2022-12-05 23:23:52', 0),
+(219, '::1', 'new', 85, '2022-12-05 23:26:29', 0),
+(220, '::1', 'new', 85, '2022-12-05 23:27:29', 0),
+(221, '::1', 'new', 85, '2022-12-05 23:27:35', 0),
+(222, '::1', 'new@ndew', 85, '2022-12-05 23:27:54', 1),
+(223, '::1', 'elscine@gmail.com', 2, '2022-12-06 05:24:16', 1),
+(224, '::1', 'elscine@gmail.com', 2, '2022-12-06 05:32:16', 1),
+(225, '::1', 'cahyo@gmail.com', 50, '2022-12-06 05:32:43', 1),
+(226, '::1', 'elscine@gmail.com', 2, '2022-12-06 05:40:40', 1),
+(227, '::1', 'asd@gmail.com', 52, '2022-12-06 06:42:55', 1),
+(228, '::1', 'elscine@gmail.com', 2, '2022-12-06 06:43:59', 1),
+(229, '::1', 'elscine@gmail.com', 2, '2022-12-06 08:59:17', 1),
+(230, '::1', 'elscine@gmail.com', 2, '2022-12-06 12:16:07', 1);
 
 -- --------------------------------------------------------
 
@@ -511,6 +538,27 @@ INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tagihan`
+--
+
+CREATE TABLE `tagihan` (
+  `id_tagihan` int(11) NOT NULL,
+  `tahun` year(4) NOT NULL,
+  `bulan` varchar(20) NOT NULL,
+  `biaya` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tagihan`
+--
+
+INSERT INTO `tagihan` (`id_tagihan`, `tahun`, `bulan`, `biaya`) VALUES
+(1, 2022, 'Januari', 250000),
+(2, 2022, 'Februari', 250000);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -521,7 +569,6 @@ CREATE TABLE `users` (
   `fullname` varchar(255) DEFAULT NULL,
   `user_image` varchar(255) NOT NULL DEFAULT 'default.svg',
   `no_telp` varchar(15) DEFAULT NULL,
-  `jk` int(11) DEFAULT NULL,
   `gender_id` int(5) DEFAULT NULL,
   `kamar` int(11) DEFAULT NULL,
   `wali` varchar(30) DEFAULT NULL,
@@ -545,21 +592,15 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `username`, `fullname`, `user_image`, `no_telp`, `jk`, `gender_id`, `kamar`, `wali`, `no_wali`, `thn_masuk`, `password_hash`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(2, 'elscine@gmail.com', 'elscine', 'Elscine', 'default.svg', '21345', 2, 2, 32, 'ertyui', '123456', 2022, '$2y$10$eSiaslzDYr07zTaFPT0Ix.kbLO12DwExSFiWwidEt1iyXsfx30n22', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-10-08 23:16:52', '2022-10-08 23:16:52', NULL),
-(49, 'tric201@gmail.com', 'am_tricahyo', 'Ahmad Muhlish Tri Cahyo', 'default.svg', '8388607', 1, 1, 19, 'wali', '8388607', 2018, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
-(50, 'cahyo@gmail.com', 'cahyo', 'Cahyo', 'default.svg', '1276', 1, 1, 17, 'wali', '5864354', 2020, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
-(52, 'asd@gmail.com', 'asd', 'asd', 'default.svg', '8388607', 1, 1, 4, 'asd', '8388607', 2011, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
-(53, 'qwerty@qwq', 'qwerty', 'qwerty', 'default.svg', '8388607', 2, 2, 49, 'qwerty', '8388607', 2012, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
-(54, 'tricahyo@gmail.com', 'tricahyo', 'Tri Cahyo', '', '8388607', 1, 1, 12, 'bapak', '8388607', 2013, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
-(56, 'sdfsd@gdfgd', 'sfdfsdf', 'sddsg', 'default.svg', '089673671520', 1, 1, 14, 'dsfds', '089673671520', 2019, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
-(59, 'qwerty@qwqds', 'qwertyuiop', 'qwerty', 'default.svg', '0987654321', 2, 2, 34, 'qwerty', '0987654321', 2012, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
-(60, 'q@q', 'q', 'Q', 'default.svg', '082331203169', 2, 2, 51, 'qq', '082331203169', 2019, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-12-03 11:24:26', NULL, NULL),
-(64, 'elscine@elscine', 'qwqw', 'Elscine', 'default.svg', '082331203169', 1, 1, 17, 'wali', '082331203169', 2015, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-12-04 00:33:07', NULL, NULL),
-(65, 'tric@hyo', 'trica', 'tri', 'default.svg', '09876543212', 2, 2, 37, 'santri', '09876543212', 2020, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-12-04 00:48:49', NULL, NULL),
-(66, 'mutiara@q', 'mutiara', 'mutiara q', 'default.svg', '098765434567', 2, 2, 37, 'asd', '098765434567', 2019, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-12-04 00:53:29', NULL, NULL),
-(67, '123@gmail', 'am', 'mine', 'default.svg', '082331203169', 1, 1, 12, 'sadasd', '082331203169', 2020, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-12-04 01:22:07', NULL, NULL),
-(79, 'mko@mko', 'mko', 'mko', 'default.svg', '09867268215', 1, 1, 12, 'mko', '9876543', 2020, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-12-04 11:33:48', NULL, NULL);
+INSERT INTO `users` (`id`, `email`, `username`, `fullname`, `user_image`, `no_telp`, `gender_id`, `kamar`, `wali`, `no_wali`, `thn_masuk`, `password_hash`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(2, 'elscine@gmail.com', 'elscine', 'Elscine', 'default.svg', '21345', 2, 32, 'ertyui', '123456', 2022, '$2y$10$eSiaslzDYr07zTaFPT0Ix.kbLO12DwExSFiWwidEt1iyXsfx30n22', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-10-08 23:16:52', '2022-10-08 23:16:52', NULL),
+(49, 'tric201@gmail.com', 'am_tricahyo', 'Ahmad Muhlish Tri Cahyo', 'default.svg', '8388607', 1, 19, 'wali', '8388607', 2018, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
+(50, 'cahyo@gmail.com', 'cahyo', 'Cahyo', 'default.svg', '1276', 1, 17, 'wali', '5864354', 2020, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
+(52, 'asd@gmail.com', 'asd', 'asd', 'default.svg', '8388607', 1, 4, 'asd', '8388607', 2011, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
+(53, 'qwerty@qwq', 'qwerty', 'qwerty', 'default.svg', '8388607', 2, 49, 'qwerty', '8388607', 2012, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
+(54, 'tricahyo@gmail.com', 'tricahyo', 'Tri Cahyo', '', '8388607', 1, 12, 'bapak', '8388607', 2013, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
+(56, 'sdfsd@gdfgd', 'sfdfsdf', 'sddsg', 'default.svg', '089673671520', 1, 14, 'dsfds', '089673671520', 2019, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
+(59, 'qwerty@qwqds', 'qwertyuiop', 'qwerty', 'default.svg', '0987654321', 2, 34, 'qwerty', '0987654321', 2012, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -645,6 +686,12 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tagihan`
+--
+ALTER TABLE `tagihan`
+  ADD PRIMARY KEY (`id_tagihan`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -672,7 +719,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=199;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=231;
 
 --
 -- AUTO_INCREMENT for table `auth_permissions`
@@ -711,10 +758,16 @@ ALTER TABLE `migrations`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `tagihan`
+--
+ALTER TABLE `tagihan`
+  MODIFY `id_tagihan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- Constraints for dumped tables
