@@ -144,7 +144,7 @@ class Admin extends BaseController
             'fullname' => $this->request->getPost('nama'),
             'no_telp' => $this->request->getPost('no_tlp'),
             'email' => $this->request->getPost('email'),
-            'jk' => $this->request->getPost('gender'),
+            'id_gender' => $this->request->getPost('gender'),
             'kamar' => $this->request->getPost('kamar'),
             'thn_masuk' => $this->request->getPost('datepicker'),
             'wali' => $this->request->getPost('wali'),
