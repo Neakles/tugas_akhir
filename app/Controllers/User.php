@@ -50,19 +50,30 @@ class User extends BaseController
 
         // $data['genders'] = $this->gender->get()->getResult();
 
-        $id = $this->request->getPost('id');
+        // $id = $this->request->getPost('id');
+
+        //pengondisian jika email tidak diganti, maka masih bisa update data di database
+        $dataLama = $this->request->getPost('id');
+        if($dataLama['email'] == $this->request->getPost('email')){
+            $rule_email = 'required';
+        }  else{
+            $rule_email = 'required|is_unique[users.email}';
+        }
+        //pengondisian jika email tidak diganti, maka masih bisa update data di database
+
         $data = [
+            'id' => $dataLama,
             'username' => $this->request->getPost('username'),
             'fullname' => $this->request->getPost('nama'),
             'no_telp' => $this->request->getPost('no_tlp'),
-            'email' => $this->request->getPost('email'),
+            'email' => $rule_email,
             'gender_id' => $this->request->getPost('gender'),
             'kamar' => $this->request->getPost('kamar'),
             'thn_masuk' => $this->request->getPost('datepicker'),
             'wali' => $this->request->getPost('wali'),
             'no_wali' => $this->request->getPost('no_wali'),
         ];
-        $new = $this->builder->update($data, ['users.id' => $id]);
+        $new = $this->builder->update($data, ['users.id' => $dataLama]);
 
         if ($new) {
             session()->setFlashdata('pesan', 'diupdate');
