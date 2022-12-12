@@ -66,6 +66,7 @@
                                     <form action="/admin/tambahTagihan" method="post">
                                         <?= csrf_field() ?>
 
+<<<<<<< HEAD
                                         <div class="row justify-content-center mt-3 mb-4">
                                             <div class="col">
                                                 <label for="nis" class="form-label">NIS</label>
@@ -99,3 +100,6 @@
             </div>
 
             <?= $this->endSection() ?>
+=======
+<?= $this->endSection() ?>
+>>>>>>> 62d7b9c8ffd8058ba29f87dce385f11974ff5cdd

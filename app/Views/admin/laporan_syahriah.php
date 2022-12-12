@@ -44,7 +44,7 @@
                                     <h4>
                                         <th>Jenis Kelamin</th>
                                     </h4>
-                                    <td><span>: <?= $user->jk; ?></span></td>
+                                    <td><span>: <?= $user->gender_id; ?></span></td>
                                 </tr>
                                 <tr>
                                     <h4>
