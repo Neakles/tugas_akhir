@@ -7,8 +7,8 @@ $routes = Services::routes();
 
 // Load the system"s routing file first, so that the app and ENVIRONMENT
 // can override as needed.
-if (is_file(SYSTEMPATH . "Config/Routes.php")) {
-    require SYSTEMPATH . "Config/Routes.php";
+if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
+    require SYSTEMPATH . 'Config/Routes.php';
 }
 
 /*
@@ -16,9 +16,9 @@ if (is_file(SYSTEMPATH . "Config/Routes.php")) {
  * Router Setup
  * --------------------------------------------------------------------
  */
-$routes->setDefaultNamespace("App\Controllers");
-$routes->setDefaultController("Home");
-$routes->setDefaultMethod("index");
+$routes->setDefaultNamespace('App\Controllers');
+$routes->setDefaultController('Home');
+$routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 $routes->setAutoRoute(true);
@@ -38,26 +38,38 @@ $routes->setAutoRoute(true);
 // route since we don"t have to scan directories.
 
 // View index
-$routes->get("/", "Home::index");
+$routes->get('/', 'Home::index');
 
 // Routes for User
-$routes->get("/profile",            "User::profile",                    ["filter" => "role:user, admin"]);
-$routes->get("/tagihan",            "User::tagihan",                    ["filter" => "role:user"]);
+$routes->get('/profile', 'User::profile', ['filter' => 'role:user, admin']);
+$routes->post('/profile/(:num)', 'User::updateProfile/$1');
+$routes->get('/tagihan', 'User::tagihan', ['filter' => 'role:user']);
 
 // Routes for Admin
-$routes->group("admin", static function ($routes) {
-    $routes->get("/",               "Admin::index",                     ["filter" => "role:admin"]);
-    $routes->get("/index",          "Admin::index",                     ["filter" => "role:admin"]);
-    $routes->get("/data_santri",    "Admin::data_santri",               ["filter" => "role:admin"]);
-    $routes->get("/(:num)",         "Admin::detail/$1",                 ["filter" => "role:admin"]);
-    $routes->get("/tagihan",        "Admin::tagihan",                   ["filter" => "role:admin"]);
-    $routes->get("/laporan",        "Admin::laporan",                   ["filter" => "role:admin"]);
-    $routes->get("/santri/(:num)",  "Admin::laporan_syahriah/$1",       ["filter" => "role:admin"]);
-
-    $routes->post("save", "Admin::save", ["filter" => "role:admin"]);
+$routes->group('admin', static function ($routes) {
+    $routes->get('/', 'Admin::index', ['filter' => 'role:admin']);
+    $routes->get('/index', 'Admin::index', ['filter' => 'role:admin']);
+    $routes->get('/data_santri', 'Admin::data_santri', [
+        'filter' => 'role:admin',
+    ]);
+    $routes->get('/(:num)', 'Admin::detail/$1', ['filter' => 'role:admin']);
+    $routes->get('/tagihan', 'Admin::tagihan', ['filter' => 'role:admin']);
+    $routes->get('/laporan', 'Admin::laporan', ['filter' => 'role:admin']);
+    $routes->get('/santri/(:num)', 'Admin::laporan_syahriah/$1', [
+        'filter' => 'role:admin',
+    ]);
+    $routes->get('/pembayaran', 'Pembayaran::pembayaran', [
+        'filter' => 'role:admin',
+    ]);
+    $routes->get(
+        '/spp_bulanan/(:num)/(:num)',
+        'Pembayaran::spp_bulanan/$1/$1',
+        [
+            'filter' => 'role:admin',
+        ]
+    );
+    $routes->post('save', 'Admin::save', ['filter' => 'role:admin']);
 });
-
-
 
 /*
  * --------------------------------------------------------------------
@@ -72,6 +84,6 @@ $routes->group("admin", static function ($routes) {
  * You will have access to the $routes object within that file without
  * needing to reload it.
  */
-if (is_file(APPPATH . "Config/" . ENVIRONMENT . "/Routes.php")) {
-    require APPPATH . "Config/" . ENVIRONMENT . "/Routes.php";
+if (is_file(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
+    require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }

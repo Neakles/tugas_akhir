@@ -8,6 +8,7 @@ use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use App\Libraries\Midtrans;
 
 /**
  * Class BaseController
@@ -35,16 +36,19 @@ abstract class BaseController extends Controller
      *
      * @var array
      */
-    protected $helpers = ['auth'];
-
+    protected $helpers = ['url', 'auth'];
+    protected $midtrans;
     /**
      * Constructor.
      */
-    public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
-    {
+    public function initController(
+        RequestInterface $request,
+        ResponseInterface $response,
+        LoggerInterface $logger
+    ) {
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
-
+        $this->midtrans = new Midtrans();
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = \Config\Services::session();

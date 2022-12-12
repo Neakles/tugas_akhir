@@ -27,6 +27,7 @@ class ComposerStaticInite445b4184a95a05459ed9f38ad6b82fd
         'M' => 
         array (
             'Myth\\Auth\\' => 10,
+            'Midtrans\\' => 9,
         ),
         'L' => 
         array (
@@ -71,6 +72,10 @@ class ComposerStaticInite445b4184a95a05459ed9f38ad6b82fd
         'Myth\\Auth\\' => 
         array (
             0 => __DIR__ . '/..' . '/myth/auth/src',
+        ),
+        'Midtrans\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans',
         ),
         'Laminas\\Escaper\\' => 
         array (

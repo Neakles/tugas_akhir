@@ -18,6 +18,6 @@ class Model_Admin extends Model
 
     public function FunctionName()
     {
-
     }
+    
 }
