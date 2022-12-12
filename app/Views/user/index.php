@@ -106,7 +106,7 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col">
-                                    <form action="/user/edit" method="post">
+                                    <form action="/user/updateProfile/<?= user_id(); ?>" method="post">
                                         <?= csrf_field() ?>
                                         <input type="hidden" name="id" id="id-santri" value="<?= user()->userid ?>">
                                         <div class="row justify-content-center mt-3 mb-4">
@@ -114,11 +114,6 @@
                                                 <label for="nama" class="form-label">Nama Santri
                                                 </label>
                                                 <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Santri" value="<?= user()->fullname ?>" required>
-                                            </div>
-                                            <div class="col">
-                                                <label for="username" class="form-label">Username / NIS
-                                                </label>
-                                                <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username / NIS" value="<?= user()->username ?>" required>
                                             </div>
                                         </div>
 
@@ -138,7 +133,7 @@
                                         <div class="row justify-content-center mb-3">
                                             <div class="col">
                                                 <div class="form-group">
-                                                    <label for="gender">Jenis Kelamin <?= user()->jk ?></label>
+                                                    <label for="gender">Jenis Kelamin</label>
                                                     <select id="gender" name="gender" class="form-control" required>
                                                         <option value="" selected disabled>Pilih Jenis Kelamin</option>
                                                         <?php foreach ($genders as $gender) { ?>
@@ -150,7 +145,7 @@
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label for="kamar">Kamar</label>
-                                                    <select id="kamar" name="kamar" class="form-control">
+                                                    <select id="kamar" name="kamar" class="form-control" required>
                                                         <option value="" selected disabled>-- Pilih Jenis Kelamin --</option>
                                                         <!-- script for ajax in layout/index -->
                                                     </select>

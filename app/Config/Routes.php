@@ -41,7 +41,8 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 
 // Routes for User
-$routes->get('/profile', 'User::profile', ['filter' => 'role:user, admin']);
+$routes->get('/profile', 'User::profile');
+$routes->post('/profile/(:num)', 'User::updateProfile/$1');
 $routes->get('/tagihan', 'User::tagihan', ['filter' => 'role:user']);
 
 // Routes for Admin

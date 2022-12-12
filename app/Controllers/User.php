@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\UsersModel;
+
 class User extends BaseController
 {
     public function __construct()
@@ -10,6 +12,7 @@ class User extends BaseController
         $this->builder      = $this->db->table("users");
         $this->bill         = $this->db->table("tagihan");
         $this->gender       = $this->db->table("gender");
+        $this->UsersModel   = new UsersModel();
     }
 
     public function profile()
@@ -43,37 +46,20 @@ class User extends BaseController
         return view('/user/index', $data);
     }
 
-    public function edit()
+    public function updateProfile($id)
     {
-        // $this->builder->select('jk, kamar');
-        // $data['users'] = $this->builder->get()->getResult();
-
-        // $data['genders'] = $this->gender->get()->getResult();
-
-        // $id = $this->request->getPost('id');
-
-        //pengondisian jika email tidak diganti, maka masih bisa update data di database
-        $dataLama = $this->request->getPost('id');
-        if($dataLama['email'] == $this->request->getPost('email')){
-            $rule_email = 'required';
-        }  else{
-            $rule_email = 'required|is_unique[users.email}';
-        }
-        //pengondisian jika email tidak diganti, maka masih bisa update data di database
-
         $data = [
-            'id' => $dataLama,
-            'username' => $this->request->getPost('username'),
+            'id' => $id,
             'fullname' => $this->request->getPost('nama'),
             'no_telp' => $this->request->getPost('no_tlp'),
-            'email' => $rule_email,
+            'email' => $this->request->getPost('email'),
             'gender_id' => $this->request->getPost('gender'),
             'kamar' => $this->request->getPost('kamar'),
             'thn_masuk' => $this->request->getPost('datepicker'),
             'wali' => $this->request->getPost('wali'),
             'no_wali' => $this->request->getPost('no_wali'),
         ];
-        $new = $this->builder->update($data, ['users.id' => $dataLama]);
+        $new = $this->UsersModel->save($data);
 
         if ($new) {
             session()->setFlashdata('pesan', 'diupdate');

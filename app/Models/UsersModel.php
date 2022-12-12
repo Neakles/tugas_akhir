@@ -45,6 +45,18 @@ class UsersModel extends Model
         return $results;
     }
 
+    function getIdUser($id = false)
+    {
+        if ($id === false) {
+            return $this->select('users.id as userid, username,nis, fullname, email, user_image, gender.sex AS jk, users.gender_id, no_telp, wali, no_wali, thn_masuk, kamar_santri.nama_kamar as kamar')
+                ->join('gender', 'gender.id_gender = users.gender_id')
+                ->join('kamar_santri', 'kamar_santri.id_kamar = users.kamar')
+                ->findAll();
+        } else {
+            return $this->where(['id' => $id])->first();
+        }
+    }
+
     function getpembulanan($nis)
     {
         $db = \Config\Database::connect();
