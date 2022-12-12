@@ -98,7 +98,7 @@ class Admin extends BaseController
                 'wali' => $this->request->getPost('wali'),
                 'no_wali' => $this->request->getPost('no_wali'),
                 'password_hash' =>
-                    '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', //Rememberm3
+                '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', //Rememberm3
                 // "password_hash" => '$2y$10$ZlDJEiTYaNyynkOt6mxqIuBCSL1jcd5dCBa.Gll4AIxrDIdPni5li',           //12345678
                 // "password_hash" => password_hash("12345678", PASSWORD_DEFAULT),
                 'active' => 1,

@@ -58,7 +58,7 @@ $routes->group('admin', static function ($routes) {
     $routes->get('/santri/(:num)', 'Admin::laporan_syahriah/$1', [
         'filter' => 'role:admin',
     ]);
-    $routes->get('/pembayaran', 'Pembayaran::pembayaran', [
+    $routes->get('/pembayaran', 'Pembayaran::index', [
         'filter' => 'role:admin',
     ]);
     $routes->get(

@@ -38,7 +38,7 @@
                 <span>Tagihan</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/pembayaran/pembayaran">
+            <a class="nav-link" href="/pembayaran">
                 <i class="fa-solid fa-money-bill-wave"></i>
                 <span>Pembayaran</span></a>
         </li>
@@ -66,7 +66,7 @@
         <li class="nav-item">
             <a class="nav-link" href="/user/tagihan">
                 <i class="fa-solid fa-money-bill-wave"></i>
-                <span>Tagihan</span></a>
+                <span>Pembayaran</span></a>
         </li>
         <hr class="sidebar-divider ">
 
