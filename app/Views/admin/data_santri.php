@@ -248,7 +248,7 @@
                                                         <div class="row justify-content-center mb-3">
                                                             <div class="col">
                                                                 <div class="form-group">
-                                                                    <label for="gender">Jenis Kelamin <?= $user_list->jk ?></label>
+                                                                    <label for="gender">Jenis Kelamin</label>
                                                                     <select id="gender" name="gender" class="form-control" required>
                                                                     <option value="" selected disabled>Pilih Jenis Kelamin</option>
                                                                         <?php foreach (
