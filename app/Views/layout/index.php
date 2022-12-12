@@ -136,7 +136,7 @@
 
 <!-- ajax for tambah santri -->
 <script type=text/javascript>
-    $('#gender').change(function() {
+    $('#gender').on('change', function() {
         var item = $(this).val();
 
         if (item) {

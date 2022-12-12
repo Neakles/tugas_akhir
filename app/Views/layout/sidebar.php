@@ -47,11 +47,6 @@
                 <i class="fa-solid fa-money-bill-wave"></i>
                 <span>Laporan</span></a>
         </li>
-        <!-- <li class="nav-item">
-            <a class="nav-link" href="/admin/laporan">
-                <i class="fa-solid fa-rupiah-sign"></i>
-                <span>Laporan Syahriah</span></a>
-        </li> -->
         <hr class="sidebar-divider ">
 
     <?php endif; ?>
@@ -64,7 +59,7 @@
         </div>
 
         <li class="nav-item">
-            <a class="nav-link" href="/user/tagihan">
+            <a class="nav-link" href="/user/pembayaran">
                 <i class="fa-solid fa-money-bill-wave"></i>
                 <span>Pembayaran</span></a>
         </li>
