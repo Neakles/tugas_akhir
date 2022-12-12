@@ -33,6 +33,7 @@
                             <th scope="col">Nis</th>
                             <th scope="col">Jenis Pembayaran</th>
                             <th scope="col">Tahun</th>
+                            <!-- <th scope="col">Action</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -44,6 +45,7 @@
                                 <td><?= $bill->nis ?></td>
                                 <td><?= $bill->jenis_pembayaran ?></td>
                                 <td><?= $bill->tahun_ajaran ?></td>
+                                <!-- <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapus_tagihan"><i class="fa-solid fa-fw fa-trash"></i></button></td> -->
                             </tr>
                         <?php endforeach;
                         ?>
@@ -66,7 +68,6 @@
                                     <form action="/admin/tambahTagihan" method="post">
                                         <?= csrf_field() ?>
 
-<<<<<<< HEAD
                                         <div class="row justify-content-center mt-3 mb-4">
                                             <div class="col">
                                                 <label for="nis" class="form-label">NIS</label>
@@ -100,6 +101,3 @@
             </div>
 
             <?= $this->endSection() ?>
-=======
-<?= $this->endSection() ?>
->>>>>>> 62d7b9c8ffd8058ba29f87dce385f11974ff5cdd

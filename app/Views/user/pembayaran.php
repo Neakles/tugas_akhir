@@ -4,14 +4,14 @@
 <div class="container-fluid">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
-        <h1 class="h3 mb-0 text-gray-800">Tagihan Santri</h1>
+        <h1 class="h3 mb-0 text-gray-800">Pembayaran </h1>
     </div>
     <p class="mb-4">Pondok Pesantren Al-Jihad Surabaya</a>.</p>
     <!-- End of Page Heading -->
 
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-end">
-            <button type="button" class="btn btn-primary py-1 .col-auto mx-1" data-toggle="modal" data-target="#tambah_tagihan"><i class="fa-solid fa-fw fa-plus mr-2"></i>Tambah Tagihan</button>
+            <!-- <button type="button" class="btn btn-primary py-1 .col-auto mx-1" data-toggle="modal" data-target="#tambah_tagihan"><i class="fa-solid fa-fw fa-plus mr-2"></i>Tambah Tagihan</button> -->
         </div>
         <div class="card-body">
             <div class="table-responsive">

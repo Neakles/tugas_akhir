@@ -45,21 +45,6 @@ class UsersModel extends Model
         return $results;
     }
 
-<<<<<<< HEAD
-=======
-    function getIdUser($id = false)
-    {
-        if ($id === false) {
-            return $this->select('users.id as userid, username,nis, fullname, email, user_image, gender.sex AS jk, users.gender_id, no_telp, wali, no_wali, thn_masuk, kamar_santri.nama_kamar as kamar')
-                ->join('gender', 'gender.id_gender = users.gender_id')
-                ->join('kamar_santri', 'kamar_santri.id_kamar = users.kamar')
-                ->findAll();
-        } else {
-            return $this->where(['id' => $id])->first();
-        }
-    }
-
->>>>>>> 62d7b9c8ffd8058ba29f87dce385f11974ff5cdd
     function getpembulanan($nis)
     {
         $db = \Config\Database::connect();
@@ -119,11 +104,7 @@ class UsersModel extends Model
     function tampil_databulan()
     {
         $db = \Config\Database::connect();
-<<<<<<< HEAD
         $sql = 'select * from bulan';
-=======
-        $sql = 'select * from bulan ';
->>>>>>> 62d7b9c8ffd8058ba29f87dce385f11974ff5cdd
         $query = $db->query($sql);
         $results = $query->getResult();
         return $results;
@@ -133,7 +114,6 @@ class UsersModel extends Model
         $db = \Config\Database::connect();
         $db->table('spp_bulanan', $data);
     }
-<<<<<<< HEAD
     function view_all()
     {
         $db = \Config\Database::connect();
@@ -218,6 +198,4 @@ class UsersModel extends Model
         $results = $query->getResult();
         return $results;
     }
-=======
->>>>>>> 62d7b9c8ffd8058ba29f87dce385f11974ff5cdd
 }

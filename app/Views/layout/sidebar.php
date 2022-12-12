@@ -37,14 +37,6 @@
                 <i class="fa-solid fa-money-bill-wave"></i>
                 <span>Tagihan</span></a>
         </li>
-<<<<<<< HEAD
-=======
-    <li class="nav-item">
-            <a class="nav-link" href="/pembayaran/pembayaran">
-                <i class="fa-solid fa-money-bill-wave"></i>
-                <span>Pembayaran</span></a>
-        </li>
->>>>>>> 62d7b9c8ffd8058ba29f87dce385f11974ff5cdd
         <li class="nav-item">
             <a class="nav-link" href="/pembayaran/pembayaran">
                 <i class="fa-solid fa-money-bill-wave"></i>
@@ -59,11 +51,7 @@
             <a class="nav-link" href="/admin/laporan">
                 <i class="fa-solid fa-rupiah-sign"></i>
                 <span>Laporan Syahriah</span></a>
-<<<<<<< HEAD
         </li> -->
-=======
-        </li>
->>>>>>> 62d7b9c8ffd8058ba29f87dce385f11974ff5cdd
         <hr class="sidebar-divider ">
 
     <?php endif; ?>
