@@ -43,7 +43,7 @@ $routes->get('/', 'Home::index');
 // Routes for User
 $routes->get('/profile', 'User::profile');
 $routes->post('/profile/(:num)', 'User::updateProfile/$1');
-$routes->get('/pembayaran', 'User::pembayaran', ['filter' => 'role:user']);
+// $routes->get('/pembayaran', 'User::pembayaran', ['filter' => 'role:user']);
 
 // Routes for Admin
 $routes->group('admin', static function ($routes) {

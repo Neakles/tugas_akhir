@@ -78,8 +78,13 @@ class User extends BaseController
     public function pembayaran()
     {
         $data['title'] = 'Pembayaran';
-        $this->builder->select('nis, fullname')
-            ->where('id', [user_id()]);
+        $this->builder->select('nis, fullname')->join(
+            'auth_groups_users',
+            'auth_groups_users.user_id = users.id'
+        )->join(
+            'auth_groups',
+            'auth_groups.id = auth_groups_users.group_id'
+        )->where('users.id', ['id' => user_id()]);
         $data['users'] = $this->builder->get()->getRow();
 
         return view('/admin/pembayaran', $data);
