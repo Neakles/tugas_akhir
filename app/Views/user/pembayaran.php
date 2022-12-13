@@ -27,17 +27,18 @@
                     <tbody>
                         <?php
                         $i = 1;
-                        foreach ($users as $a) : ?>
-                            <tr>
-                                <th scope="row"><?= $i++ ?></th>
-                                <td><?= $a->nis ?></td>
-                                <td><?= $a->fullname ?></td>
-                                <td><?php echo anchor(
-                                        'pembayaran/detail/' . $a->nis,
-                                        '<input type=reset class="btn btn-info" value=\'Detail\'>'
-                                    ); ?></td>
-                            </tr>
-                        <?php endforeach;
+                        //foreach ($users as $a) : 
+                        ?>
+                        <tr>
+                            <th scope="row"><?= $i++ ?></th>
+                            <td><?= $users->nis ?></td>
+                            <td><?= $users->fullname ?></td>
+                            <td><?php echo anchor(
+                                    'pembayaran/detail/' . $users->nis,
+                                    '<input type=reset class="btn btn-info" value=\'Detail\'>'
+                                ); ?></td>
+                        </tr>
+                        <?php // endforeach;
                         ?>
                     </tbody>
                 </table>

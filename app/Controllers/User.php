@@ -40,7 +40,7 @@ class User extends BaseController
         $data['users'] = $this->builder->get()->getResult();
         $data['genders'] = $this->gender->get()->getResult();
         $data['kamar_santri'] = $this->kamar->get()->getResult();
-  
+
         return view('/user/index', $data);
     }
 
@@ -87,7 +87,7 @@ class User extends BaseController
         )->where('users.id', ['id' => user_id()]);
         $data['users'] = $this->builder->get()->getRow();
 
-        return view('/admin/pembayaran', $data);
+        return view('/user/pembayaran', $data);
     }
 
     public function detail($id = 0)
