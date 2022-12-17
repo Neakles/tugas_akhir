@@ -90,6 +90,7 @@ class Admin extends BaseController
 
             $data = [
                 'username' => $this->request->getPost('username'),
+                'nis' => $this->request->getPost('nis'),
                 'fullname' => $this->request->getPost('nama'),
                 'no_telp' => $this->request->getPost('no_tlp'),
                 'email' => $this->request->getPost('email'),

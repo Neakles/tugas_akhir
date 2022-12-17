@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2022 at 05:58 PM
+-- Generation Time: Dec 17, 2022 at 09:02 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -105,7 +105,8 @@ INSERT INTO `auth_groups_users` (`group_id`, `user_id`) VALUES
 (2, 53),
 (2, 54),
 (2, 56),
-(2, 59);
+(2, 59),
+(2, 88);
 
 -- --------------------------------------------------------
 
@@ -393,7 +394,17 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (264, '::1', 'admin@gmail.com', 2, '2022-12-13 22:01:12', 1),
 (265, '::1', 'cahyo@gmail.com', 49, '2022-12-13 23:01:19', 1),
 (266, '::1', 'alfian@gmail.com', 54, '2022-12-13 23:09:59', 1),
-(267, '::1', 'admin@gmail.com', 2, '2022-12-13 23:10:49', 1);
+(267, '::1', 'admin@gmail.com', 2, '2022-12-13 23:10:49', 1),
+(268, '::1', 'elscine@gmail.com', NULL, '2022-12-14 00:20:16', 0),
+(269, '::1', 'admin@gmail.com', 2, '2022-12-14 00:20:23', 1),
+(270, '::1', 'cahyo@gmail.com', 49, '2022-12-14 00:21:05', 1),
+(271, '::1', 'admin', NULL, '2022-12-14 00:22:01', 0),
+(272, '::1', 'admin@gmail.com', 2, '2022-12-14 00:22:11', 1),
+(273, '::1', 'cahyo@gmail.com', 49, '2022-12-14 00:25:41', 1),
+(274, '::1', 'admin@gmail.com', 2, '2022-12-14 08:55:09', 1),
+(275, '::1', 'cahyo@gmail.com', 49, '2022-12-14 09:20:29', 1),
+(276, '::1', 'elscine@gmail.com', NULL, '2022-12-17 09:12:46', 0),
+(277, '::1', 'admin@gmail.com', 2, '2022-12-17 09:12:56', 1);
 
 -- --------------------------------------------------------
 
@@ -660,7 +671,18 @@ INSERT INTO `spp_bulanan` (`id_transaksi`, `nis`, `nama_santri`, `id_bulan`, `id
 ('SPP-111222003', '234245', 'Cahyo', '01', 99, '2022-12-11', 'Online', '', 80000, 0, '0', '1136231257'),
 ('SPP-111222004', '234245', 'Cahyo', '02', 99, '2022-12-11', 'Online', '', 80000, 0, '0', '1136231257'),
 ('SPP-121222001', '3423', 'Cahyo', '01 ', 99, '2022-12-12', 'Online', '', 80000, 0, '1', '2067439717'),
-('SPP-131222001', '2834', 'Alfian Ahsani Nasrulloh', '01 ', 99, '2022-12-13', 'Online', '', 80000, 0, '1', '1109805989');
+('SPP-131222001', '2834', 'Alfian Ahsani Nasrulloh', '01 ', 99, '2022-12-13', 'Online', '', 80000, 0, '1', '1109805989'),
+('SPP-141222001', '5254', 'Ahmad Muhlish Tri Cahyo', '03 ', 99, '2022-12-14', 'Online', '', 80000, 0, '0', '1781680715'),
+('SPP-141222002', '5254', 'Ahmad Muhlish Tri Cahyo', '04 ', 99, '2022-12-14', 'Online', '', 80000, 0, '0', '1781680715'),
+('SPP-141222003', '5254', 'Ahmad Muhlish Tri Cahyo', '05 ', 99, '2022-12-14', 'Online', '', 80000, 0, '0', '1781680715'),
+('SPP-141222004', '5254', 'Ahmad Muhlish Tri Cahyo', '11 ', 99, '2022-12-14', 'Online', '', 80000, 0, '0', '1563708511'),
+('SPP-171222001', '5254', 'Ahmad Muhlish Tri Cahyo', '12 ', 99, '2022-12-17', 'Online', '', 80000, 0, '0', '340368015'),
+('SPP-171222002', '3423', 'Bagus Abdillah Zulkarnain', '01 ', 99, '2022-12-17', 'Online', '', 80000, 0, '0', '47890415'),
+('SPP-171222003', '3423', 'Bagus Abdillah Zulkarnain', '06 ', 99, '2022-12-17', 'Online', '', 80000, 0, '0', '1801352213'),
+('SPP-171222004', '3423', 'Bagus Abdillah Zulkarnain', '10 ', 99, '2022-12-17', 'Online', '', 80000, 0, '0', '1801352213'),
+('SPP-171222005', '3423', 'Bagus Abdillah Zulkarnain', '11 ', 99, '2022-12-17', 'Online', '', 80000, 0, '0', '1801352213'),
+('SPP-171222006', '3423', 'Bagus Abdillah Zulkarnain', '12 ', 99, '2022-12-17', 'Online', '', 80000, 0, '0', '1801352213'),
+('SPP-171222007', '3423', 'Bagus Abdillah Zulkarnain', '12 ', 99, '2022-12-17', 'Online', '', 80000, 0, '0', '46896903');
 
 -- --------------------------------------------------------
 
@@ -752,7 +774,8 @@ INSERT INTO `users` (`id`, `nis`, `email`, `username`, `fullname`, `user_image`,
 (53, 8742, 'ikaaa@gmail.com', 'ikaaa', 'Hidayatus Sholihah', 'default.svg', '04548388607', 2, 49, 'qwerty', '8388607', 2012, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
 (54, 2834, 'alfian@gmail.com', 'alfian', 'Alfian Ahsani Nasrulloh', 'default.svg', '076578388607', 1, 12, 'bapak', '8388607', 2013, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
 (56, 4375, 'rizka@gmail.com', 'rizka', 'Rizka Qusnul Qotimah', 'default.svg', '089673671520', 2, 30, 'dsfds', '089673671520', 2019, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
-(59, 2358, 'nawal@gmail.com', 'nawal', 'M Nawal Ma\'ali', 'default.svg', '0987654321', 1, 5, 'qwerty', '0987654321', 2012, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL);
+(59, 2358, 'nawal@gmail.com', 'nawal', 'M Nawal Ma\'ali', 'default.svg', '0987654321', 1, 5, 'qwerty', '0987654321', 2012, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
+(88, 0, 'cahyo@gmail', '1461800221', 'Cahyo', 'default.svg', '8388607121', 1, 12, 'wali', '082331203169', 2014, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -899,7 +922,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=268;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=278;
 
 --
 -- AUTO_INCREMENT for table `auth_permissions`
@@ -953,7 +976,7 @@ ALTER TABLE `tahun_ajaran`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- Constraints for dumped tables

@@ -35,7 +35,7 @@
                             <th scope="col">Email</th>
                             <th scope="col">Jenis Kelamin</th>
                             <th scope="col">Kamar</th>
-                            <th scope="col">Action</th>
+                            <th scope="col" width="10%">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -82,14 +82,24 @@
 
                                                         <div class="row justify-content-center mt-3 mb-4">
                                                             <div class="col">
+                                                                <label for="nis" class="form-label">Nomor Induk Santri
+                                                                </label>
+                                                                <input type="text" class="form-control" id="nis" name="nis" placeholder="Masukkan Nomor Induk Santri" required>
+                                                            </div>
+                                                            <div class="col">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row justify-content-center mt-3 mb-4">
+                                                            <div class="col">
                                                                 <label for="nama" class="form-label">Nama Santri
                                                                 </label>
                                                                 <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Santri" required>
                                                             </div>
                                                             <div class="col">
-                                                                <label for="username" class="form-label">Username / NIS
+                                                                <label for="username" class="form-label">Username
                                                                 </label>
-                                                                <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username / NIS" required>
+                                                                <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username" required>
                                                             </div>
                                                         </div>
 

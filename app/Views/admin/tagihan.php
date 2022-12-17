@@ -33,7 +33,7 @@
                             <th scope="col">Nis</th>
                             <th scope="col">Jenis Pembayaran</th>
                             <th scope="col">Tahun</th>
-                            <!-- <th scope="col">Action</th> -->
+                            <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,7 +45,9 @@
                                 <td><?= $bill->nis ?></td>
                                 <td><?= $bill->jenis_pembayaran ?></td>
                                 <td><?= $bill->tahun_ajaran ?></td>
-                                <!-- <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapus_tagihan"><i class="fa-solid fa-fw fa-trash"></i></button></td> -->
+                                <td>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapus_tagihan"><i class="fa-solid fa-fw fa-trash"></i></button>
+                                </td>
                             </tr>
                         <?php endforeach;
                         ?>

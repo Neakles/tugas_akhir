@@ -57,10 +57,7 @@
                                                     <?php } ?></td>
                                                 <td>
                                                     <div class="form-button-action">
-                                                        <a href="<?= base_url(
-                                                                        'admin/cetak_perangsuran/' .
-                                                                            $a->id
-                                                                    ) ?>" class="btn btn-link btn-primary btn-lg"><i class="fa fa-print"></i></a>
+                                                        <a href="<?= base_url('admin/cetak_perangsuran/' . $a->id) ?>" class="btn btn-link btn-primary btn-lg"><i class="fa fa-print"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -112,11 +109,8 @@
                                     <div class="col-md-12 col-lg-12">
                                         <label>Bulan</label>
                                         <select class="bootstrap-select strings selectpicker form-control" title="Jumlah Bulan" name="bulan[]" id="bulan" data-actions-box="true" data-virtual-scroll="false" data-live-search="true" multiple required>
-
                                             <?php foreach ($bln as $bulan) { ?>
-
-                                                <option name="jumbulan" id="jumbulan" <?= ($bulan->id_bulan ==  $disbln
-                                                                                            ? 'selected=""' : '') ?> value="<?php echo $bulan->id_bulan; ?> "> <?php echo $bulan->nama_bulan; ?> </option>
+                                                <option name="jumbulan" id="jumbulan" <?= ($bulan->id_bulan ==  $disbln ? 'selected=""' : '') ?> value="<?php echo $bulan->id_bulan; ?> "> <?php echo $bulan->nama_bulan; ?> </option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -181,7 +175,7 @@
         })
     })
 </script>
-<script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-a3XBeF6t11TJ5LWQ"></script>
+<script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-D2FxyeuTkS3Fgqjx"></script>
 <script type="text/javascript">
     $("#pay-button").click(function(e) {
         e.preventDefault();
@@ -234,4 +228,4 @@
         });
     });
 </script>
-<?= $this->endSection() ?>
+<?= $this->endSection(); ?>
