@@ -198,4 +198,12 @@ class UsersModel extends Model
         $results = $query->getResult();
         return $results;
     }
+    function sppbulanan()
+    {
+        $db = \Config\Database::connect();
+        $sql = 'select order_id from spp_bulanan group by order_id';
+        $query = $db->query($sql);
+        $results = $query->getResult();
+        return $results;
+    }
 }

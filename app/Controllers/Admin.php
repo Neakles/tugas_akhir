@@ -168,6 +168,8 @@ class Admin extends BaseController
         }
     }
 
+
+
     public function laporan()
     {
         $data['title'] = 'Laporan Syahriah';

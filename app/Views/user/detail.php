@@ -21,7 +21,7 @@
                                 <td>Nama</td>
                                 <td>: <span id="nm-santri"><?php echo $a->fullname; ?></span></td>
                             </tr>
-                            
+
                         <?php } ?>
                     </tbody>
                 </table>
@@ -61,12 +61,12 @@
                                     <td><?php echo $u->jenis_pembayaran; ?></td>
                                     <td>Belum Lunas</td>
                                     <td><?php echo anchor(
-                                        'pembayaran/spp_bulanan/' .
-                                            $u->id_pem_bulan .
-                                            '/' .
-                                            $u->nis,
-                                        '<input type=submit class="btn btn-warning" value=\'bayar\'>'
-                                    ); ?></td>
+                                            'pembayaran/spp_bulanan/' .
+                                                $u->id_pem_bulan .
+                                                '/' .
+                                                $u->nis,
+                                            '<input type=submit class="btn btn-warning" value=\'bayar\'>'
+                                        ); ?></td>
                                 </tr>
                             <?php }
                             ?>

@@ -22,12 +22,6 @@ class Snap extends BaseController
 
     public function __construct()
     {
-        // parent::__construct();
-        // $params = [
-        //     'server_key' => 'SB-Mid-server-z5T9WhivZDuXrJxC7w-civ_k',
-        //     'production' => false,
-        // ];
-        // // $this->load->library('midtrans');
 
         // $this->load->helper('url');
         \Midtrans\Config::$serverKey = 'SB-Mid-server-z5T9WhivZDuXrJxC7w-civ_k';

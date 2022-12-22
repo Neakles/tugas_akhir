@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Models\UsersModel;
 
 
@@ -67,11 +68,37 @@ class User extends BaseController
         }
     }
 
+    // vv tidak berfungsi
     public function tagihan()
     {
         $data['title'] = 'Tagihan';
 
         $data["tagihan"] = $this->bill->get()->getResult();
         return view('/user/tagihan', $data);
+    }
+    // ^^ tidak berfungsi
+
+    public function pembayaran()
+    {
+        $data['title'] = 'Pembayaran';
+        $this->builder->select('nis, fullname')
+            ->where('id', [user_id()]);
+        $data['users'] = $this->builder->get()->getResult();
+
+        return view('/admin/pembayaran', $data);
+    }
+
+    public function detail($id = 0)
+    {
+        $data['title'] = 'Detail Santri';
+
+        // builder for detail santri
+        $this->builder->where('users.id', $id);
+        $data['user'] = $this->builder->get()->getRow();
+        return view('admin/detail', $data);
+
+        if (empty($data['user'])) {
+            return redirect()->to('/admin/detail');
+        }
     }
 }

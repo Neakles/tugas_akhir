@@ -58,9 +58,8 @@
                                                 <td>
                                                     <div class="form-button-action">
                                                         <a href="<?= base_url(
-                                                                        'admin/cetak_perangsuran/' .
-                                                                            $a->id
-                                                                    ) ?>" class="btn btn-link btn-primary btn-lg"><i class="fa fa-print"></i></a>
+                                                                        'pembayaran/delete_spp/' .  $a->id_transaksi . '/' . $id_pem_bulan . '/' . $a->nis
+                                                                    ) ?>" class="btn-danger btn-lg">Delete</i></a>
                                                     </div>
                                                 </td>
                                             </tr>

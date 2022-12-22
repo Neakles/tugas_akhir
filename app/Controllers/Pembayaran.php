@@ -18,6 +18,7 @@ class Pembayaran extends BaseController
         $this->builder = $this->db->table('users');
         $this->gender = $this->db->table('gender');
         $this->bill = $this->db->table('tagihan');
+        $this->spp_bulanan = $this->db->table('spp_bulanan');
         $this->userModel = new UsersModel();
 
         \Midtrans\Config::$serverKey = 'SB-Mid-server-z5T9WhivZDuXrJxC7w-civ_k';
@@ -27,6 +28,21 @@ class Pembayaran extends BaseController
         \Midtrans\Config::$isSanitized = true;
         // Set 3DS transaction for credit card to true
         \Midtrans\Config::$is3ds = true;
+
+        $getorder = $this->userModel->sppbulanan();
+        foreach ($getorder as $a) {
+            // echo ($a->order_id . '<br>');
+            $status = \Midtrans\Transaction::status($a->order_id);
+            if ($status->status_code == 200) {
+                $data = [
+                    'status' => 0,
+                ];
+                $this->spp_bulanan->where('order_id', $a->order_id);
+                $this->spp_bulanan->update($data);
+                // var_dump($cek);
+                // die;
+            }
+        }
     }
     public function index()
     {
@@ -52,6 +68,7 @@ class Pembayaran extends BaseController
     public function spp_bulanan($id, $nis)
     {
         $data['title'] = 'Spp Bulanan';
+
         $data['users'] = $this->userModel->getusers($nis);
         $data['id_transaksi'] = $this->userModel->id_transaksi();
         $data['tgl_bayar'] = date('Y-m-d');
@@ -133,6 +150,13 @@ class Pembayaran extends BaseController
         return redirect()->to(
             '/pembayaran/spp_bulanan/' . $idpembulan . '/' . $nis . ' '
         );
+    }
+    public function delete_spp($id, $idpembulan, $nis)
+    {
+
+        $this->spp_bulanan->delete(['id_transaksi' => $id]);
+
+        return redirect()->to('/pembayaran/spp_bulanan/' . $idpembulan . '/' . $nis . ' ');
     }
     function laporan_spp()
     {
