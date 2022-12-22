@@ -57,9 +57,13 @@
                                                     <?php } ?></td>
                                                 <td>
                                                     <div class="form-button-action">
+<<<<<<< HEAD
                                                         <a href="<?= base_url(
                                                                         'pembayaran/delete_spp/' .  $a->id_transaksi . '/' . $id_pem_bulan . '/' . $a->nis
                                                                     ) ?>" class="btn-danger btn-lg">Delete</i></a>
+=======
+                                                        <a href="<?= base_url('admin/cetak_perangsuran/' . $a->id) ?>" class="btn btn-link btn-primary btn-lg"><i class="fa fa-print"></i></a>
+>>>>>>> 3b40f7691990efadceac49cb0e055ce25c55af73
                                                     </div>
                                                 </td>
                                             </tr>
@@ -111,11 +115,8 @@
                                     <div class="col-md-12 col-lg-12">
                                         <label>Bulan</label>
                                         <select class="bootstrap-select strings selectpicker form-control" title="Jumlah Bulan" name="bulan[]" id="bulan" data-actions-box="true" data-virtual-scroll="false" data-live-search="true" multiple required>
-
                                             <?php foreach ($bln as $bulan) { ?>
-
-                                                <option name="jumbulan" id="jumbulan" <?= ($bulan->id_bulan ==  $disbln
-                                                                                            ? 'selected=""' : '') ?> value="<?php echo $bulan->id_bulan; ?> "> <?php echo $bulan->nama_bulan; ?> </option>
+                                                <option name="jumbulan" id="jumbulan" <?= ($bulan->id_bulan ==  $disbln ? 'selected=""' : '') ?> value="<?php echo $bulan->id_bulan; ?> "> <?php echo $bulan->nama_bulan; ?> </option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -180,7 +181,7 @@
         })
     })
 </script>
-<script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-a3XBeF6t11TJ5LWQ"></script>
+<script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-D2FxyeuTkS3Fgqjx"></script>
 <script type="text/javascript">
     $("#pay-button").click(function(e) {
         e.preventDefault();
@@ -233,4 +234,8 @@
         });
     });
 </script>
+<<<<<<< HEAD
 <?= $this->endSection() ?>
+=======
+<?= $this->endSection(); ?>
+>>>>>>> 3b40f7691990efadceac49cb0e055ce25c55af73

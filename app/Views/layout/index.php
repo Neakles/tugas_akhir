@@ -10,7 +10,7 @@
     <meta name="author" content="">
 
     <title> <?= $title ?> </title>
-<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <!-- Custom fonts for this template-->
     <script src="https://kit.fontawesome.com/db16c7444a.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -21,9 +21,10 @@
 
     <!-- Custom styles for this page -->
     <link href="<?= base_url() ?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>/vendor/bootstrap-select/dist/css/bootstrap-select.css">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
 </head>
 
 <body id="page-top">
@@ -56,8 +57,8 @@
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Pondok Pesantren Al-Jihad Surabaya <?= date(
-                            'Y'
-                        ) ?></span>
+                                                                                        'Y'
+                                                                                    ) ?></span>
                     </div>
                 </div>
             </footer>
@@ -88,8 +89,8 @@
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <a class="btn btn-primary" href="<?= base_url(
-                        'logout'
-                    ) ?>">Logout</a>
+                                                            'logout'
+                                                        ) ?>">Logout</a>
                 </div>
             </div>
         </div>
@@ -110,7 +111,7 @@
     <!-- Page level plugins -->
     <script src="<?= base_url() ?>/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="<?= base_url() ?>/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-<script src="<?= base_url() ?>/vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
+    <script src="<?= base_url() ?>/vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
     <!-- Page level custom scripts -->
     <script src="<?= base_url() ?>/js/demo/datatables-demo.js"></script>
 
@@ -136,7 +137,7 @@
 
 <!-- ajax for tambah santri -->
 <script type=text/javascript>
-    $('#gender').change(function() {
+    $('#gender').on('change', function() {
         var item = $(this).val();
 
         if (item) {

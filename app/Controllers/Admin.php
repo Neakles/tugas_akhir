@@ -13,11 +13,12 @@ class Admin extends BaseController
 
     public function __construct()
     {
-        $this->db = \Config\Database::connect();
-        $this->builder = $this->db->table('users');
-        $this->gender = $this->db->table('gender');
-        $this->bill = $this->db->table('pembayaran_bulanan');
-        $this->userModel = new UsersModel();
+        $this->db           = \Config\Database::connect();
+        $this->builder      = $this->db->table('users');
+        $this->gender       = $this->db->table('gender');
+        $this->kamar        = $this->db->table("kamar_santri");
+        $this->bill         = $this->db->table('pembayaran_bulanan');
+        $this->userModel    = new UsersModel();
     }
 
     public function index()
@@ -49,10 +50,10 @@ class Admin extends BaseController
         );
 
         $this->builder->where('auth_groups.id', ['id' => 2]); // id = 2, for show user
+        
         $data['users'] = $this->builder->get()->getResult();
-
-        // builder for tambah santri
         $data['genders'] = $this->gender->get()->getResult();
+        $data['kamar_santri'] = $this->kamar->get()->getResult();
 
         return view('admin/data_santri', $data);
     }
@@ -89,6 +90,7 @@ class Admin extends BaseController
 
             $data = [
                 'username' => $this->request->getPost('username'),
+                'nis' => $this->request->getPost('nis'),
                 'fullname' => $this->request->getPost('nama'),
                 'no_telp' => $this->request->getPost('no_tlp'),
                 'email' => $this->request->getPost('email'),

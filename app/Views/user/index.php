@@ -137,7 +137,7 @@
                                                     <select id="gender" name="gender" class="form-control" required>
                                                         <option value="" selected disabled>Pilih Jenis Kelamin</option>
                                                         <?php foreach ($genders as $gender) { ?>
-                                                            <option value="<?php echo $gender->id_gender; ?>"><?php echo $gender->sex; ?></option>
+                                                            <option value="<?= $gender->id_gender; ?>"><?= $gender->sex; ?></option>
                                                         <?php } ?>
                                                     </select>
                                                 </div>
@@ -146,7 +146,13 @@
                                                 <div class="form-group">
                                                     <label for="kamar">Kamar</label>
                                                     <select id="kamar" name="kamar" class="form-control">
-                                                        <option value="" selected disabled>-- Pilih Jenis Kelamin --</option>
+                                                        <option value="" selected disabled>Pilih Kamar</option>
+                                                        <?php foreach ($kamar_santri as $kmr) { ?>
+                                                            <option <?php if ($kmr->gender_id == $gender->id_gender) {
+                                                                        // echo 'selected="selected"';
+                                                                    } ?> value="<?php echo $kmr->id_kamar ?>"> <?php echo $kmr->nama_kamar ?>
+                                                            </option>
+                                                        <?php } ?>
                                                         <!-- script for ajax in layout/index -->
                                                     </select>
                                                 </div>

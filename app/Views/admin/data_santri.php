@@ -3,7 +3,7 @@
 
 <div class="container-fluid">
     <!-- session -->
-    <?php if (session()->get('pesan')): ?>
+    <?php if (session()->get('pesan')) : ?>
         <div class="alert alert-success" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -35,13 +35,13 @@
                             <th scope="col">Email</th>
                             <th scope="col">Jenis Kelamin</th>
                             <th scope="col">Kamar</th>
-                            <th scope="col">Action</th>
+                            <th scope="col" width="10%">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         $i = 1;
-                        foreach ($users as $user_list): ?>
+                        foreach ($users as $user_list) : ?>
                             <tr>
                                 <th scope="row"><?= $i++ ?></th>
                                 <td><?= $user_list->nis ?></td>
@@ -51,25 +51,15 @@
                                 <td><?= $user_list->kamar ?></td>
                                 <td class="d-flex justify-content-end">
                                     <a href="<?= base_url(
-                                        'admin/detail/' . $user_list->userid
-                                    ) ?>" class="btn btn-info rounded-circle mx-1"><i class="fas fa-eye"></i></a>
+                                                    'admin/detail/' . $user_list->userid
+                                                ) ?>" class="btn btn-info rounded-circle mx-1"><i class="fas fa-eye"></i></a>
                                     <!-- <a href="<?= base_url(
-                                        'admin/edit/' . $user_list->userid
-                                    ) ?>" class="btn btn-warning rounded-circle mx-1"><i class="fas fa-edit"></i></a> -->
-                                    <button type="button" class="btn btn-warning rounded-circle" data-toggle="modal" data-target="#modal_edit" id="btn-edit"
-                                        data-id="<?= $user_list->userid ?>"
-                                        data-username="<?= $user_list->username ?>"
-                                        data-fullname="<?= $user_list->fullname ?>"
-                                        data-email="<?= $user_list->email ?>"
-                                        data-no_telp="<?= $user_list->no_telp ?>"
-                                        data-gender="<?= $user_list->gender_id ?>"
-                                        data-wali="<?= $user_list->wali ?>"
-                                        data-no_wali="<?= $user_list->no_wali ?>"
-                                        data-thn_masuk="<?= $user_list->thn_masuk ?>"
-                                    ><i class="fas fa-edit"></i></button>
+                                                        'admin/edit/' . $user_list->userid
+                                                    ) ?>" class="btn btn-warning rounded-circle mx-1"><i class="fas fa-edit"></i></a> -->
+                                    <button type="button" class="btn btn-warning rounded-circle" data-toggle="modal" data-target="#modal_edit" id="btn-edit" data-id="<?= $user_list->userid ?>" data-username="<?= $user_list->username ?>" data-fullname="<?= $user_list->fullname ?>" data-email="<?= $user_list->email ?>" data-no_telp="<?= $user_list->no_telp ?>" data-gender="<?= $user_list->gender_id ?>" data-wali="<?= $user_list->wali ?>" data-no_wali="<?= $user_list->no_wali ?>" data-thn_masuk="<?= $user_list->thn_masuk ?>"><i class="fas fa-edit"></i></button>
                                     <a href="<?= base_url(
-                                        'admin/delete/' . $user_list->userid
-                                    ) ?>" class="btn btn-danger rounded-circle mx-1"><i class="fas fa-trash"></i></a>
+                                                    'admin/delete/' . $user_list->userid
+                                                ) ?>" class="btn btn-danger rounded-circle mx-1"><i class="fas fa-trash"></i></a>
                                     <!-- <button type="button" class="btn btn-danger rounded-circle" data-toggle="modal" data-target="#modal_delete"><i class="fas fa-trash"></i></button> -->
                                 </td>
                             </tr>
@@ -92,14 +82,24 @@
 
                                                         <div class="row justify-content-center mt-3 mb-4">
                                                             <div class="col">
+                                                                <label for="nis" class="form-label">Nomor Induk Santri
+                                                                </label>
+                                                                <input type="text" class="form-control" id="nis" name="nis" placeholder="Masukkan Nomor Induk Santri" required>
+                                                            </div>
+                                                            <div class="col">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row justify-content-center mt-3 mb-4">
+                                                            <div class="col">
                                                                 <label for="nama" class="form-label">Nama Santri
                                                                 </label>
                                                                 <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Santri" required>
                                                             </div>
                                                             <div class="col">
-                                                                <label for="username" class="form-label">Username / NIS
+                                                                <label for="username" class="form-label">Username
                                                                 </label>
-                                                                <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username / NIS" required>
+                                                                <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username" required>
                                                             </div>
                                                         </div>
 
@@ -122,11 +122,8 @@
                                                                     <label for="gender">Jenis Kelamin</label>
                                                                     <select id="gender" name="gender" class="form-control" required>
                                                                         <option value="" selected disabled>Pilih Jenis Kelamin</option>
-                                                                        <?php foreach (
-                                                                            $genders
-                                                                            as $gender
-                                                                        ) { ?>
-                                                                            <option value="<?php echo $gender->id_gender; ?>"><?php echo $gender->sex; ?></option>
+                                                                        <?php foreach ($genders as $gender) { ?>
+                                                                            <option value="<?= $gender->id_gender; ?>"><?= $gender->sex; ?></option>
                                                                         <?php } ?>
                                                                     </select>
                                                                 </div>
@@ -250,11 +247,8 @@
                                                                 <div class="form-group">
                                                                     <label for="gender">Jenis Kelamin</label>
                                                                     <select id="gender" name="gender" class="form-control" required>
-                                                                    <option value="" selected disabled>Pilih Jenis Kelamin</option>
-                                                                        <?php foreach (
-                                                                            $genders
-                                                                            as $gender
-                                                                        ) { ?>
+                                                                        <option value="" selected disabled>Pilih Jenis Kelamin</option>
+                                                                        <?php foreach ($genders as $gender) { ?>
                                                                             <option value="<?php echo $gender->id_gender; ?>"><?php echo $gender->sex; ?></option>
                                                                         <?php } ?>
                                                                     </select>
@@ -265,6 +259,12 @@
                                                                     <label for="kamar">Kamar</label>
                                                                     <select id="kamar" name="kamar" class="form-control" required>
                                                                         <option value="" selected disabled>-- Pilih Jenis Kelamin --</option>
+                                                                        <?php foreach ($kamar_santri as $kmr) { ?>
+                                                                            <option <?php if ($kmr->gender_id == $gender->id_gender) {
+                                                                                        // echo 'selected="selected"';
+                                                                                    } ?> value="<?php echo $kmr->id_kamar ?>"> <?php echo $kmr->nama_kamar ?>
+                                                                            </option>
+                                                                        <?php } ?>
                                                                         <!-- script for ajax in layout/index -->
                                                                     </select>
                                                                 </div>

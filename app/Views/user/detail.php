@@ -48,7 +48,7 @@
                                 <th>Tahun Ajaran</th>
                                 <th>Jenis Pembayaran</th>
                                 <th>Status Bayar</th>
-                                <th>Bayar</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -59,14 +59,19 @@
                                     <td><?php echo $id++; ?></td>
                                     <td><?php echo $u->tahun_ajaran; ?></td>
                                     <td><?php echo $u->jenis_pembayaran; ?></td>
-                                    <td>Belum Lunas</td>
+                                    <td></td>
                                     <td><?php echo anchor(
                                             'pembayaran/spp_bulanan/' .
                                                 $u->id_pem_bulan .
                                                 '/' .
                                                 $u->nis,
                                             '<input type=submit class="btn btn-warning" value=\'bayar\'>'
+<<<<<<< HEAD
                                         ); ?></td>
+=======
+                                        ); ?>
+                                    </td>
+>>>>>>> 3b40f7691990efadceac49cb0e055ce25c55af73
                                 </tr>
                             <?php }
                             ?>
