@@ -65,11 +65,7 @@ class User extends BaseController
         }
     }
 
-<<<<<<< HEAD
-    // vv tidak berfungsi
-=======
     // tidak berfungsi
->>>>>>> 3b40f7691990efadceac49cb0e055ce25c55af73
     public function tagihan()
     {
         $data['title'] = 'Tagihan';
@@ -77,33 +73,14 @@ class User extends BaseController
         $data["tagihan"] = $this->bill->get()->getResult();
         return view('/user/tagihan', $data);
     }
-<<<<<<< HEAD
-    // ^^ tidak berfungsi
-=======
     // tidak berfungsi
->>>>>>> 3b40f7691990efadceac49cb0e055ce25c55af73
 
     public function pembayaran()
     {
         $data['title'] = 'Pembayaran';
-<<<<<<< HEAD
-        $this->builder->select('nis, fullname')
-            ->where('id', [user_id()]);
-        $data['users'] = $this->builder->get()->getResult();
-
-        return view('/admin/pembayaran', $data);
-=======
-        $this->builder->select('nis, fullname')->join(
-            'auth_groups_users',
-            'auth_groups_users.user_id = users.id'
-        )->join(
-            'auth_groups',
-            'auth_groups.id = auth_groups_users.group_id'
-        )->where('users.id', ['id' => user_id()]);
         $data['users'] = $this->builder->get()->getRow();
 
         return view('/user/pembayaran', $data);
->>>>>>> 3b40f7691990efadceac49cb0e055ce25c55af73
     }
 
     public function detail($id = 0)
@@ -111,7 +88,6 @@ class User extends BaseController
         $data['title'] = 'Detail Santri';
 
         // builder for detail santri
-        $this->builder->where('users.id', $id);
         $data['user'] = $this->builder->get()->getRow();
         return view('admin/detail', $data);
 
