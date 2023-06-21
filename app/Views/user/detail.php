@@ -66,12 +66,8 @@
                                                 '/' .
                                                 $u->nis,
                                             '<input type=submit class="btn btn-warning" value=\'bayar\'>'
-<<<<<<< HEAD
-                                        ); ?></td>
-=======
                                         ); ?>
                                     </td>
->>>>>>> 3b40f7691990efadceac49cb0e055ce25c55af73
                                 </tr>
                             <?php }
                             ?>

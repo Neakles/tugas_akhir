@@ -22,6 +22,10 @@ use CodeIgniter\Exceptions\FrameworkException;
  *      Events::on('create', [$myInstance, 'myMethod']);
  */
 
+Events::on('init', 'CodeIgniter\Events\Commands\Update\Cron');
+
+Events::on('monthly', 'App\Controllers\Admin::createTagihan');
+
 Events::on('pre_system', static function () {
     if (ENVIRONMENT !== 'testing') {
         if (ini_get('zlib.output_compression')) {

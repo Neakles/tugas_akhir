@@ -3,15 +3,16 @@
 
 <div class="container-fluid">
 
-    <!-- session -->
-    <?php if (session()->get('pesan')) : ?>
+    <!-- session 
+    <?php //if (session()->get('pesan')) : ?>
         <div class="alert alert-success" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <h6> Data berhasil <?= session()->getFlashdata('pesan') ?></h6>
+            <h6> Data berhasil <?php //session()->getFlashdata('pesan') ?></h6>
         </div>
-    <?php endif; ?>
+    <?php //endif; ?>
+    -->
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
@@ -31,7 +32,8 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Nis</th>
-                            <th scope="col">Jenis Pembayaran</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Bulan</th>
                             <th scope="col">Tahun</th>
                             <th scope="col">Aksi</th>
                         </tr>
@@ -43,8 +45,9 @@
                             <tr>
                                 <th scope="row"><?= $i++ ?></th>
                                 <td><?= $bill->nis ?></td>
-                                <td><?= $bill->jenis_pembayaran ?></td>
-                                <td><?= $bill->tahun_ajaran ?></td>
+                                <td><?= $bill->nama ?></td>
+                                <td><?= $bill->bulan ?></td>
+                                <td><?= $bill->tahun ?></td>
                                 <td>
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapus_tagihan"><i class="fa-solid fa-fw fa-trash"></i></button>
                                 </td>
@@ -54,7 +57,7 @@
                     </tbody>
                 </table>
             </div>
-            <!-- Modal Santri -->
+            <!-- Modal Santri
             <div id="tambah_tagihan" class="modal fade" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -101,5 +104,6 @@
                     </div>
                 </div>
             </div>
+            -->
 
             <?= $this->endSection() ?>

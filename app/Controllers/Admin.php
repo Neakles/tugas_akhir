@@ -3,8 +3,10 @@
 namespace App\Controllers;
 
 use App\Models\UsersModel;
+use App\Models\TagihanModel;
 use App\Traits\GlobalTrait;
 use Throwable;
+use \IntlDateFormatter;
 
 class Admin extends BaseController
 {
@@ -19,6 +21,7 @@ class Admin extends BaseController
         $this->kamar        = $this->db->table("kamar_santri");
         $this->bill         = $this->db->table('pembayaran_bulanan');
         $this->userModel    = new UsersModel();
+        $this->tagihanModel = new TagihanModel();
     }
 
     public function index()
@@ -219,25 +222,64 @@ class Admin extends BaseController
     public function tagihan()
     {
         $data['title'] = 'Tagihan Santri';
-
-        $data['tagihan'] = $this->bill->get()->getResult();
-
+        $data['tagihan'] = $this->bill->get()->getResult(); 
         return view('/admin/tagihan', $data);
     }
 
-    public function tambahTagihan()
+    // tambah tagihan otomatis saat berganti bulan
+    public function createTagihan()
     {
-        $data = [
-            'nis' => $this->request->getPost('nis'),
-            'jenis_pembayaran' => $this->request->getPost('j_pem'),
-            'tahun_ajaran' => $this->request->getPost('tahun'),
-        ];
+        // Mendapatkan semua santri
+        $santri = $this->userModel->select('users.id, users.nis, users.fullname, auth_groups_users.group_id')
+        ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+        ->where('auth_groups_users.group_id', 2)
+        ->findAll();
 
-        $success = $this->db->table('pembayaran_bulanan')->insert($data);
+        date_default_timezone_set('Asia/Jakarta');
+        $tanggal = date('d-M-Y');
+        $formatter = new IntlDateFormatter('id_ID', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
+        $formatter->setPattern('MMMM');
+        $bulan  = $formatter->format(strtotime($tanggal));
+        $bulan  = date('F', strtotime($tanggal));
+        $tahun  = date('Y');
+        
+        // Mengecek apakah tagihan untuk bulan ini sudah ada
+        $tagihan = $this->tagihanModel
+            ->where('bulan', $bulan)
+            ->where('tahun', $tahun)
+            ->findAll();
 
-        if ($success) {
-            session()->setFlashdata('pesan', 'ditambahkan');
-            return redirect()->to(base_url('/admin/tagihan'));
+        if (empty($tagihan)) {
+            if (empty($santri)) { 
+                $jumlahSantri = count($santri);
+                
+                // Mendapatkan ID terakhir
+                $lastTagihan = $this->tagihanModel
+                    ->orderBy('id', 'DESC')
+                    ->first();
+                $lastId = $lastTagihan ? $lastTagihan['id'] : 0;
+
+                // Menambahkan tagihan untuk setiap santri
+                for ($i = 0; $i < $jumlahSantri; $i++) {
+                    // $newId = $lastId + $i + 1;
+                    $data = [
+                        // 'id' => $newId,
+                        'nis' => $santri[$i]['nis'],
+                        'nama' => $santri[$i]['fullname'],
+                        'bulan' => $bulan,
+                        'tahun' => $tahun,
+                        // 'group_id' => $group_id,
+                    ];
+                    $this->tagihanModel->insert($data);
+                }
+                echo "Tagihan bulan ini berhasil ditambahkan.";
+            } else {
+                // Tampilkan pesan sukses atau lakukan tindakan lainnya
+                echo "Tidak ada santri yang tersedia.";
+            }
+        } else {
+            // Jika tagihan sudah ada, tampilkan pesan bahwa tagihan sudah ada
+            echo "Tagihan bulan ini sudah ada.";
         }
     }
 }
