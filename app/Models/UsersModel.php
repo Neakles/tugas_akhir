@@ -15,12 +15,15 @@ class UsersModel extends Model
     protected $useSoftDeletes = false;
     protected $protectFields = true;
     protected $allowedFields = [
+        'nis',
         'email',
         'username',
         'fullname',
         'user_image',
         'no_telp',
         'gender_id',
+        'j_syahriyah',
+        'nominal',
         'kamar',
         'wali',
         'no_wali',

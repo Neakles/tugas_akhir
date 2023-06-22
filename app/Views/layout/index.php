@@ -56,9 +56,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Pondok Pesantren Al-Jihad Surabaya <?= date(
-                                                                                        'Y'
-                                                                                    ) ?></span>
+                        <span>Copyright &copy; Pondok Pesantren Al-Jihad Surabaya <?= date('Y') ?></span>
                     </div>
                 </div>
             </footer>
@@ -88,9 +86,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="<?= base_url(
-                                                            'logout'
-                                                        ) ?>">Logout</a>
+                    <a class="btn btn-primary" href="<?= base_url('logout') ?>">Logout</a>
                 </div>
             </div>
         </div>
@@ -148,7 +144,6 @@
                     if (res) {
                         $("#kamar").empty();
                         $("#kamar").append('<option selected disabled>Pilih Kamar</option>');
-                        $("#kecamatan").empty();
                         var dataObj = jQuery.parseJSON(res);
                         if (dataObj) {
                             $(dataObj).each(function() {

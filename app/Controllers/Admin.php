@@ -36,7 +36,7 @@ class Admin extends BaseController
 
         // builder for data santri
         $this->builder->select(
-            'users.id as userid, username,nis, fullname, email, user_image, gender.sex AS jk, users.gender_id, no_telp, wali, no_wali, thn_masuk, kamar_santri.nama_kamar as kamar'
+            'users.id as userid, username,nis, fullname, email, j_syahriyah, nominal, user_image, gender.sex AS jk, users.gender_id, no_telp, wali, no_wali, thn_masuk, kamar_santri.nama_kamar as kamar'
         );
         $this->builder->join(
             'auth_groups_users',
@@ -91,21 +91,22 @@ class Admin extends BaseController
             // DB Transaction
             $this->db->transBegin();
 
+            $syahriyah = $this->request->getPost('j_syahriyah');
+            $nominal = ($syahriyah == 1) ? 250000 : 100000;
+            
             $data = [
-                'username' => $this->request->getPost('username'),
-                'nis' => $this->request->getPost('nis'),
-                'fullname' => $this->request->getPost('nama'),
-                'no_telp' => $this->request->getPost('no_tlp'),
-                'email' => $this->request->getPost('email'),
-                'gender_id' => $this->request->getPost('gender'),
-                'kamar' => $this->request->getPost('kamar'),
-                'thn_masuk' => $this->request->getPost('datepicker'),
-                'wali' => $this->request->getPost('wali'),
-                'no_wali' => $this->request->getPost('no_wali'),
-                'password_hash' =>
-                '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', //Rememberm3
+                'nis'           => $this->request->getPost('nis'),
+                'fullname'      => $this->request->getPost('nama'),
+                'no_telp'       => $this->request->getPost('no_tlp'),
+                'email'         => $this->request->getPost('email'),
+                'gender_id'     => $this->request->getPost('gender'),
+                'kamar'         => $this->request->getPost('kamar'),
+                'j_syahriyah'   => $syahriyah,
+                'nominal'       => $nominal,
+                'thn_masuk'     => $this->request->getPost('datepicker'),
+                // 'password_hash' => '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', //Rememberm3
                 // "password_hash" => '$2y$10$ZlDJEiTYaNyynkOt6mxqIuBCSL1jcd5dCBa.Gll4AIxrDIdPni5li',           //12345678
-                // "password_hash" => password_hash("12345678", PASSWORD_DEFAULT),
+                'password_hash' => password_hash('12345678', PASSWORD_DEFAULT),
                 'active' => 1,
                 'created_at' => date('Y-m-d H-i-s'),
             ];
@@ -230,7 +231,7 @@ class Admin extends BaseController
     public function createTagihan()
     {
         // Mendapatkan semua santri
-        $santri = $this->userModel->select('users.id, users.nis, users.fullname, auth_groups_users.group_id')
+        $santri = $this->userModel->select('users.id, users.nis, users.fullname, users.kamar, users.no_telp, users.nominal, auth_groups_users.group_id')
         ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
         ->where('auth_groups_users.group_id', 2)
         ->findAll();
@@ -259,26 +260,28 @@ class Admin extends BaseController
                     ->first();
                 $lastId = $lastTagihan ? $lastTagihan['id'] : 0;
 
+                // mengambil data syahriyah
+                $syahriyah = $this->request->getPost('j_syahriyah');
+                $nominal = ($syahriyah == 1) ? 250000 : 100000;
+
                 // Menambahkan tagihan untuk setiap santri
                 for ($i = 0; $i < $jumlahSantri; $i++) {
-                    // $newId = $lastId + $i + 1;
                     $data = [
-                        // 'id' => $newId,
-                        'nis' => $santri[$i]['nis'],
-                        'nama' => $santri[$i]['fullname'],
-                        'bulan' => $bulan,
-                        'tahun' => $tahun,
-                        // 'group_id' => $group_id,
+                        'nis'       => $santri[$i]['nis'],
+                        'nama'      => $santri[$i]['fullname'],
+                        'kamar'     => $santri[$i]['kamar'],
+                        'no_telp'   => $santri[$i]['no_telp'],
+                        'bulan'     => $bulan,
+                        'tahun'     => $tahun,
+                        'nominal'   => $nominal,
                     ];
                     $this->tagihanModel->insert($data);
                 }
                 echo "Tagihan bulan ini berhasil ditambahkan.";
             } else {
-                // Tampilkan pesan sukses atau lakukan tindakan lainnya
                 echo "Tidak ada santri yang tersedia.";
             }
         } else {
-            // Jika tagihan sudah ada, tampilkan pesan bahwa tagihan sudah ada
             echo "Tagihan bulan ini sudah ada.";
         }
     }

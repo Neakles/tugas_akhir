@@ -19,11 +19,11 @@ class TagihanCreate extends BaseCommand
         $this->userModel    = new UsersModel();
         $this->tagihanModel = new TagihanModel();
         
-        // Mendapatkan semua nomor induk santri
-        $santri = $this->userModel->select('users.id, users.nis, users.fullname, auth_groups_users.group_id')
-            ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
-            ->where('auth_groups_users.group_id', 2)
-            ->findAll();
+        // Mendapatkan semua santri
+        $santri = $this->userModel->select('users.id, users.nis, users.fullname, users.kamar, users.no_telp, users.nominal, auth_groups_users.group_id')
+        ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+        ->where('auth_groups_users.group_id', 2)
+        ->findAll();
             
         // Mendapatkan bulan dan tahun saat ini
         date_default_timezone_set('Asia/Jakarta');
@@ -32,13 +32,13 @@ class TagihanCreate extends BaseCommand
         $formatter->setPattern('MMMM');
         $bulan  = $formatter->format(strtotime($tanggal));
         $tahun = date('Y');
-
+        
         // Mengecek apakah tagihan untuk bulan ini sudah ada
         $tagihan = $this->tagihanModel
             ->where('bulan', $bulan)
             ->where('tahun', $tahun)
             ->findAll();
-
+            
         if (empty($tagihan)) {
             if (!empty($santri)) {
                 $jumlahSantri = count($santri);
@@ -49,16 +49,20 @@ class TagihanCreate extends BaseCommand
                     ->first();
                 $lastId = $lastTagihan ? $lastTagihan['id'] : 0;
                 
+                // mengambil data syahriyah
+                // $syahriyah = $this->request->getPost('j_syahriyah');
+                // $nominal = ($syahriyah == 1) ? 250000 : 100000;
+
                 // Menambahkan tagihan untuk setiap santri
                 for ($i = 0; $i < $jumlahSantri; $i++) {
-                    // $newId = $lastId + $i + 1;
                     $data = [
-                        // 'id' => $newId,
-                        'nis' => $santri[$i]['nis'],
-                        'nama' => $santri[$i]['fullname'],
-                        'bulan' => $bulan,
-                        'tahun' => $tahun,
-                        // 'group_id' => $group_id,
+                        'nis'       => $santri[$i]['nis'],
+                        'nama'      => $santri[$i]['fullname'],
+                        'kamar'     => $santri[$i]['kamar'],
+                        'no_telp'   => $santri[$i]['no_telp'],
+                        'bulan'     => $bulan,
+                        'tahun'     => $tahun,
+                        'nominal'   => $santri[$i]['nominal'],
                     ];
                     $this->tagihanModel->insert($data);
                 }

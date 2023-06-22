@@ -32,9 +32,11 @@
                             <th scope="col">#</th>
                             <th scope="col">NIS</th>
                             <th scope="col">Nama</th>
+                            <th scope="col">No HP</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Jenis Kelamin</th>
                             <th scope="col">Kamar</th>
+                            <th scope="col">Jenis Syahriyah</th>
+                            <!-- <th scope="col">Nominal</th> -->
                             <th scope="col" width="10%">Action</th>
                         </tr>
                     </thead>
@@ -46,20 +48,22 @@
                                 <th scope="row"><?= $i++ ?></th>
                                 <td><?= $user_list->nis ?></td>
                                 <td><?= $user_list->fullname ?></td>
+                                <td><?= $user_list->no_telp ?></td>
                                 <td><?= $user_list->email ?></td>
-                                <td><?= $user_list->jk ?></td>
                                 <td><?= $user_list->kamar ?></td>
+                                <td> <!-- untuk menampilkan jenis syahriyah sebagai normal atau khusus-->
+                                    <?php if ($user_list->j_syahriyah == 1) { ?>
+                                        Normal
+                                    <?php } elseif ($user_list->j_syahriyah == 2) { ?>
+                                        Khusus
+                                    <?php } ?>
+                                </td>
+                                <!-- <td><?= $user_list->nominal ?></td> -->
                                 <td class="d-flex justify-content-end">
-                                    <a href="<?= base_url(
-                                                    'admin/detail/' . $user_list->userid
-                                                ) ?>" class="btn btn-info rounded-circle mx-1"><i class="fas fa-eye"></i></a>
-                                    <!-- <a href="<?= base_url(
-                                                        'admin/edit/' . $user_list->userid
-                                                    ) ?>" class="btn btn-warning rounded-circle mx-1"><i class="fas fa-edit"></i></a> -->
+                                    <a href="<?= base_url('admin/detail/' . $user_list->userid) ?>" class="btn btn-info rounded-circle mx-1"><i class="fas fa-eye"></i></a>
+                                    <!-- <a href="<?= base_url('admin/edit/' . $user_list->userid) ?>" class="btn btn-warning rounded-circle mx-1"><i class="fas fa-edit"></i></a> -->
                                     <button type="button" class="btn btn-warning rounded-circle" data-toggle="modal" data-target="#modal_edit" id="btn-edit" data-id="<?= $user_list->userid ?>" data-username="<?= $user_list->username ?>" data-fullname="<?= $user_list->fullname ?>" data-email="<?= $user_list->email ?>" data-no_telp="<?= $user_list->no_telp ?>" data-gender="<?= $user_list->gender_id ?>" data-wali="<?= $user_list->wali ?>" data-no_wali="<?= $user_list->no_wali ?>" data-thn_masuk="<?= $user_list->thn_masuk ?>"><i class="fas fa-edit"></i></button>
-                                    <a href="<?= base_url(
-                                                    'admin/delete/' . $user_list->userid
-                                                ) ?>" class="btn btn-danger rounded-circle mx-1"><i class="fas fa-trash"></i></a>
+                                    <a href="<?= base_url('admin/delete/' . $user_list->userid) ?>" class="btn btn-danger rounded-circle mx-1"><i class="fas fa-trash"></i></a>
                                     <!-- <button type="button" class="btn btn-danger rounded-circle" data-toggle="modal" data-target="#modal_delete"><i class="fas fa-trash"></i></button> -->
                                 </td>
                             </tr>
@@ -92,27 +96,27 @@
 
                                                         <div class="row justify-content-center mt-3 mb-4">
                                                             <div class="col">
-                                                                <label for="nama" class="form-label">Nama Santri
-                                                                </label>
+                                                                <label for="nama" class="form-label">Nama Santri</label>
                                                                 <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Santri" required>
                                                             </div>
                                                             <div class="col">
-                                                                <label for="username" class="form-label">Username
-                                                                </label>
-                                                                <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username" required>
+                                                                <label for="j_syahriyah">Jenis Syahriyah</label>
+                                                                <select id="j_syahriyah" name="j_syahriyah" class="form-control" required>
+                                                                    <option value="" selected disabled>Pilih Jenis Syahriyah</option>
+                                                                    <option value="1">Normal</option>
+                                                                    <option value="2">Khusus</option>
+                                                                </select>
                                                             </div>
                                                         </div>
 
                                                         <div class="row justify-content-center mb-4">
                                                             <div class="col">
-                                                                <label for="email" class="form-label">Email
-                                                                </label>
-                                                                <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email" required>
+                                                                <label for="no_tlp" class="form-label">No HP Santri</label>
+                                                                <input type="number" class="form-control" id="no_tlp" name="no_tlp" placeholder="Masukkan No Telepon Santri" required>
                                                             </div>
                                                             <div class="col">
-                                                                <label for="no_tlp" class="form-label">No Telepon Santri
-                                                                </label>
-                                                                <input type="number" class="form-control" id="no_tlp" name="no_tlp" placeholder="Masukkan No Telepon Santri" required>
+                                                                <label for="email" class="form-label">Email</label>
+                                                                <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email" required>
                                                             </div>
                                                         </div>
 
@@ -132,7 +136,7 @@
                                                                 <div class="form-group">
                                                                     <label for="kamar">Kamar</label>
                                                                     <select id="kamar" name="kamar" class="form-control" required>
-                                                                        <option value="" selected disabled>-- Pilih Jenis Kelamin --</option>
+                                                                        <option value="" selected disabled>Pilih Kamar</option>
                                                                         <!-- script for ajax in layout/index -->
                                                                     </select>
                                                                 </div>

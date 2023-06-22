@@ -3,28 +3,14 @@
 
 <div class="container-fluid">
 
-    <!-- session 
-    <?php //if (session()->get('pesan')) : ?>
-        <div class="alert alert-success" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            <h6> Data berhasil <?php //session()->getFlashdata('pesan') ?></h6>
-        </div>
-    <?php //endif; ?>
-    -->
-
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
-        <h1 class="h3 mb-0 text-gray-800">Tagihan Santri</h1>
+        <h1 class="h3 mb-0 text-gray-800">tagihan</h1>
     </div>
     <p class="mb-4">Pondok Pesantren Al-Jihad Surabaya</a>.</p>
     <!-- End of Page Heading -->
 
     <div class="card shadow mb-4">
-        <div class="card-header py-3 d-flex justify-content-end">
-            <button type="button" class="btn btn-primary py-1 .col-auto mx-1" data-toggle="modal" data-target="#tambah_tagihan"><i class="fa-solid fa-fw fa-plus mr-2"></i>Tambah Tagihan</button>
-        </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -33,8 +19,11 @@
                             <th scope="col">#</th>
                             <th scope="col">Nis</th>
                             <th scope="col">Nama</th>
+                            <th scope="col">Kamar</th>
                             <th scope="col">Bulan</th>
                             <th scope="col">Tahun</th>
+                            <th scope="col">Nominal</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
@@ -46,8 +35,19 @@
                                 <th scope="row"><?= $i++ ?></th>
                                 <td><?= $bill->nis ?></td>
                                 <td><?= $bill->nama ?></td>
+                                <td><?= $bill->kamar ?></td>
                                 <td><?= $bill->bulan ?></td>
                                 <td><?= $bill->tahun ?></td>
+                                <td><?= $bill->nominal ?></td>
+                                <td> <!-- untuk menampilkan jenis syahriyah sebagai normal atau khusus-->
+                                    <?php if ($bill->status == 0) { ?>
+                                        Belum Dibayar
+                                    <?php } elseif ($bill->status == 1) { ?>
+                                        Lunas
+                                    <?php } elseif ($bill->status == 2) { ?>
+                                        Error
+                                    <?php } ?>
+                                </td>
                                 <td>
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapus_tagihan"><i class="fa-solid fa-fw fa-trash"></i></button>
                                 </td>
