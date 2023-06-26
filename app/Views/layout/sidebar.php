@@ -10,7 +10,7 @@
 
     <!-- Divider -->
     <!-- <hr class="sidebar-divider "> -->
-    <hr class="sidebar-divider ">
+    <hr class="sidebar-divider">
 
     <!-- Sidebar of Admin -->
     <?php if (in_groups('admin')): ?>
@@ -32,21 +32,25 @@
                 <span>Data Santri</span></a>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link" href="/admin/tagihan">
-                <i class="fa-solid fa-money-bill-wave"></i>
-                <span>Tagihan</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/pembayaran">
-                <i class="fa-solid fa-money-bill-wave"></i>
-                <span>Pembayaran</span></a>
-        </li>
-        <li class="nav-item">
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fa-solid fa-money-bill-wave"></i>
+          <span>Syahriyah</span>
+        </a>
+        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded"> 
+            <a class="collapse-item" href="/admin/tagihan">Tagihan</a>
+            <a class="collapse-item" href="/admin/pembayaran">Pembayaran</a>
+          </div>
+        </div>
+      </li>
+
+        <!-- <li class="nav-item">
             <a class="nav-link" href="/pembayaran/laporan_spp">
                 <i class="fa-solid fa-money-bill-wave"></i>
                 <span>Laporan</span></a>
-        </li>
+        </li> -->
         <hr class="sidebar-divider ">
 
     <?php endif; ?>
@@ -61,7 +65,7 @@
         <li class="nav-item">
             <a class="nav-link" href="/user/pembayaran">
                 <i class="fa-solid fa-money-bill-wave"></i>
-                <span>Pembayaran</span></a>
+                <span>Syahriyah</span></a>
         </li>
         <hr class="sidebar-divider ">
 

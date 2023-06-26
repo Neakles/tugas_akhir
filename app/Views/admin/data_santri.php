@@ -27,7 +27,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
+                    <thead class="text-center">
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">NIS</th>
@@ -41,7 +41,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
+                        <?php 
                         $i = 1;
                         foreach ($users as $user_list) : ?>
                             <tr>
@@ -52,19 +52,29 @@
                                 <td><?= $user_list->email ?></td>
                                 <td><?= $user_list->kamar ?></td>
                                 <td> <!-- untuk menampilkan jenis syahriyah sebagai normal atau khusus-->
-                                    <?php if ($user_list->j_syahriyah == 1) { ?>
+                                    <?php if ($user_list->nominal == 250000) { ?>
                                         Normal
-                                    <?php } elseif ($user_list->j_syahriyah == 2) { ?>
+                                    <?php } elseif ($user_list->nominal == 100000) { ?>
                                         Khusus
                                     <?php } ?>
                                 </td>
-                                <!-- <td><?= $user_list->nominal ?></td> -->
+
                                 <td class="d-flex justify-content-end">
                                     <a href="<?= base_url('admin/detail/' . $user_list->userid) ?>" class="btn btn-info rounded-circle mx-1"><i class="fas fa-eye"></i></a>
-                                    <!-- <a href="<?= base_url('admin/edit/' . $user_list->userid) ?>" class="btn btn-warning rounded-circle mx-1"><i class="fas fa-edit"></i></a> -->
-                                    <button type="button" class="btn btn-warning rounded-circle" data-toggle="modal" data-target="#modal_edit" id="btn-edit" data-id="<?= $user_list->userid ?>" data-username="<?= $user_list->username ?>" data-fullname="<?= $user_list->fullname ?>" data-email="<?= $user_list->email ?>" data-no_telp="<?= $user_list->no_telp ?>" data-gender="<?= $user_list->gender_id ?>" data-wali="<?= $user_list->wali ?>" data-no_wali="<?= $user_list->no_wali ?>" data-thn_masuk="<?= $user_list->thn_masuk ?>"><i class="fas fa-edit"></i></button>
+                                    <button type="button" class="btn btn-warning rounded-circle" data-toggle="modal" data-target="#modal_edit" id="btn-edit" 
+                                        data-id         = "<?= $user_list->userid ?>" 
+                                        data-nis        = "<?= $user_list->nis ?>" 
+                                        data-fullname   = "<?= $user_list->fullname ?>" 
+                                        data-email      = "<?= $user_list->email ?>" 
+                                        data-no_telp    = "<?= $user_list->no_telp ?>" 
+                                        data-gender     = "<?= $user_list->gender_id ?>" 
+                                        data-wali       = "<?= $user_list->wali ?>" 
+                                        data-no_wali    = "<?= $user_list->no_wali ?>" 
+                                        data-thn_masuk  = "<?= $user_list->thn_masuk ?>">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+
                                     <a href="<?= base_url('admin/delete/' . $user_list->userid) ?>" class="btn btn-danger rounded-circle mx-1"><i class="fas fa-trash"></i></a>
-                                    <!-- <button type="button" class="btn btn-danger rounded-circle" data-toggle="modal" data-target="#modal_delete"><i class="fas fa-trash"></i></button> -->
                                 </td>
                             </tr>
 
@@ -83,7 +93,6 @@
                                                 <div class="col">
                                                     <form action="/admin/save" method="post">
                                                         <?= csrf_field() ?>
-
                                                         <div class="row justify-content-center mt-3 mb-4">
                                                             <div class="col">
                                                                 <label for="nis" class="form-label">Nomor Induk Santri
@@ -222,27 +231,36 @@
                                                         <input type="hidden" name="id" id="id-santri" value="<?= $user_list->userid ?>">
                                                         <div class="row justify-content-center mt-3 mb-4">
                                                             <div class="col">
-                                                                <label for="nama" class="form-label">Nama Santri
-                                                                </label>
-                                                                <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Santri" value="<?= $user_list->fullname ?>" required>
+                                                                <label for="nis" class="form-label">Nomor Induk Santri</label>
+                                                                <input type="text" class="form-control" id="nis" name="nis" placeholder="" value="<?= $user_list->nis ?>" required>
                                                             </div>
                                                             <div class="col">
-                                                                <label for="username" class="form-label">Username / NIS
-                                                                </label>
-                                                                <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username / NIS" value="<?= $user_list->username ?>" required>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row justify-content-center mt-3 mb-4">
+                                                            <div class="col">
+                                                                <label for="nama" class="form-label">Nama Santri</label>
+                                                                <input type="text" class="form-control" id="nama" name="nama" placeholder="" required>
+                                                            </div>
+                                                            <div class="col">
+                                                                <label for="j_syahriyah">Jenis Syahriyah</label>
+                                                                <select id="j_syahriyah" name="j_syahriyah" class="form-control" required>
+                                                                    <option value="" disabled>Pilih Jenis Syahriyah</option>
+                                                                    <option value="250000" <?= ($user_list->j_syahriyah == 250000) ? 'selected' : ''; ?>>Normal</option>
+                                                                    <option value="100000" <?= ($user_list->j_syahriyah == 100000) ? 'selected' : ''; ?>>Khusus</option>
+                                                                </select>
                                                             </div>
                                                         </div>
 
                                                         <div class="row justify-content-center mb-4">
                                                             <div class="col">
-                                                                <label for="email" class="form-label">Email
-                                                                </label>
-                                                                <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email" value="<?= $user_list->email ?>" required>
+                                                                <label for="no_tlp" class="form-label">No HP Santri</label>
+                                                                <input type="number" class="form-control" id="no_tlp" name="no_tlp" placeholder="" required>
                                                             </div>
                                                             <div class="col">
-                                                                <label for="no_tlp" class="form-label">No Telepon Santri
-                                                                </label>
-                                                                <input type="number" class="form-control" id="no_tlp" name="no_tlp" placeholder="Masukkan No Telepon Santri" value="<?= $user_list->no_telp ?>" required>
+                                                                <label for="email" class="form-label">Email</label>
+                                                                <input type="email" class="form-control" id="email" name="email" placeholder="" required>
                                                             </div>
                                                         </div>
 
@@ -253,7 +271,7 @@
                                                                     <select id="gender" name="gender" class="form-control" required>
                                                                         <option value="" selected disabled>Pilih Jenis Kelamin</option>
                                                                         <?php foreach ($genders as $gender) { ?>
-                                                                            <option value="<?php echo $gender->id_gender; ?>"><?php echo $gender->sex; ?></option>
+                                                                            <option value="<?= $gender->id_gender; ?>"><?= $gender->sex; ?></option>
                                                                         <?php } ?>
                                                                     </select>
                                                                 </div>
@@ -262,13 +280,7 @@
                                                                 <div class="form-group">
                                                                     <label for="kamar">Kamar</label>
                                                                     <select id="kamar" name="kamar" class="form-control" required>
-                                                                        <option value="" selected disabled>-- Pilih Jenis Kelamin --</option>
-                                                                        <?php foreach ($kamar_santri as $kmr) { ?>
-                                                                            <option <?php if ($kmr->gender_id == $gender->id_gender) {
-                                                                                        // echo 'selected="selected"';
-                                                                                    } ?> value="<?php echo $kmr->id_kamar ?>"> <?php echo $kmr->nama_kamar ?>
-                                                                            </option>
-                                                                        <?php } ?>
+                                                                        <option value="" selected disabled>Pilih Kamar</option>
                                                                         <!-- script for ajax in layout/index -->
                                                                     </select>
                                                                 </div>
@@ -279,12 +291,12 @@
                                                             <div class="col">
                                                                 <label for="text" class="form-label">Nama Wali Santri
                                                                 </label>
-                                                                <input type="wali" class="form-control" id="wali" name="wali" placeholder="Masukkan Nama Wali Santri" value="<?= $user_list->wali ?>" required>
+                                                                <input type="wali" class="form-control" id="wali" name="wali" placeholder="Masukkan Nama Wali Santri" required>
                                                             </div>
                                                             <div class="col">
                                                                 <label for="no_wali" class="form-label">No Telepon Wali Santri
                                                                 </label>
-                                                                <input type="number" class="form-control" id="no_wali" name="no_wali" placeholder="Masukkan No Telepon Wali Santri" value="<?= $user_list->no_wali ?>" required>
+                                                                <input type="number" class="form-control" id="no_wali" name="no_wali" placeholder="Masukkan No Telepon Wali Santri" required>
                                                             </div>
                                                         </div>
 
@@ -292,7 +304,7 @@
                                                             <div class="col-3">
                                                                 <label for="datepicker" class="form-label">Tahun Masuk
                                                                 </label>
-                                                                <input type="text" class="form-control" id="datepicker" name="datepicker" placeholder="Pilih Tahun Masuk" value="<?= $user_list->thn_masuk ?>" required>
+                                                                <input type="text" class="form-control" id="datepicker" name="datepicker" placeholder="Pilih Tahun Masuk" required>
                                                             </div>
                                                             <div class="col-9">
                                                             </div>

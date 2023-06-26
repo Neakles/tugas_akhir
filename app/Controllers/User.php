@@ -68,7 +68,7 @@ class User extends BaseController
     // tidak berfungsi
     public function tagihan()
     {
-        $data['title'] = 'Tagihan';
+        $data['title'] = 'Syahriyah';
 
         $data["tagihan"] = $this->bill->get()->getResult();
         return view('/user/tagihan', $data);
@@ -78,9 +78,42 @@ class User extends BaseController
     public function pembayaran()
     {
         $data['title'] = 'Pembayaran';
-        $data['users'] = $this->builder->get()->getRow();
+        $this->builder
+            ->select('users.id, tagihan.bulan, tagihan.tahun, nominal, pembayaran.status')
+            ->join('pembayaran', 'pembayaran.id_users = users.id')
+            ->join('tagihan', 'tagihan.id_tagihan = pembayaran.id_tagihan');
+    
+        $data['user'] = $this->builder->get()->getRow();
+        
+        // Menghitung jumlah bulan dan jumlah nominal jika status == 0
+        $totalBulan = 0;
+        $totalNominal = 0;
+        if (!empty($data['user']) && $data['user']->status == 0) {
+            $totalBulan = 1; // Set jumlah bulan ke 1 karena status == 0
+            $totalNominal = $data['user']->nominal;
+        }
+
+        $data['total_bulan'] = $totalBulan;
+        $data['total_nominal'] = $totalNominal;
 
         return view('/user/pembayaran', $data);
+    }
+    
+
+    public function pembayafran()
+    {
+        $data['title'] = 'Pembayaran';
+        $this->builder
+        ->select('users.id, tagihan.bulan, tagihan.tahun, nominal, pembayaran.status')
+        ->join('pembayaran', 'pembayaran.id_users = users.id')
+        ->join('tagihan', 'tagihan.id_tagihan = pembayaran.id_tagihan'
+        );
+        $data['user'] = $this->builder->get()->getRow();
+        return view('/user/pembayaran', $data);
+
+        if (empty($data['user'])) {
+            return redirect()->to('/user/pembayaran');
+        }
     }
 
     public function detail($id = 0)
@@ -89,7 +122,7 @@ class User extends BaseController
 
         // builder for detail santri
         $data['user'] = $this->builder->get()->getRow();
-        return view('admin/detail', $data);
+        return view('/admin/detail', $data);
 
         if (empty($data['user'])) {
             return redirect()->to('/admin/detail');

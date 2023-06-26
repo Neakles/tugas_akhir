@@ -51,7 +51,7 @@ class UsersModel extends Model
     function getpembulanan($nis)
     {
         $db = \Config\Database::connect();
-        $sql = 'select * from pembayaran_bulanan where nis = ' . $nis . '';
+        $sql = 'select * from tagihan where nis = ' . $nis . '';
         $query = $db->query($sql);
         $results = $query->getResult();
         return $results;
@@ -69,7 +69,7 @@ class UsersModel extends Model
             $nis .
             '" 
 				AND c.tahun_ajaran IN (
-					SELECT d.tahun_ajaran FROM pembayaran_bulanan d WHERE d.id_pem_bulan="' .
+					SELECT d.tahun_ajaran FROM tagihan d WHERE d.id_pem_bulan="' .
             $id .
             '" 
 				)
@@ -192,7 +192,7 @@ class UsersModel extends Model
             $nis .
             '" 
 				AND c.tahun_ajaran IN (
-					SELECT d.tahun_ajaran FROM pembayaran_bulanan d WHERE d.id_pem_bulan="' .
+					SELECT d.tahun_ajaran FROM tagihan d WHERE d.id_pem_bulan="' .
             $id .
             '" 
 				)

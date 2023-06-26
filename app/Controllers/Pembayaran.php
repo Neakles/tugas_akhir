@@ -47,13 +47,10 @@ class Pembayaran extends BaseController
     public function index()
     {
         $data['title'] = 'Pembayaran';
-        $this->builder->select('nis, fullname')->join(
-            'auth_groups_users',
-            'auth_groups_users.user_id = users.id'
-        )->join(
-            'auth_groups',
-            'auth_groups.id = auth_groups_users.group_id'
-        )->where('auth_groups.id', ['id' => 2]);
+        $this->builder->select('nis, fullname, kamar')
+            ->join('auth_groups_users', 'auth_groups_users.user_id = users.id'
+            )->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id'
+            )->where('auth_groups.id', ['id' => 2]);
         $data['users'] = $this->builder->get()->getResult();
         return view('/admin/pembayaran', $data);
     }

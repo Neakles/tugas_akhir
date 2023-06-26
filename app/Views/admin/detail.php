@@ -18,17 +18,18 @@
                             <div class="card-body">
                                 <table class="table">
                                     <tbody>
+                                    <?php // dd($user); ?>
+                                        <tr>
+                                            <h4>
+                                                <th>NIS</th>
+                                            </h4>
+                                            <td><span>: <?= $user->nis; ?></span></td>
+                                        </tr>
                                         <tr>
                                             <h4>
                                                 <th>Nama</th>
                                             </h4>
                                             <td><span>: <?= $user->fullname; ?></span></td>
-                                        </tr>
-                                        <tr>
-                                            <h4>
-                                                <th>Username/NIS</th>
-                                            </h4>
-                                            <td><span>: <?= $user->username; ?></span></td>
                                         </tr>
                                         <tr>
                                             <h4>
@@ -71,6 +72,18 @@
                                                 <th>No. HP Wali Santri</th>
                                             </h4>
                                             <td><span>: <?= $user->no_wali; ?></span></td>
+                                        </tr>
+                                        <tr>
+                                            <h4>
+                                                <th>Jenis Syahriyah</th>
+                                            </h4>
+                                            <td><span>:                                             
+                                                <?php if ($user->j_syahriyah == 1) { ?>
+                                                    Normal
+                                                <?php } elseif ($user->j_syahriyah == 2) { ?>
+                                                    Khusus
+                                                <?php } ?>
+                                            </span></td>
                                         </tr>
                                     </tbody>
                                 </table>

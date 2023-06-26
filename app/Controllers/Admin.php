@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\UsersModel;
 use App\Models\TagihanModel;
+use App\Models\PembayaranModel;
 use App\Traits\GlobalTrait;
 use Throwable;
 use \IntlDateFormatter;
@@ -18,10 +19,12 @@ class Admin extends BaseController
         $this->db           = \Config\Database::connect();
         $this->builder      = $this->db->table('users');
         $this->gender       = $this->db->table('gender');
-        $this->kamar        = $this->db->table("kamar_santri");
-        $this->bill         = $this->db->table('pembayaran_bulanan');
+        $this->kamar        = $this->db->table('kamar_santri');
+        $this->bill         = $this->db->table('tagihan');
+        $this->payment      = $this->db->table('pembayaran');
         $this->userModel    = new UsersModel();
         $this->tagihanModel = new TagihanModel();
+        $this->pembayaranModel = new PembayaranModel();
     }
 
     public function index()
@@ -76,6 +79,23 @@ class Admin extends BaseController
         $data['title'] = 'Detail Santri';
 
         // builder for detail santri
+        $this->builder->select(
+            'users.id as userid, username, nis, fullname, email, j_syahriyah, nominal, user_image, gender.sex AS jk, users.gender_id, no_telp, wali, no_wali, thn_masuk, kamar_santri.nama_kamar as kamar'
+        );
+        $this->builder->join(
+            'auth_groups_users',
+            'auth_groups_users.user_id = users.id'
+        );
+        $this->builder->join(
+            'auth_groups',
+            'auth_groups.id = auth_groups_users.group_id'
+        );
+        $this->builder->join('gender', 'gender.id_gender = users.gender_id');
+        $this->builder->join(
+            'kamar_santri',
+            'kamar_santri.id_kamar = users.kamar'
+        );
+        
         $this->builder->where('users.id', $id);
         $data['user'] = $this->builder->get()->getRow();
         return view('admin/detail', $data);
@@ -93,6 +113,7 @@ class Admin extends BaseController
 
             $syahriyah = $this->request->getPost('j_syahriyah');
             $nominal = ($syahriyah == 1) ? 250000 : 100000;
+            $pass = password_hash('Pass1234', PASSWORD_DEFAULT);
             
             $data = [
                 'nis'           => $this->request->getPost('nis'),
@@ -106,7 +127,7 @@ class Admin extends BaseController
                 'thn_masuk'     => $this->request->getPost('datepicker'),
                 // 'password_hash' => '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', //Rememberm3
                 // "password_hash" => '$2y$10$ZlDJEiTYaNyynkOt6mxqIuBCSL1jcd5dCBa.Gll4AIxrDIdPni5li',           //12345678
-                'password_hash' => password_hash('12345678', PASSWORD_DEFAULT),
+                'password_hash' => $pass,
                 'active' => 1,
                 'created_at' => date('Y-m-d H-i-s'),
             ];
@@ -146,11 +167,11 @@ class Admin extends BaseController
 
         $id = $this->request->getPost('id');
         $data = [
-            'username' => $this->request->getPost('username'),
+            'nis' => $this->request->getPost('nis'),
             'fullname' => $this->request->getPost('nama'),
             'no_telp' => $this->request->getPost('no_tlp'),
             'email' => $this->request->getPost('email'),
-            'jk' => $this->request->getPost('gender'),
+            'gender_id' => $this->request->getPost('gender'),
             'kamar' => $this->request->getPost('kamar'),
             'thn_masuk' => $this->request->getPost('datepicker'),
             'wali' => $this->request->getPost('wali'),
@@ -222,21 +243,35 @@ class Admin extends BaseController
 
     public function tagihan()
     {
-        $data['title'] = 'Tagihan Santri';
+        $data['title'] = 'Tagihan';
+        $query = $this->bill->select('id_tagihan, bulan, tahun');
         $data['tagihan'] = $this->bill->get()->getResult(); 
         return view('/admin/tagihan', $data);
+    }
+
+    public function pembayaran()
+    {
+        $data['title'] = 'Pembayaran';
+        $query = $this->payment
+            ->select('users.nis, users.fullname, kamar_santri.nama_kamar as kamar, tagihan.bulan, tagihan.tahun, users.nominal, pembayaran.status')
+            ->join('users', 'users.id = pembayaran.id_users')
+            ->join('tagihan', 'tagihan.id_tagihan = pembayaran.id_tagihan')
+            ->join('gender', 'gender.id_gender = users.gender_id')
+            ->join('kamar_santri', 'kamar_santri.id_kamar = users.kamar'
+            );
+        $data['pembayaran'] = $this->payment->get()->getResult(); 
+        return view('/admin/payment', $data);
     }
 
     // tambah tagihan otomatis saat berganti bulan
     public function createTagihan()
     {
         // Mendapatkan semua santri
-        $santri = $this->userModel->select('users.id, users.nis, users.fullname, users.kamar, users.no_telp, users.nominal, auth_groups_users.group_id')
-        ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
-        ->where('auth_groups_users.group_id', 2)
-        ->findAll();
-
-        date_default_timezone_set('Asia/Jakarta');
+        $santri = $this->userModel->select('users.id, auth_groups_users.group_id')
+            ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+            ->where('auth_groups_users.group_id', 2)
+            ->findAll();
+            date_default_timezone_set('Asia/Jakarta');
         $tanggal = date('d-M-Y');
         $formatter = new IntlDateFormatter('id_ID', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
         $formatter->setPattern('MMMM');

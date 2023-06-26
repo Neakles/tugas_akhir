@@ -67,6 +67,7 @@ $routes->group('admin', static function ($routes) {
     $routes->post('save', 'Admin::save', ['filter' => 'role:admin']);
 });
 
+$routes->get('/tagihan/auto-add', 'TagihanController::autoAddTagihan');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
