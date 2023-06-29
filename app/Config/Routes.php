@@ -43,27 +43,19 @@ $routes->get('/', 'Home::index');
 // Routes for User
 $routes->get('/profile', 'User::profile');
 $routes->post('/profile/(:num)', 'User::updateProfile/$1');
-// $routes->get('/pembayaran', 'User::pembayaran', ['filter' => 'role:user']);
+$routes->get('/user/pembayaran', 'User::pembayaran', ['filter' => 'role:user']);
 
 // Routes for Admin
 $routes->group('admin', static function ($routes) {
     $routes->get('/', 'Admin::index', ['filter' => 'role:admin']);
     $routes->get('/index', 'Admin::index', ['filter' => 'role:admin']);
-    $routes->get('/data_santri', 'Admin::data_santri', [
-        'filter' => 'role:admin',
-    ]);
+    $routes->get('/data_santri', 'Admin::data_santri', ['filter' => 'role:admin',]);
     $routes->get('/(:num)', 'Admin::detail/$1', ['filter' => 'role:admin']);
     $routes->get('/tagihan', 'Admin::tagihan', ['filter' => 'role:admin']);
     $routes->get('/laporan', 'Admin::laporan', ['filter' => 'role:admin']);
     $routes->get('/santri/(:num)', 'Admin::laporan_syahriah/$1', ['filter' => 'role:admin']);
     $routes->get('/pembayaran', 'Pembayaran::index', ['filter' => 'role:admin']);
-    $routes->get(
-        '/spp_bulanan/(:num)/(:num)',
-        'Pembayaran::spp_bulanan/$1/$1',
-        [
-            'filter' => 'role:admin',
-        ]
-    );
+    $routes->get('/spp_bulanan/(:num)/(:num)', 'Pembayaran::spp_bulanan/$1/$1', ['filter' => 'role:admin',]);
     $routes->post('save', 'Admin::save', ['filter' => 'role:admin']);
 });
 

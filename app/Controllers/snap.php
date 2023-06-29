@@ -24,7 +24,7 @@ class Snap extends BaseController
     {
 
         // $this->load->helper('url');
-        \Midtrans\Config::$serverKey = 'SB-Mid-server-z5T9WhivZDuXrJxC7w-civ_k';
+        \Midtrans\Config::$serverKey = 'SB-Mid-server-c0oYOjJLZE8dEo0ZWyEy6-2j';
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
         \Midtrans\Config::$isProduction = false;
         // Set sanitization on (default)
@@ -41,23 +41,24 @@ class Snap extends BaseController
 
     public function token()
     {
-        $fullname = $this->request->getPost('fullname');
-        $jmlbulan = $this->request->getPost('jmlbulan');
-        $besar_spp = $this->request->getPost('besar_spp');
-        $total = $this->request->getPost('total');
-        // Required
-        // Required
+        $fullname = user()->fullname;
+        $email = user()->email;
+        $no_telp = user()->no_telp;
+        $nominal = user()->nominal;
+        $totalBulan = $this->request->getPost('total_bulan');
+        $totalNominal = $this->request->getPost('total_nominal');
+
         $transaction_details = [
-            'order_id' => rand(),
-            'gross_amount' => $total, // no decimal allowed for creditcard
+            'order_id' => uniqid(),
+            'gross_amount' => $totalNominal, // no decimal allowed for creditcard
         ];
 
         // Optional
         $item1_details = [
-            'id' => rand(000, 999),
-            'price' => $besar_spp,
-            'quantity' => $jmlbulan,
-            'name' => 'Pembayaran Bulanan',
+            'id' => uniqid(),
+            'price' => $nominal,
+            'quantity' => $totalBulan,
+            'name' => 'bulan',
         ];
 
         // Optional
@@ -79,20 +80,18 @@ class Snap extends BaseController
         // Optional
         $shipping_address = [
             'first_name' => $fullname,
-            'last_name' => 'Supriadi',
-            'address' => 'Manggis 90',
-            'city' => 'Jakarta',
-            'postal_code' => '16601',
-            'phone' => '08113366345',
+            'address' => '',
+            'city' => '',
+            'postal_code' => '',
+            'phone' => $no_telp,
             'country_code' => 'IDN',
         ];
 
         // Optional
         $customer_details = [
             'first_name' => $fullname,
-            'last_name' => '',
-            'email' => 'andri@litani.com',
-            'phone' => '081122334455',
+            'email' => $email,
+            'phone' => $no_telp,
             'billing_address' => $billing_address,
             'shipping_address' => $shipping_address,
         ];

@@ -14,12 +14,13 @@ class Pembayaran extends BaseController
 
     public function __construct()
     {
-        $this->db = \Config\Database::connect();
-        $this->builder = $this->db->table('users');
-        $this->gender = $this->db->table('gender');
-        $this->bill = $this->db->table('tagihan');
-        $this->spp_bulanan = $this->db->table('spp_bulanan');
-        $this->userModel = new UsersModel();
+        $this->db           = \Config\Database::connect();
+        $this->builder      = $this->db->table('users');
+        $this->gender       = $this->db->table('gender');
+        $this->bill         = $this->db->table('tagihan')   ;
+        // $this->spp_bulanan  = $this->db->table('spp_bulanan');
+        $this->pembayaran   = $this->db->table('pembayaran');
+        $this->userModel    = new UsersModel();
 
         \Midtrans\Config::$serverKey = 'SB-Mid-server-z5T9WhivZDuXrJxC7w-civ_k';
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
@@ -100,7 +101,7 @@ class Pembayaran extends BaseController
     public function tambah_aksi()
     {
         $db = \Config\Database::connect();
-        $builder = $db->table('spp_bulanan');
+        $builder = $db->table('pembayaran');
         $bulan = $this->request->getPost('bulan[]');
         $nis = $this->request->getPost('nis');
         $fullname = $this->request->getPost('fullname');
