@@ -4,34 +4,12 @@ namespace App\Controllers;
 
 class Snap extends BaseController
 {
-    /**
-     * Index Page for this controller.
-     *
-     * Maps to the following URL
-     * 		http://example.com/index.php/welcome
-     *	- or -
-     * 		http://example.com/index.php/welcome/index
-     *	- or -
-     * Since this controller is set as the default controller in
-     * config/routes.php, it's displayed at http://example.com/
-     *
-     * So any other public methods not prefixed with an underscore will
-     * map to /index.php/welcome/<method_name>
-     * @see http://codeigniter.com/user_guide/general/urls.html
-     */
-
     public function __construct()
     {
-
-        // $this->load->helper('url');
         \Midtrans\Config::$serverKey = 'SB-Mid-server-c0oYOjJLZE8dEo0ZWyEy6-2j';
-        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
         \Midtrans\Config::$isProduction = false;
-        // Set sanitization on (default)
         \Midtrans\Config::$isSanitized = true;
-        // Set 3DS transaction for credit card to true
         \Midtrans\Config::$is3ds = true;
-        // return $this->midtrans->config($serverKey);
     }
 
     public function index()
@@ -49,24 +27,19 @@ class Snap extends BaseController
         $totalNominal = $this->request->getPost('total_nominal');
 
         $transaction_details = [
-            'order_id' => uniqid(),
-            'gross_amount' => $totalNominal, // no decimal allowed for creditcard
+            'order_id' => rand(),
+            'gross_amount' => $totalNominal, 
         ];
 
-        // Optional
         $item1_details = [
-            'id' => uniqid(),
+            'id' => rand(),
             'price' => $nominal,
             'quantity' => $totalBulan,
             'name' => 'bulan',
         ];
 
-        // Optional
-
-        // Optional
         $item_details = [$item1_details];
 
-        // Optional
         $billing_address = [
             'first_name' => $fullname,
             'last_name' => 'a',
@@ -77,17 +50,15 @@ class Snap extends BaseController
             'country_code' => 'IDN',
         ];
 
-        // Optional
         $shipping_address = [
             'first_name' => $fullname,
-            'address' => '',
-            'city' => '',
-            'postal_code' => '',
+            'address' => 'Jl. Jemursari Utara III/9',
+            'city' => 'Surabaya',
+            'postal_code' => '60237',
             'phone' => $no_telp,
             'country_code' => 'IDN',
         ];
 
-        // Optional
         $customer_details = [
             'first_name' => $fullname,
             'email' => $email,

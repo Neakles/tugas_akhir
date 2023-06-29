@@ -89,17 +89,29 @@ class User extends BaseController
             ->join('tagihan', 'tagihan.id_tagihan = pembayaran.id_tagihan');
     
         $data['user'] = $this->builder->get()->getRow();
-        // dd($data['user']);
+        $nominal = user()->nominal;
+
+        // format nominal agar menjadi ribuan
+        $formattedNominal = number_format($nominal, 0, ',', '.');
+        $formattedNominal = 'Rp ' . $formattedNominal;
+        $data['nominal'] = $formattedNominal;
+
         // Menghitung jumlah bulan dan jumlah nominal jika status == 0
         $totalBulan = 0;
         $totalNominal = 0;
         if (!empty($data['user']) && $data['user']->status == 0) {
             $totalBulan = 1; // Set jumlah bulan ke 1 karena status == 0
-            $totalNominal = $data['user']->nominal * $totalBulan;
+            $totalNominal = user()->nominal * $totalBulan;
         }
-        $data['total_bulan'] = $totalBulan;
-        $data['total_nominal'] = $totalNominal;
-        $data['nominal'] = $data['user']->nominal;
+
+        // format tampilan total bulan
+        $bulan = $totalBulan . ' bulan';
+        $data['total_bulan'] = $bulan;
+
+        // format nominal agar menjadi ribuan
+        $formattedTotNominal = number_format($totalNominal, 0, ',', '.');
+        $formatTotNominal = 'Rp ' . $formattedTotNominal;
+        $data['total_nominal'] = $formatTotNominal;
 
         return view('/user/pembayaran', $data);
     }

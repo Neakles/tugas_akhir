@@ -8,38 +8,34 @@
 
 <div class="container-fluid">
     <!-- Page Heading -->
-        <div class="col-xl col-md-6 mb-4">
-    <div class="card border-bottom-success shadow mb-4">
-        <div class="card-body">
-            <div class="d-sm-flex align-items-center justify-content-between">
-                <h1 class="h3 mb-0 text-gray-800">Syahriyah</h1>
+    <div class="col-xl col-md-6 mb-4">
+        <div class="card border-bottom-success shadow mb-4">
+            <div class="card-body">
+                <div class="d-sm-flex align-items-center justify-content-between">
+                    <h1 class="h3 mb-0 text-gray-800">Syahriyah</h1>
+                </div>
+                <p class="">Pondok Pesantren Al-Jihad Surabaya</a>.</p>
             </div>
-            <p class="">Pondok Pesantren Al-Jihad Surabaya</a>.</p>
         </div>
-    </div>
     </div>
     <!-- End of Page Heading -->
 
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl col-md-6 mb-4">
-              <div class="card border-left-success shadow py-2">
-                <div class="card-body">
-                  <!-- <div class="row no-gutters align-items-center"> -->
-                    <div class="col mr-2">
-                      <div class="text-s font-weight-bold text-success mb-1">NIS</div>
-                            <td><span>: <?= user()->nis; ?></span></td>
-                      <div class="text-s font-weight-bold text-success mb-1">Nama</div>
-                            <td><span>: <?= user()->fullname; ?></span></td>
-                      <div class="text-s font-weight-bold text-success mb-1">Kamar</div>
-                            <td><span>: <?= user()->kamar; ?></span></td>
-                      <div class="text-s font-weight-bold text-success mb-1">Jenis Syahriyah</div>
-                            <td><span>: <?= user()->j_syahriyah; ?></span></td>
-                      <!-- <div class="h5 mb-0 font-weight-bold text-gray-800">Nama</div> -->
-                    <!-- </div> -->
-                  </div>
+    <div class="col-xl col-md-6 mb-4">
+            <div class="card border-left-success shadow py-2">
+            <div class="card-body">
+                <div class="col mr-2">
+                    <div class="text-s font-weight-bold text-success mb-1">NIS</div>
+                        <td><span>: <?= user()->nis; ?></span></td>
+                    <div class="text-s font-weight-bold text-success mb-1">Nama</div>
+                        <td><span>: <?= user()->fullname; ?></span></td>
+                    <div class="text-s font-weight-bold text-success mb-1">Kamar</div>
+                        <td><span>: <?= user()->kamar; ?></span></td>
+                    <div class="text-s font-weight-bold text-success mb-1">Jenis Syahriyah</div>
+                        <td><span>: <?= user()->j_syahriyah; ?></span></td>
                 </div>
             </div>
         </div>
+    </div>
 
     <div class="card shadow mb-4">
         <div class="card-header flex">
@@ -79,9 +75,9 @@
                             <th scope="row"><?= $i++ ?></th>
                             <td><?= $user->bulan; ?></td>
                             <td><?= $user->tahun; ?></td>
-                            <td>Rp <?= $user->nominal ?></td>
+                            <td><?= $nominal ?></td>
                             <td><?= $user->tanggal_bayar ?></td>
-                            <td> <!-- untuk menampilkan jenis syahriyah sebagai normal atau khusus-->
+                            <td> 
                                 <?php if ($user->status == 0) { ?>
                                     Belum Dibayar
                                 <?php } elseif ($user->status == 1) { ?>
