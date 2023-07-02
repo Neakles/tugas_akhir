@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 class Snap extends BaseController
 {
-    protected $db, $builder;
+    protected $db, $order;
 
     public function __construct()
     {
@@ -12,6 +12,8 @@ class Snap extends BaseController
         \Midtrans\Config::$isProduction = false;
         \Midtrans\Config::$isSanitized = true;
         \Midtrans\Config::$is3ds = true;
+        $this->db       = \Config\Database::connect();
+        $this->order  = $this->db->table('pembayaran');
     }
 
     public function index()
@@ -28,13 +30,28 @@ class Snap extends BaseController
         $totalBulan = $this->request->getPost('total_bulan');
         $totalNominal = $this->request->getPost('total_nominal');
 
+        $order_id = uniqid();
+
+        // Update orderId
+        $query = $this->order->update(
+            [
+                "total_bulan"   => $totalBulan,
+                "total_nominal" => $totalNominal,
+                "order_id"      => $order_id
+            ],
+            [
+                'id_users'  => user()->id,
+                'status'    => 0
+            ]
+        );
+
         $transaction_details = [
-            'order_id' => uniqid(),
+            'order_id' => $order_id,
             'gross_amount' => $totalNominal, 
         ];
 
         $item1_details = [
-            'id' => uniqid(),
+            'id' => $order_id,
             'price' => $nominal,
             'quantity' => $totalBulan,
             'name' => 'bulan',

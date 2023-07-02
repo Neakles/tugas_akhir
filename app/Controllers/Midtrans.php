@@ -13,7 +13,7 @@ class Midtrans extends BaseController
     public function __construct()
     {
         $this->db = \Config\Database::connect();
-        $this->builder = $this->db->table('order');
+        $this->builder = $this->db->table('pembayaran');
 
         \Midtrans\Config::$serverKey = 'SB-Mid-server-DdFcR4RsqWPdJHGoiSnRfP1d';
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
@@ -164,18 +164,40 @@ class Midtrans extends BaseController
 
     public function handling()
     {
-        $request = \Config\Services::request();
-        $body = $request->getBody();
+        $request    = \Config\Services::request();
+        $body       = $request->getBody();
+        $bodyFormat = json_decode($body);
         $this->logError(null, "handling\n" . json_encode($body));
-        return $body;
+
+        // Jika settlement transaksi berhasil
+        if(@$bodyFormat->transaction_status == "settlement"){
+            // Query untuk update 
+            $column = [
+                "tanggal_bayar" => date("Y-m-d"),
+                "status"        => 2,
+                // "total_nominal" => @$bodyFormat->gross_amount,
+                // "order_id"      => @$bodyFormat->order_id
+            ];
+            $query = $this->builder->update($column, ['order_id' => @$bodyFormat->order_id, 'status' => 0]);
+        } elseif(@$bodyFormat->transaction_status == "pending"){
+            $column = [
+                // "tanggal_bayar" => date("Y-m-d"),
+                "status"        => 1,
+                // "total_nominal" => @$bodyFormat->gross_amount,
+                // "order_id"      => @$bodyFormat->order_id
+            ];
+            $query = $this->builder->update($column, ['order_id' => @$bodyFormat->order_id, 'status' => 0]);
+        }
+        return @$body;
     }
 
     public function finish()
     {
         $request = \Config\Services::request();
         $body = $request->getBody();
+        $bodyFormat = json_decode($body);
         $this->logError(null, "finish\n" . json_encode($body));
-        return $body;
+        return $bodyFormat->transaction_status;
     }
 
     public function unfinish()
