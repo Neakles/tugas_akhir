@@ -17,13 +17,13 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="<?= base_url() ?>/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="<?= base_url() . "/public"; ?>/css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="<?= base_url() ?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="<?= base_url() . "/public"; ?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/vendor/bootstrap-select/dist/css/bootstrap-select.css">
+    <link rel="stylesheet" href="<?= base_url() . "/public"; ?>/vendor/bootstrap-select/dist/css/bootstrap-select.css">
     <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
 </head>
 
@@ -94,22 +94,22 @@
 
     <!-- Bootstrap core JavaScript-->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-    <script src="<?= base_url() ?>/vendor/jquery/jquery.min.js"></script>
-    <script src="<?= base_url() ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= base_url() . "/public"; ?>/vendor/jquery/jquery.min.js"></script>
+    <script src="<?= base_url() . "/public"; ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="<?= base_url() ?>/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="<?= base_url() . "/public"; ?>/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="<?= base_url() ?>/js/sb-admin-2.min.js"></script>
-    <script src="<?= base_url() ?>/js/script.js"></script>
+    <script src="<?= base_url() . "/public"; ?>/js/sb-admin-2.min.js"></script>
+    <script src="<?= base_url() . "/public"; ?>/js/script.js"></script>
 
     <!-- Page level plugins -->
-    <script src="<?= base_url() ?>/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="<?= base_url() ?>/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-    <script src="<?= base_url() ?>/vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
+    <script src="<?= base_url() . "/public"; ?>/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?= base_url() . "/public"; ?>/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="<?= base_url() . "/public"; ?>/vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
     <!-- Page level custom scripts -->
-    <script src="<?= base_url() ?>/js/demo/datatables-demo.js"></script>
+    <script src="<?= base_url() . "/public"; ?>/js/demo/datatables-demo.js"></script>
 
     <!-- Scripts datePicker year -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">

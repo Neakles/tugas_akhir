@@ -259,7 +259,7 @@ class Admin extends BaseController
             ->join('gender', 'gender.id_gender = users.gender_id')
             ->join('kamar_santri', 'kamar_santri.id_kamar = users.kamar'
             );
-        $data['pembayaran'] = $this->payment->get()->getResult(); 
+        $data['pembayaran'] = $this->payment->get()->getResult();
         return view('/admin/payment', $data);
     }
 
