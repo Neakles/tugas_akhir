@@ -21,7 +21,7 @@
     <!-- End of Page Heading -->
 
     <div class="col-xl col-md-6 mb-4">
-            <div class="card border-left-success shadow py-2">
+        <div class="card border-left-success shadow py-2">
             <div class="card-body">
                 <div class="col mr-2">
                     <div class="text-s font-weight-bold text-success mb-1">NIS</div>
@@ -39,22 +39,26 @@
 
     <div class="card shadow mb-4">
         <div class="card-header flex">
-            <div class="row">
-                <div class="col-xl-3 mb-2 mt-3 text-center">
-                    <td scope="row">Syahriyah yang belum dibayar :</td>
-                </div>
-                <div class="col-xl-2 mb-2 mt-2 text-center">
-                    <input name="totalBulan" id="totalBulan" class="form-control text-center" type="text" value="<?= $total_bulan;?>" readonly>
-                </div>
-                <div class="col-xl-2 mb-2 mt-2 text-center">
-                    <input name="totalNominal" id="totalNominal" class="form-control text-center" type="text" value="<?= $total_nominal;?>" readonly>
-                </div>
-                <div class="col-xl-3 mb-2 mt-2 text-center">
-                    <div class="card-action">
-                        <button type="button" id="pay-button" name="bayar" value="BAYAR" class="btn btn-success">Bayar</button>
+            <form id="proses" method="post" action="<?= site_url()?>user/prosesPembayaran" > 
+                <div class="row">
+                    <div class="col-xl-3 mb-2 mt-3 text-center">
+                        <td scope="row">Syahriyah yang belum dibayar :</td>
                     </div>
+                    <div class="col-xl-2 mb-2 mt-2 text-center">
+                        <input name="totalBulan" id="totalBulan" class="form-control text-center" type="text" value="<?= $bulan;?>" readonly>
+                    </div>
+                    <div class="col-xl-2 mb-2 mt-2 text-center">
+                        <input name="totalNominal" id="totalNominal" class="form-control text-center" type="text" value="<?= $nominal;?>" readonly>
+                    </div>
+                    <div class="col-xl-3 mb-2 mt-2 text-center">
+                        <div class="card-action">
+                            <button type="button" id="pay-button" name="bayar" value="BAYAR" class="btn btn-success">Bayar</button>
+                        </div>
+                    </div>
+                    <input type="hidden" name="result_type" id="result-type" value="">
+                    <input type="hidden" name="result_data" id="result-data" value="">
                 </div>
-            </div>
+            </form>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -71,24 +75,26 @@
                     </thead>
                     <tbody>
                         <?php $i = 1; ?>
+                        <?php foreach($pembayaran as $val) : ?>
                         <tr>
                             <th scope="row"><?= $i++ ?></th>
-                            <td><?= $user->bulan; ?></td>
-                            <td><?= $user->tahun; ?></td>
-                            <td><?= $nominal ?></td>
-                            <td><?= $user->tanggal_bayar ?></td>
+                            <td><?= $val->bulan; ?></td>
+                            <td><?= $val->tahun; ?></td>
+                            <td><?= $val->nominal_format ?></td>
+                            <td><?= $val->tanggal_bayar ?></td>
                             <td> 
-                                <?php if ($user->status == 0) { ?>
+                                <?php if ($val->status == 0) { ?>
                                     Belum Dibayar
-                                <?php } elseif ($user->status == 1) { ?>
+                                <?php } elseif ($val->status == 1) { ?>
                                     Pending
-                                <?php } elseif ($user->status == 2) { ?>
+                                <?php } elseif ($val->status == 2) { ?>
                                     Lunas
-                                <?php } elseif ($user->status == 3) { ?>
+                                <?php } elseif ($val->status == 3) { ?>
                                     Error
                                 <?php } ?>
                             </td>
                         </tr>
+                        <?php endforeach;  ?>
                     </tbody>
                 </table>
             </div>
@@ -109,7 +115,7 @@
         
         $.ajax({
             method: "POST",
-            url: '<?= site_url() ?>snap/token',
+            url: '<?= site_url() ?>/snap/token',
             cache: false,
             data: {
                 fullname: fullname,
@@ -130,17 +136,17 @@
                         changeResult('success', result);
                         console.log(result.status_message);
                         console.log(result);
-                        $("#payment-form").submit();
+                        $("#proses").submit();
                     },
                     onPending: function(result) {
                         changeResult('pending', result);
                         console.log(result.status_message);
-                        $("#payment-form").submit();
+                        $("#proses").submit();
                     },
                     onError: function(result) {
                         changeResult('error', result);
                         console.log(result.status_message);
-                        $("#payment-form").submit();
+                        $("#proses").submit();
                     }
                 });
             }

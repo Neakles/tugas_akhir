@@ -7,6 +7,8 @@ use App\Models\UsersModel;
 
 class User extends BaseController
 {
+    protected $db, $builder;
+
     public function __construct()
     {
         $this->db           = \Config\Database::connect();
@@ -14,9 +16,10 @@ class User extends BaseController
         $this->gender       = $this->db->table("gender");
         $this->kamar        = $this->db->table("kamar_santri");
         $this->bill         = $this->db->table("tagihan");
+        $this->pay          = $this->db->table("pembayaran");
         $this->UsersModel   = new UsersModel();
 
-        \Midtrans\Config::$serverKey = 'SB-Mid-server-c0oYOjJLZE8dEo0ZWyEy6-2j';
+        \Midtrans\Config::$serverKey = 'SB-Mid-server-z5T9WhivZDuXrJxC7w-civ_k';
         \Midtrans\Config::$isProduction = false;
         \Midtrans\Config::$isSanitized = true;
         \Midtrans\Config::$is3ds = true;
@@ -70,19 +73,49 @@ class User extends BaseController
         }
     }
 
-    // tidak berfungsi
-    public function tagihan()
-    {
-        $data['title'] = 'Syahriyah';
-
-        $data["tagihan"] = $this->bill->get()->getResult();
-        return view('/user/tagihan', $data);
-    }
-    // tidak berfungsi
-
     public function pembayaran()
     {
-        $data['title'] = 'Pembayaran';
+        $data['title'] = 'Syahriyah';
+        // $this->builder
+        //     ->select('users.id, users.fullname, tagihan.bulan, tagihan.tahun, nominal, pembayaran.status, pembayaran.tanggal_bayar')
+        //     ->join('pembayaran', 'pembayaran.id_users = users.id')
+        //     ->join('tagihan', 'tagihan.id_tagihan = pembayaran.id_tagihan')
+        //     ->where("users.id", user()->id)
+        //     ;
+    
+        // $tagihan = $this->builder->get()->getResult();
+        $pembayaran = $this->db
+            ->table("pembayaran")
+            ->select("pembayaran.id_users, pembayaran.status, pembayaran.tanggal_bayar, users.fullname, users.nominal, tagihan.bulan, tagihan.tahun")
+            ->join('users', 'pembayaran.id_users = users.id')
+            ->join('tagihan', 'tagihan.id_tagihan = pembayaran.id_tagihan')
+            ->where("pembayaran.id_users", user()->id)
+            ->where("pembayaran.status", 0)
+            ->get()->getResult()
+            ;
+
+        // Menghitung jumlah bulan dan jumlah nominal
+        $totalBulan     = 0;
+        $totalNominal   = 0;
+        foreach($pembayaran as $key => $val) :
+            $pembayaran[$key]->nominal_format = "Rp " . number_format($val->nominal, 0, ",", ".");
+            $totalNominal += $val->nominal;
+            $totalBulan++;
+        endforeach;
+
+        $formatTotalNominal = "Rp " . number_format($totalNominal, 0, ",", ".");
+        $formatTotalBulan   = number_format($totalBulan, 0, ",", ".");
+
+        $data["pembayaran"] = $pembayaran;
+        $data["bulan"]      = $formatTotalBulan;
+        $data["nominal"]    = $formatTotalNominal;
+
+        return view('/user/pembayaran', $data);
+    }
+
+    public function pembayaranLama()
+    {
+        $data['title'] = 'Syahriyah';
         $this->builder
             ->select('users.id, tagihan.bulan, tagihan.tahun, nominal, pembayaran.status, pembayaran.tanggal_bayar')
             ->join('pembayaran', 'pembayaran.id_users = users.id')
@@ -100,13 +133,13 @@ class User extends BaseController
         $totalBulan = 0;
         $totalNominal = 0;
         if (!empty($data['user']) && $data['user']->status == 0) {
-            $totalBulan = 1; // Set jumlah bulan ke 1 karena status == 0
+            $totalBulan = 1; 
             $totalNominal = user()->nominal * $totalBulan;
         }
 
         // format tampilan total bulan
         $bulan = $totalBulan . ' bulan';
-        $data['total_bulan'] = $bulan;
+        $data['total_bulan'] = $totalBulan;
 
         // format nominal agar menjadi ribuan
         $formattedTotNominal = number_format($totalNominal, 0, ',', '.');
@@ -114,5 +147,35 @@ class User extends BaseController
         $data['total_nominal'] = $formatTotNominal;
 
         return view('/user/pembayaran', $data);
+    }
+
+    public function prosesPembayaran()
+    {
+        $totBulan   = $this->request->getPost('totalBulan');
+        $totNominal = $this->request->getPost('totalNominal');
+        $statustype = $this->request->getPost('result_type');
+        $statusdata = $this->request->getPost('result_data');
+        $json       = json_decode($statusdata);
+        $status     = 
+            $statustype == 'success'
+                ? '2'
+                : ($statustype == 'pending'
+                    ? '1'
+                    : '3');
+        $orderid    = $json->order_id;
+        $index      = 0; 
+        $nis        = $this->pay->select('nis');
+        $time       = time();
+
+        $data = [
+            'tanggal_bayar' => date('Y-m-d H:i:s O', $time),
+            'status' => $status,
+            'total_bulan' => $totBulan,
+            'total_nominal' => $totNominal,
+        ];
+        // dd($data);
+        $this->pay->set($data)->where('nis' == user()->nis);
+        $this->pay->update();
+        return redirect()->to('/user/pembayaran');
     }
 }

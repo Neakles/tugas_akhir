@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 class Snap extends BaseController
 {
+    protected $db, $builder;
+
     public function __construct()
     {
         \Midtrans\Config::$serverKey = 'SB-Mid-server-c0oYOjJLZE8dEo0ZWyEy6-2j';
@@ -27,12 +29,12 @@ class Snap extends BaseController
         $totalNominal = $this->request->getPost('total_nominal');
 
         $transaction_details = [
-            'order_id' => rand(),
+            'order_id' => uniqid(),
             'gross_amount' => $totalNominal, 
         ];
 
         $item1_details = [
-            'id' => rand(),
+            'id' => uniqid(),
             'price' => $nominal,
             'quantity' => $totalBulan,
             'name' => 'bulan',

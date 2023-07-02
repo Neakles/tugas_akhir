@@ -24,6 +24,7 @@ class App extends BaseConfig
      *
      * @var string
      */
+    // public $baseURL = 'https://syahriah.yayasanaljihad.org/';
     public $baseURL = 'http://localhost:8080/';
 
     /**
