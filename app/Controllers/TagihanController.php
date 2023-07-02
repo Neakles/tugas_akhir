@@ -23,7 +23,7 @@ class TagihanController extends BaseController
     }
 
     public function autoAddTagihan()
-    {        
+    {
         // Mendapatkan bulan dan tahun saat ini
         date_default_timezone_set('Asia/Jakarta');
         $tanggal    = date('d-M-Y');
@@ -31,16 +31,14 @@ class TagihanController extends BaseController
         $formatter->setPattern('MMMM');
         $bulan      = $formatter->format(strtotime($tanggal));
         $tahun      = date('Y');
-        
+
         // Mengecek apakah tagihan untuk bulan ini sudah dikirim
         $tagihanExists = $this->tagihanModel
             ->where('bulan', $bulan)
             ->where('tahun', $tahun)
             ->countAllResults() > 0;
-        
-                // dd($santri);
 
-                $id_tagihan = date('mmY');
+        $id_tagihan = date('mmY');
 
         if (!$tagihanExists) {
             // Menyimpan tagihan      
@@ -50,7 +48,7 @@ class TagihanController extends BaseController
                 'tahun'     => $tahun,
             ];
             $this->tagihanModel->insert($data);
-            
+
             // Mendapatkan data santri
             $santri = $this->userModel->select('users.id, users.nis, auth_groups_users.group_id')
                 ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
@@ -64,23 +62,22 @@ class TagihanController extends BaseController
                     ->orderBy('id_tagihan', 'DESC')
                     ->first();
                 $last_tagihan = $lastTagihan ? $lastTagihan['id_tagihan'] : 0;
-                
+
                 // Menambahkan tagihan untuk setiap santri
                 foreach ($santri as $row) {
                     $data = [
                         'id_pembayaran' => date('mY').$row['nis'],
                         'id_tagihan'    => $id_tagihan,
                         'id_users'      => $row['id'],
-                        'status'   => 0,
+                        'status'        => 0,
                     ];
-                    // dd($data);
                     $this->pembayaranModel->insert($data);
                 }
-                
+
                 // Kirim email tagihan ke setiap santri
                 // Implementasikan logika pengiriman email sesuai dengan preferensi Anda
-                
-                echo "Tagihan bulan ini berhasil dikirim.";
+
+                echo "Tagihan bulan ini berhasil dikirim";
             } else {
                 echo "Tidak ada santri yang tersedia.";
             }
