@@ -2,8 +2,12 @@
 
 namespace App\Controllers;
 
+use CodeIgniter\HTTP\RequestInterface;
+use App\Traits\GlobalTrait;
+
 class Midtrans extends BaseController
 {
+    use GlobalTrait;
     protected $db, $builder;
 
     public function __construct()
@@ -158,7 +162,39 @@ class Midtrans extends BaseController
         echo $snapToken;
     }
 
+    public function handling()
+    {
+        $request = \Config\Services::request();
+        $body = $request->getBody();
+        $this->logError(null, "handling\n" . json_encode($body));
+        return $body;
+    }
+
     public function finish()
+    {
+        $request = \Config\Services::request();
+        $body = $request->getBody();
+        $this->logError(null, "finish\n" . json_encode($body));
+        return $body;
+    }
+
+    public function unfinish()
+    {
+        $request = \Config\Services::request();
+        $body = $request->getBody();
+        $this->logError(null, "unfinish\n" . json_encode($body));
+        return $body;
+    }
+
+    public function error()
+    {
+        $request = \Config\Services::request();
+        $body = $request->getBody();
+        $this->logError(null, "error\n" . json_encode($body));
+        return $body;
+    }
+
+    public function finishLama()
     {
         $result = json_decode($this->request->getVar('result_data'), true);
 

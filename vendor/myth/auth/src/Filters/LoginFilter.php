@@ -18,6 +18,14 @@ class LoginFilter extends BaseFilter implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
+        // Mendapatkan segmen URI
+        $segment = $request->uri->getSegment(1);
+        if(isset($segment) && $segment == "midtrans"){
+            return;
+            // var_dump($segment);
+            // die;
+        }
+
         // Make sure this isn't already a Myth\Auth routes.
         foreach ($this->reservedRoutes as $reservedRoute) {
             if (url_is(route_to($reservedRoute))) {

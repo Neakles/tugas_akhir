@@ -37,6 +37,14 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don"t have to scan directories.
 
+$routes->group('midtrans', static function ($routes) {
+    $routes->post('handling', 'Midtrans::handling');
+    $routes->post('error', 'Midtrans::error');
+    $routes->post('finish', 'Midtrans::finish');
+    $routes->post('unfinish', 'Midtrans::unfinish');
+    $routes->get('finish/(:num)', 'Midtrans::finish/$1');
+});
+
 // View index
 $routes->get('/', 'Home::index');
 
