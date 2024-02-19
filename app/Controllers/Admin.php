@@ -113,7 +113,7 @@ class Admin extends BaseController
 
             $syahriyah = $this->request->getPost('j_syahriyah');
             $nominal = ($syahriyah == 1) ? 250000 : 100000;
-            $pass = password_hash('Pass1234', PASSWORD_DEFAULT);
+            $pass = password_hash('%Y%m%d', PASSWORD_DEFAULT);
             
             $data = [
                 'nis'           => $this->request->getPost('nis'),

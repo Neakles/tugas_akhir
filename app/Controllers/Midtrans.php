@@ -175,16 +175,11 @@ class Midtrans extends BaseController
             $column = [
                 "tanggal_bayar" => date("Y-m-d"),
                 "status"        => 2,
-                // "total_nominal" => @$bodyFormat->gross_amount,
-                // "order_id"      => @$bodyFormat->order_id
             ];
             $query = $this->builder->update($column, ['order_id' => @$bodyFormat->order_id]);
         } elseif(@$bodyFormat->transaction_status == "pending"){
             $column = [
-                // "tanggal_bayar" => date("Y-m-d"),
                 "status"        => 1,
-                // "total_nominal" => @$bodyFormat->gross_amount,
-                // "order_id"      => @$bodyFormat->order_id
             ];
             $query = $this->builder->update($column, ['order_id' => @$bodyFormat->order_id]);
         }

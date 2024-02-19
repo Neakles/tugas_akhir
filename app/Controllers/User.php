@@ -76,14 +76,7 @@ class User extends BaseController
     public function pembayaran()
     {
         $data['title'] = 'Syahriyah';
-        // $this->builder
-        //     ->select('users.id, users.fullname, tagihan.bulan, tagihan.tahun, nominal, pembayaran.status, pembayaran.tanggal_bayar')
-        //     ->join('pembayaran', 'pembayaran.id_users = users.id')
-        //     ->join('tagihan', 'tagihan.id_tagihan = pembayaran.id_tagihan')
-        //     ->where("users.id", user()->id)
-        //     ;
-    
-        // $tagihan = $this->builder->get()->getResult();
+
         $pembayaran = $this->db
             ->table("pembayaran")
             ->select("pembayaran.id_users, pembayaran.status, pembayaran.tanggal_bayar, users.fullname, users.nominal, tagihan.bulan, tagihan.tahun")
@@ -97,11 +90,12 @@ class User extends BaseController
         // Menghitung jumlah bulan dan jumlah nominal
         $totalBulan     = 0;
         $totalNominal   = 0;
-        foreach($pembayaran as $key => $val) :
+        $formatTotalNominal = "Rp 0"; // Set default nilai total nominal
+        foreach($pembayaran as $key => $val) {
             $pembayaran[$key]->nominal_format = "Rp " . number_format($val->nominal, 0, ",", ".");
             $totalNominal += $val->nominal;
             $totalBulan++;
-        endforeach;
+        }
 
         $formatTotalNominal = "Rp " . number_format($totalNominal, 0, ",", ".");
         $formatTotalBulan   = number_format($totalBulan, 0, ",", ".");

@@ -87,7 +87,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <img src="<?= base_url('/public/img/' . user()->user_image); ?>" class="rounded mx-auto d-block mt-5" style="max-width: 70%;" alt="<?= user()->fullname; ?>">
+                            <img src="<?= base_url('/img/' . user()->user_image); ?>" class="rounded mx-auto d-block mt-5" style="max-width: 70%;" alt="<?= user()->fullname; ?>">
                         </div>
                     </div>
                 </div>

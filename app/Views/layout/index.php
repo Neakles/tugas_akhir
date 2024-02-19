@@ -93,7 +93,7 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></!--> -->
     <script src="<?= base_url() . "/public"; ?>/vendor/jquery/jquery.min.js"></script>
     <script src="<?= base_url() . "/public"; ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -110,6 +110,9 @@
     <script src="<?= base_url() . "/public"; ?>/vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
     <!-- Page level custom scripts -->
     <script src="<?= base_url() . "/public"; ?>/js/demo/datatables-demo.js"></script>
+
+    <!-- css untuk dijalankan pada localhost (contoh base_url) 
+    <script src="<?= base_url()?>/vendor/jquery/jquery.min.js"></script> -->
 
     <!-- Scripts datePicker year -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">

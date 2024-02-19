@@ -7,8 +7,9 @@ use App\Models\TagihanModel;
 use App\Models\PembayaranModel;
 use \IntlDateFormatter;
 use App\Traits\GlobalTrait;
+use CodeIgniter\Filters\FilterInterface;
 
-class TagihanController extends BaseController
+class TagihanController extends BaseController 
 {
     use GlobalTrait;
     protected $db, $builder;
@@ -38,8 +39,8 @@ class TagihanController extends BaseController
             ->where('tahun', $tahun)
             ->countAllResults() > 0;
 
-        $id_tagihan = date('mmY');
-
+        $id_tagihan = date('Ym');
+        
         if (!$tagihanExists) {
             // Menyimpan tagihan      
             $data = [

@@ -1,20 +1,11 @@
 -- phpMyAdmin SQL Dump
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
-<<<<<<< HEAD
-
-
--- Host: localhost
--- Generation Time: Dec 11, 2022 at 05:30 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.19
-=======
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 17, 2022 at 09:02 AM
+-- Generation Time: Jul 03, 2023 at 07:52 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
->>>>>>> 3b40f7691990efadceac49cb0e055ce25c55af73
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `tugas_akhir`
+-- Database: `project_ta`
 --
 
 -- --------------------------------------------------------
@@ -115,7 +106,8 @@ INSERT INTO `auth_groups_users` (`group_id`, `user_id`) VALUES
 (2, 54),
 (2, 56),
 (2, 59),
-(2, 88);
+(2, 99),
+(2, 102);
 
 -- --------------------------------------------------------
 
@@ -413,7 +405,119 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (274, '::1', 'admin@gmail.com', 2, '2022-12-14 08:55:09', 1),
 (275, '::1', 'cahyo@gmail.com', 49, '2022-12-14 09:20:29', 1),
 (276, '::1', 'elscine@gmail.com', NULL, '2022-12-17 09:12:46', 0),
-(277, '::1', 'admin@gmail.com', 2, '2022-12-17 09:12:56', 1);
+(277, '::1', 'admin@gmail.com', 2, '2022-12-17 09:12:56', 1),
+(278, '::1', 'admin@gmail.com', 2, '2022-12-20 02:20:04', 1),
+(279, '::1', 'admin', NULL, '2022-12-20 08:23:07', 0),
+(280, '::1', 'admin@gmail.com', 2, '2022-12-20 08:23:12', 1),
+(281, '::1', 'admin@gmail.com', 2, '2022-12-21 18:40:22', 1),
+(282, '::1', 'cahyo@gmail.com', 49, '2022-12-21 18:50:49', 1),
+(283, '::1', 'admin@gmail.com', 2, '2022-12-22 10:32:12', 1),
+(284, '::1', 'admin@gmail.com', 2, '2022-12-22 14:25:45', 1),
+(285, '::1', 'cahyo@gmail.com', 49, '2022-12-22 15:26:17', 1),
+(286, '::1', 'admin@gmail.com', 2, '2022-12-23 20:09:55', 1),
+(287, '::1', 'cahyo@gmail.com', 49, '2023-03-19 10:27:34', 1),
+(288, '::1', 'admin@gmail.com', 2, '2023-06-02 11:11:29', 1),
+(289, '::1', 'cahyo@gmail.com', 49, '2023-06-02 19:15:36', 1),
+(290, '::1', 'admin@gmail.com', 2, '2023-06-02 19:17:25', 1),
+(291, '::1', 'admin@gmail.com', 2, '2023-06-02 19:19:58', 1),
+(292, '::1', 'admin@gmail.com', 2, '2023-06-02 19:44:26', 1),
+(293, '::1', 'admin@gmail.com', 2, '2023-06-03 13:29:24', 1),
+(294, '::1', 'admin@gmail.com', 2, '2023-06-04 16:37:45', 1),
+(295, '::1', 'cahyo@gmail.com', 49, '2023-06-04 17:53:09', 1),
+(296, '::1', 'didi@gmail.com', 50, '2023-06-04 17:53:45', 1),
+(297, '::1', 'cahyo@gmail.com', 49, '2023-06-04 17:58:33', 1),
+(298, '::1', 'admin@gmail.com', 2, '2023-06-04 18:01:21', 1),
+(299, '::1', 'admin@gmail.com', 2, '2023-06-04 18:20:29', 1),
+(300, '::1', 'admin@gmail.com', 2, '2023-06-17 12:48:11', 1),
+(301, '::1', 'admin', NULL, '2023-06-17 20:25:54', 0),
+(302, '::1', 'admin@gmail.com', 2, '2023-06-17 20:26:02', 1),
+(303, '::1', 'cahyo@gmail.com', 49, '2023-06-17 20:26:28', 1),
+(304, '::1', 'admin@gmail.com', 2, '2023-06-18 22:48:46', 1),
+(305, '::1', 'admin@gmail.com', 2, '2023-06-18 23:17:56', 1),
+(306, '::1', 'admin@gmail.com', 2, '2023-06-19 15:32:13', 1),
+(307, '::1', 'admin', NULL, '2023-06-20 15:23:03', 0),
+(308, '::1', 'admin', NULL, '2023-06-20 15:23:11', 0),
+(309, '::1', 'admin@gmail.com', 2, '2023-06-20 15:23:47', 1),
+(310, '::1', 'admin@gmail.com', 2, '2023-06-20 16:01:21', 1),
+(311, '::1', 'admin@gmail.com', 2, '2023-06-20 18:34:11', 1),
+(312, '::1', 'admin@gmail.com', 2, '2023-06-20 19:52:06', 1),
+(313, '::1', 'admin@gmail.com', 2, '2023-06-20 22:56:10', 1),
+(314, '::1', 'admin@gmail.com', 2, '2023-06-21 12:10:55', 1),
+(315, '::1', 'admin@gmail.com', 2, '2023-06-21 16:00:26', 1),
+(316, '::1', 'admin@gmail.com', 2, '2023-06-22 05:16:15', 1),
+(317, '::1', 'admin@gmail.com', 2, '2023-06-22 19:58:10', 1),
+(318, '::1', 'admin@gmail.com', 2, '2023-06-23 01:10:30', 1),
+(319, '::1', 'admin@gmail.com', 2, '2023-06-23 05:48:21', 1),
+(320, '::1', 'admin@gmail.com', 2, '2023-06-24 07:37:05', 1),
+(321, '::1', 'tric201@gmail.com', NULL, '2023-06-24 10:54:14', 0),
+(322, '::1', 'tric201@gmail.com', NULL, '2023-06-24 10:59:59', 0),
+(323, '::1', 'admin@gmail.com', 2, '2023-06-24 11:00:24', 1),
+(324, '::1', 'tric201@gmail.com', 99, '2023-06-24 16:11:41', 1),
+(325, '::1', 'admin@gmail.com', 2, '2023-06-24 16:12:49', 1),
+(326, '::1', 'admin@gmail.com', 2, '2023-06-25 11:57:16', 1),
+(327, '::1', 'admin@gmail.com', 2, '2023-06-25 14:29:52', 1),
+(328, '::1', 'cahyo@gmail.com', 49, '2023-06-25 17:12:06', 1),
+(329, '::1', 'tric201@gmail.com', 99, '2023-06-25 17:16:01', 1),
+(330, '::1', 'admin@gmail.com', 2, '2023-06-25 17:16:10', 1),
+(331, '::1', 'email@email.com', NULL, '2023-06-25 17:17:36', 0),
+(332, '::1', 'email@email.com', NULL, '2023-06-25 17:17:47', 0),
+(333, '::1', 'admin@gmail.com', 2, '2023-06-25 17:22:55', 1),
+(334, '::1', 'admin@gmail.com', 2, '2023-06-25 17:25:20', 1),
+(335, '::1', 'user', NULL, '2023-06-25 17:27:05', 0),
+(336, '::1', 'admin@gmail.com', 2, '2023-06-25 17:34:44', 1),
+(337, '::1', 'user', NULL, '2023-06-25 17:55:40', 0),
+(338, '::1', 'user', NULL, '2023-06-25 17:55:50', 0),
+(339, '::1', 'email@email.com', 101, '2023-06-25 17:56:18', 1),
+(340, '::1', 'admin@gmail.com', 2, '2023-06-25 17:57:29', 1),
+(341, '::1', 'user', NULL, '2023-06-25 17:58:20', 0),
+(342, '::1', 'user', NULL, '2023-06-25 17:59:08', 0),
+(343, '::1', 'cahyo@gmail.com', 49, '2023-06-25 17:59:55', 1),
+(344, '::1', 'admin', NULL, '2023-06-25 19:27:35', 0),
+(345, '::1', 'admin@gmail.com', 2, '2023-06-25 19:27:42', 1),
+(346, '::1', 'cahyo@gmail.com', 49, '2023-06-25 19:29:53', 1),
+(347, '::1', 'user', NULL, '2023-06-25 20:33:57', 0),
+(348, '::1', 'didi@gmail.com', 50, '2023-06-25 20:34:03', 1),
+(349, '::1', 'admin@gmail.com', 2, '2023-06-25 20:46:25', 1),
+(350, '::1', 'cahyo@gmail.com', 49, '2023-06-26 09:16:20', 1),
+(351, '::1', 'cahyo@gmail.com', 49, '2023-06-26 16:25:12', 1),
+(352, '::1', 'admin@gmail.com', 2, '2023-06-26 18:37:05', 1),
+(353, '::1', 'cahyo@gmail.com', 49, '2023-06-26 22:46:33', 1),
+(354, '::1', 'cahyo@gmail.com', 49, '2023-06-27 12:06:48', 1),
+(355, '::1', 'cahyo@gmail.com', 49, '2023-06-27 14:13:20', 1),
+(356, '::1', 'cahyo@gmail.com', 49, '2023-06-27 16:23:15', 1),
+(357, '::1', 'cahyo@gmail.com', 49, '2023-06-27 21:40:57', 1),
+(358, '::1', 'cahyo@gmail.com', 49, '2023-06-28 05:21:02', 1),
+(359, '::1', 'cahyo@gmail.com', 49, '2023-06-28 06:06:42', 1),
+(360, '::1', 'cahyo@gmail.com', 49, '2023-06-28 15:36:23', 1),
+(361, '::1', 'cahyo@gmail.com', 49, '2023-06-28 22:43:09', 1),
+(362, '::1', 'cahyo@gmail.com', 49, '2023-06-29 05:32:49', 1),
+(363, '::1', 'cahyo', NULL, '2023-06-29 13:17:01', 0),
+(364, '::1', 'cahyo@gmail.com', 49, '2023-06-29 13:17:16', 1),
+(365, '::1', 'didi@gmail.com', 50, '2023-06-29 13:50:36', 1),
+(366, '::1', 'cahyo@gmail.com', 49, '2023-06-29 13:53:51', 1),
+(367, '::1', 'didi@gmail.com', 50, '2023-06-29 13:57:12', 1),
+(368, '::1', 'didi@gmail.com', 50, '2023-06-29 14:08:12', 1),
+(369, '::1', 'cahyo@gmail.com', 49, '2023-06-29 15:44:06', 1),
+(370, '::1', 'didi@gmail.com', 50, '2023-06-29 18:37:48', 1),
+(371, '::1', 'cahyo@gmail.com', 49, '2023-06-30 03:34:06', 1),
+(372, '::1', 'didi@gmail.com', 50, '2023-06-30 03:41:11', 1),
+(373, '::1', 'ikaaa@gmail.com', 53, '2023-06-30 03:42:57', 1),
+(374, '::1', 'didi@gmail.com', 50, '2023-06-30 04:07:21', 1),
+(375, '::1', 'cahyo@gmail.com', 49, '2023-06-30 04:23:39', 1),
+(376, '::1', 'cahyo@gmail.com', 49, '2023-06-30 05:26:06', 1),
+(377, '::1', 'didi@gmail.com', 50, '2023-06-30 05:27:34', 1),
+(378, '::1', 'cahyo@gmail.com', 49, '2023-06-30 10:40:16', 1),
+(379, '::1', 'rizka@gmail.com', 56, '2023-06-30 11:20:06', 1),
+(380, '::1', 'rizka@gmail.com', 56, '2023-06-30 13:48:25', 1),
+(381, '::1', 'rizka', NULL, '2023-06-30 21:41:34', 0),
+(382, '::1', 'rizka@gmail.com', 56, '2023-06-30 21:41:48', 1),
+(383, '::1', 'rizka', NULL, '2023-07-01 12:08:58', 0),
+(384, '::1', 'rizka@gmail.com', 56, '2023-07-01 12:09:05', 1),
+(385, '::1', 'cahyo@gmail.com', 49, '2023-07-01 12:24:25', 1),
+(386, '::1', 'cahyo@gmail.com', 49, '2023-07-01 19:39:30', 1),
+(387, '::1', 'admin@gmail.com', 2, '2023-07-01 19:40:15', 1),
+(388, '::1', 'admin@gmail.com', 2, '2023-07-02 20:34:38', 1),
+(389, '::1', 'didi@gmail.com', 50, '2023-07-02 20:46:52', 1);
 
 -- --------------------------------------------------------
 
@@ -625,73 +729,42 @@ INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pembayaran_bulanan`
+-- Table structure for table `pembayaran`
 --
 
-CREATE TABLE `pembayaran_bulanan` (
-  `id_pem_bulan` int(11) NOT NULL,
-  `nis` int(11) NOT NULL,
-  `jenis_pembayaran` varchar(225) NOT NULL,
-  `tahun_ajaran` varchar(9) NOT NULL
+CREATE TABLE `pembayaran` (
+  `id_pembayaran` int(11) NOT NULL,
+  `id_tagihan` int(11) DEFAULT NULL,
+  `id_users` int(20) DEFAULT NULL,
+  `tanggal_bayar` date DEFAULT NULL,
+  `status` int(1) DEFAULT NULL COMMENT '0=belum dibayar, 1=pending, 2=lunas, 3=gagal',
+  `total_bulan` int(11) DEFAULT NULL,
+  `total_nominal` int(50) DEFAULT NULL,
+  `order_id` varchar(16) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pembayaran_bulanan`
+-- Dumping data for table `pembayaran`
 --
 
-INSERT INTO `pembayaran_bulanan` (`id_pem_bulan`, `nis`, `jenis_pembayaran`, `tahun_ajaran`) VALUES
-(0, 2834, 'SPP Bulanan', '2022'),
-(2, 5254, 'Spp Bulanan', '2022'),
-(3, 3423, 'Spp Bulanan', '2022');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `spp_bulanan`
---
-
-CREATE TABLE `spp_bulanan` (
-  `id_transaksi` varchar(128) NOT NULL,
-  `nis` varchar(9) NOT NULL,
-  `nama_santri` varchar(30) NOT NULL,
-  `id_bulan` varchar(5) NOT NULL,
-  `id_tahun` int(4) NOT NULL,
-  `tanggal_bayar` date NOT NULL,
-  `metode_pembayaran` varchar(225) NOT NULL,
-  `no_virtual` varchar(50) NOT NULL,
-  `jumlah` int(11) NOT NULL,
-  `id` int(11) NOT NULL,
-  `status` char(1) DEFAULT '' COMMENT '0=lunas, 1=pending, 2=error',
-  `order_id` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `spp_bulanan`
---
-
-INSERT INTO `spp_bulanan` (`id_transaksi`, `nis`, `nama_santri`, `id_bulan`, `id_tahun`, `tanggal_bayar`, `metode_pembayaran`, `no_virtual`, `jumlah`, `id`, `status`, `order_id`) VALUES
-('SPP-101222001', '5254', 'Ahmad Muhlish Tri Cahyo', '01', 99, '2022-12-10', 'Online', '', 80000, 0, '0', '241243668'),
-('SPP-101222002', '5254', 'Ahmad Muhlish Tri Cahyo', '02', 99, '2022-12-10', 'Online', '', 80000, 0, '0', '241243668'),
-('SPP-101222003', '5254', 'Ahmad Muhlish Tri Cahyo', '03', 99, '2022-12-10', 'Online', '', 80000, 0, '1', '1645640581'),
-('SPP-101222004', '5254', 'Ahmad Muhlish Tri Cahyo', '04', 99, '2022-12-10', 'Online', '', 80000, 0, '1', '1645640581'),
-('SPP-101222005', '5254', 'Ahmad Muhlish Tri Cahyo', '05', 99, '2022-12-10', 'Online', '', 80000, 0, '1', '1645640581'),
-('SPP-111222001', '5254', 'Ahmad Muhlish Tri Cahyo', '11', 99, '2022-12-11', 'Online', '', 80000, 0, '1', '1144179673'),
-('SPP-111222002', '5254', 'Ahmad Muhlish Tri Cahyo', '12', 99, '2022-12-11', 'Online', '', 80000, 0, '1', '1144179673'),
-('SPP-111222003', '234245', 'Cahyo', '01', 99, '2022-12-11', 'Online', '', 80000, 0, '0', '1136231257'),
-('SPP-111222004', '234245', 'Cahyo', '02', 99, '2022-12-11', 'Online', '', 80000, 0, '0', '1136231257'),
-('SPP-121222001', '3423', 'Cahyo', '01 ', 99, '2022-12-12', 'Online', '', 80000, 0, '1', '2067439717'),
-('SPP-131222001', '2834', 'Alfian Ahsani Nasrulloh', '01 ', 99, '2022-12-13', 'Online', '', 80000, 0, '1', '1109805989'),
-('SPP-141222001', '5254', 'Ahmad Muhlish Tri Cahyo', '03 ', 99, '2022-12-14', 'Online', '', 80000, 0, '0', '1781680715'),
-('SPP-141222002', '5254', 'Ahmad Muhlish Tri Cahyo', '04 ', 99, '2022-12-14', 'Online', '', 80000, 0, '0', '1781680715'),
-('SPP-141222003', '5254', 'Ahmad Muhlish Tri Cahyo', '05 ', 99, '2022-12-14', 'Online', '', 80000, 0, '0', '1781680715'),
-('SPP-141222004', '5254', 'Ahmad Muhlish Tri Cahyo', '11 ', 99, '2022-12-14', 'Online', '', 80000, 0, '0', '1563708511'),
-('SPP-171222001', '5254', 'Ahmad Muhlish Tri Cahyo', '12 ', 99, '2022-12-17', 'Online', '', 80000, 0, '0', '340368015'),
-('SPP-171222002', '3423', 'Bagus Abdillah Zulkarnain', '01 ', 99, '2022-12-17', 'Online', '', 80000, 0, '0', '47890415'),
-('SPP-171222003', '3423', 'Bagus Abdillah Zulkarnain', '06 ', 99, '2022-12-17', 'Online', '', 80000, 0, '0', '1801352213'),
-('SPP-171222004', '3423', 'Bagus Abdillah Zulkarnain', '10 ', 99, '2022-12-17', 'Online', '', 80000, 0, '0', '1801352213'),
-('SPP-171222005', '3423', 'Bagus Abdillah Zulkarnain', '11 ', 99, '2022-12-17', 'Online', '', 80000, 0, '0', '1801352213'),
-('SPP-171222006', '3423', 'Bagus Abdillah Zulkarnain', '12 ', 99, '2022-12-17', 'Online', '', 80000, 0, '0', '1801352213'),
-('SPP-171222007', '3423', 'Bagus Abdillah Zulkarnain', '12 ', 99, '2022-12-17', 'Online', '', 80000, 0, '0', '46896903');
+INSERT INTO `pembayaran` (`id_pembayaran`, `id_tagihan`, `id_users`, `tanggal_bayar`, `status`, `total_bulan`, `total_nominal`, `order_id`) VALUES
+(620232358, 6062023, 49, NULL, 0, 0, 0, '0'),
+(620233423, 6062023, 50, NULL, 0, 0, 0, '0'),
+(620234375, 6062023, 52, NULL, 0, 0, 0, '0'),
+(620235254, 6062023, 53, NULL, 0, 0, 0, '0'),
+(620235326, 6062023, 54, NULL, 0, 0, 0, '0'),
+(620236513, 6062023, 56, '2023-06-30', 2, 1, 0, '0'),
+(620238656, 6062023, 59, NULL, 0, 0, 0, '0'),
+(620238742, 6062023, 99, NULL, 0, 0, 0, '0'),
+(720231234, 7072023, 102, NULL, 0, NULL, NULL, NULL),
+(720232358, 7072023, 59, NULL, 0, NULL, NULL, NULL),
+(720233423, 7072023, 50, NULL, 0, NULL, NULL, NULL),
+(720234375, 7072023, 56, NULL, 0, NULL, NULL, NULL),
+(720235254, 7072023, 49, NULL, 0, NULL, NULL, NULL),
+(720235326, 7072023, 52, NULL, 0, NULL, NULL, NULL),
+(720236513, 7072023, 99, NULL, 0, NULL, NULL, NULL),
+(720238656, 7072023, 54, NULL, 0, NULL, NULL, NULL),
+(720238742, 7072023, 53, NULL, 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -701,42 +774,17 @@ INSERT INTO `spp_bulanan` (`id_transaksi`, `nis`, `nama_santri`, `id_bulan`, `id
 
 CREATE TABLE `tagihan` (
   `id_tagihan` int(11) NOT NULL,
-  `tahun` year(4) NOT NULL,
-  `bulan` varchar(20) NOT NULL,
-  `biaya` int(11) NOT NULL
+  `bulan` varchar(15) NOT NULL,
+  `tahun` year(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tagihan`
 --
 
-INSERT INTO `tagihan` (`id_tagihan`, `tahun`, `bulan`, `biaya`) VALUES
-(1, 2022, 'Januari', 250000),
-(2, 2022, 'Februari', 250000);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tahun_ajaran`
---
-
-CREATE TABLE `tahun_ajaran` (
-  `id_tahun` int(4) NOT NULL,
-  `tahun_ajaran` varchar(9) CHARACTER SET latin1 NOT NULL,
-  `besar_spp` varchar(225) NOT NULL,
-  `Status` enum('ON','OFF') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tahun_ajaran`
---
-
-INSERT INTO `tahun_ajaran` (`id_tahun`, `tahun_ajaran`, `besar_spp`, `Status`) VALUES
-(19, '2024', '70000', 'ON'),
-(60, '2021', '70000', 'ON'),
-(77, '2021/2022', '30000', 'ON'),
-(90, '2023', '100000', 'ON'),
-(99, '2022', '80000', 'ON');
+INSERT INTO `tagihan` (`id_tagihan`, `bulan`, `tahun`) VALUES
+(6062023, 'Juni', 2023),
+(7072023, 'Juli', 2023);
 
 -- --------------------------------------------------------
 
@@ -754,6 +802,8 @@ CREATE TABLE `users` (
   `no_telp` varchar(15) DEFAULT NULL,
   `gender_id` int(5) DEFAULT NULL,
   `kamar` int(11) DEFAULT NULL,
+  `j_syahriyah` varchar(10) NOT NULL COMMENT 'normal=250000, khusus=100000',
+  `nominal` int(20) NOT NULL,
   `wali` varchar(30) DEFAULT NULL,
   `no_wali` varchar(15) DEFAULT NULL,
   `thn_masuk` year(4) DEFAULT NULL,
@@ -775,16 +825,17 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `nis`, `email`, `username`, `fullname`, `user_image`, `no_telp`, `gender_id`, `kamar`, `wali`, `no_wali`, `thn_masuk`, `password_hash`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(2, 8324, 'admin@gmail.com', 'admin', 'Administrator', 'default.svg', NULL, NULL, NULL, NULL, NULL, NULL, '$2y$10$eSiaslzDYr07zTaFPT0Ix.kbLO12DwExSFiWwidEt1iyXsfx30n22', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-10-08 23:16:52', '2022-10-08 23:16:52', NULL),
-(49, 5254, 'cahyo@gmail.com', 'cahyo', 'Ahmad Muhlish Tri Cahyo', 'default.svg', '05658388607', 1, 19, 'wali', '8388607', 2018, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
-(50, 3423, 'didi@gmail.com', 'didi', 'Bagus Abdillah Zulkarnain', 'default.svg', '0234763184', 1, 17, 'wali', '5864354', 2020, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
-(52, 5326, 'munir@gmail.com', 'munir', 'Ahmad Munir Fuady', 'default.svg', '0864621414', 1, 4, 'asd', '8388607', 2011, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
-(53, 8742, 'ikaaa@gmail.com', 'ikaaa', 'Hidayatus Sholihah', 'default.svg', '04548388607', 2, 49, 'qwerty', '8388607', 2012, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
-(54, 2834, 'alfian@gmail.com', 'alfian', 'Alfian Ahsani Nasrulloh', 'default.svg', '076578388607', 1, 12, 'bapak', '8388607', 2013, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
-(56, 4375, 'rizka@gmail.com', 'rizka', 'Rizka Qusnul Qotimah', 'default.svg', '089673671520', 2, 30, 'dsfds', '089673671520', 2019, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
-(59, 2358, 'nawal@gmail.com', 'nawal', 'M Nawal Ma\'ali', 'default.svg', '0987654321', 1, 5, 'qwerty', '0987654321', 2012, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
-(88, 0, 'cahyo@gmail', '1461800221', 'Cahyo', 'default.svg', '8388607121', 1, 12, 'wali', '082331203169', 2014, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, NULL, NULL);
+INSERT INTO `users` (`id`, `nis`, `email`, `username`, `fullname`, `user_image`, `no_telp`, `gender_id`, `kamar`, `j_syahriyah`, `nominal`, `wali`, `no_wali`, `thn_masuk`, `password_hash`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(2, 8324, 'admin@gmail.com', 'admin', 'Administrator', 'default.svg', NULL, NULL, NULL, '', 0, NULL, NULL, NULL, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-10-08 23:16:52', '2022-10-08 23:16:52', NULL),
+(49, 5254, 'cahyo@gmail.com', 'cahyo', 'Ahmad Muhlish Tri Cahyo', 'default.svg', '05658388607', 1, 19, '1', 250000, 'wali', '8388607', 2018, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
+(50, 3423, 'didi@gmail.com', 'didi', 'Bagus Abdillah Zulkarnain', 'default.svg', '0234763184', 1, 17, '2', 100000, 'wali', '5864354', 2020, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
+(52, 5326, 'munir@gmail.com', 'munir', 'Ahmad Munir Fuady', 'default.svg', '0864621414', 1, 4, '2', 100000, 'asd', '8388607', 2011, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
+(53, 8742, 'ikaaa@gmail.com', 'ikaaa', 'Hidayatus Sholihah', 'default.svg', '04548388607', 2, 49, '1', 250000, 'qwerty', '8388607', 2012, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
+(54, 8656, 'alfian@gmail.com', 'alfian', 'Alfian Ahsani Nasrulloh', 'default.svg', '076578388607', 1, 12, '1', 250000, 'bapak', '8388607', 2013, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
+(56, 4375, 'rizka@gmail.com', 'rizka', 'Rizka Qusnul Qotimah', 'default.svg', '089673671520', 2, 30, '2', 100000, 'dsfds', '089673671520', 2019, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
+(59, 2358, 'nawal@gmail.com', 'nawal', 'M Nawal Ma\'ali', 'default.svg', '0987654321', 1, 5, '1', 250000, 'qwerty', '0987654321', 2012, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '0000-00-00 00:00:00', NULL, NULL),
+(99, 6513, 'tric201@gmail.com', 'tri', 'Cahyo', 'default.svg', '082331203169', 1, 15, '1', 250000, NULL, NULL, NULL, '$2y$10$VmiCFM8elgi8abYLiWs6Veq.JEegD6E9.dwlvTCdh70fOXBaItIt6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, NULL, NULL),
+(102, 1234, 'user@user.com', 'user', 'User', 'default.svg', '082331203169', 2, 38, '2', 100000, NULL, NULL, 2023, '$2y$10$VaarQW/2eLY0CtExmqpe5OArixPW0RY1yG4Y7kLE7AalJiju8/ZS6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -876,32 +927,16 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pembayaran_bulanan`
+-- Indexes for table `pembayaran`
 --
-ALTER TABLE `pembayaran_bulanan`
-  ADD PRIMARY KEY (`id_pem_bulan`),
-  ADD KEY `nis` (`nis`),
-  ADD KEY `tahun_ajaran` (`tahun_ajaran`);
-
---
--- Indexes for table `spp_bulanan`
---
-ALTER TABLE `spp_bulanan`
-  ADD PRIMARY KEY (`id_transaksi`),
-  ADD KEY `nis` (`nis`);
+ALTER TABLE `pembayaran`
+  ADD PRIMARY KEY (`id_pembayaran`);
 
 --
 -- Indexes for table `tagihan`
 --
 ALTER TABLE `tagihan`
   ADD PRIMARY KEY (`id_tagihan`);
-
---
--- Indexes for table `tahun_ajaran`
---
-ALTER TABLE `tahun_ajaran`
-  ADD PRIMARY KEY (`id_tahun`),
-  ADD UNIQUE KEY `tahun_ajaran` (`tahun_ajaran`);
 
 --
 -- Indexes for table `users`
@@ -931,7 +966,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=278;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=390;
 
 --
 -- AUTO_INCREMENT for table `auth_permissions`
@@ -970,22 +1005,10 @@ ALTER TABLE `migrations`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `tagihan`
---
-ALTER TABLE `tagihan`
-  MODIFY `id_tagihan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `tahun_ajaran`
---
-ALTER TABLE `tahun_ajaran`
-  MODIFY `id_tahun` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23233;
-
---
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- Constraints for dumped tables
