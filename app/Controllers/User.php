@@ -90,7 +90,7 @@ class User extends BaseController
             ->join('users', 'pembayaran.id_users = users.id')
             ->join('tagihan', 'tagihan.id_tagihan = pembayaran.id_tagihan')
             ->where("pembayaran.id_users", user()->id)
-            ->where("pembayaran.status", 0)
+            ->whereIn("pembayaran.status", [0,1,2,3])
             ->get()->getResult()
             ;
 
