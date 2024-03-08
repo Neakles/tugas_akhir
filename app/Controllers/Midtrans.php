@@ -4,6 +4,10 @@ namespace App\Controllers;
 
 use CodeIgniter\HTTP\RequestInterface;
 use App\Traits\GlobalTrait;
+use App\Models\UsersModel;
+use App\Models\TagihanModel;
+use App\Models\PembayaranModel;
+use \IntlDateFormatter;
 
 class Midtrans extends BaseController
 {
@@ -12,8 +16,12 @@ class Midtrans extends BaseController
 
     public function __construct()
     {
-        $this->db = \Config\Database::connect();
-        $this->builder = $this->db->table('pembayaran');
+        $this->db               = \Config\Database::connect();
+        $this->builder          = $this->db->table('pembayaran');
+        $this->user             = $this->db->table('users');
+        $this->userModel        = new UsersModel();
+        $this->tagihanModel     = new TagihanModel();
+        $this->pembayaranModel  = new PembayaranModel();
 
         \Midtrans\Config::$serverKey = 'SB-Mid-server-DdFcR4RsqWPdJHGoiSnRfP1d';
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
@@ -41,6 +49,70 @@ class Midtrans extends BaseController
         ];
         return view('midtrans/index', $data);
     }
+
+    public function bill()
+    {
+        // Mendapatkan bulan dan tahun saat ini
+        date_default_timezone_set('Asia/Jakarta');
+        $tanggal    = date('d-M-Y');
+        $formatter  = new IntlDateFormatter('id_ID', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
+        $formatter->setPattern('MMMM');
+        $bulan      = $formatter->format(strtotime($tanggal));
+        $tahun      = date('Y');
+
+        // Mengecek apakah tagihan untuk bulan ini sudah dikirim
+        $tagihanExists = $this->tagihanModel
+            ->where('bulan', $bulan)
+            ->where('tahun', $tahun)
+            ->countAllResults() > 0;
+
+        $id_tagihan = date('Ym');
+        
+        if (!$tagihanExists) {
+            // Menyimpan tagihan      
+            $data = [
+                'id_tagihan' => $id_tagihan,
+                'bulan'     => $bulan,
+                'tahun'     => $tahun,
+            ];
+            $this->tagihanModel->insert($data);
+
+            // Mendapatkan data santri
+            $santri = $this->userModel->select('users.id, users.nis, auth_groups_users.group_id')
+                ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+                ->where('auth_groups_users.group_id', 2)
+                ->findAll();   
+
+            if (!empty($santri)) {
+                $tanggal = date('my');
+                // Mendapatkan ID terakhir
+                $lastTagihan = $this->tagihanModel
+                    ->orderBy('id_tagihan', 'DESC')
+                    ->first();
+                $last_tagihan = $lastTagihan ? $lastTagihan['id_tagihan'] : 0;
+
+                // Menambahkan tagihan untuk setiap santri
+                foreach ($santri as $row) {
+                    $data = [
+                        'id_pembayaran' => date('mY').$row['nis'],
+                        'id_tagihan'    => $id_tagihan,
+                        'id_users'      => $row['id'],
+                        'status'        => 0,
+                    ];
+                    $this->pembayaranModel->insert($data);
+                        }
+
+                // Kirim email tagihan ke setiap santri
+                // Implementasikan logika pengiriman email sesuai dengan preferensi Anda
+
+                echo "Tagihan bulan ini berhasil dikirim";
+            } else {
+                echo "Tidak ada santri yang tersedia.";
+            }
+        } else {
+            echo "Tagihan bulan ini sudah dikirim.";
+        }
+    }   
 
     public function search_filter()
     {
@@ -103,14 +175,6 @@ class Midtrans extends BaseController
         ];
 
         // Optional
-        // $item2_details = array(
-        //     'id' => 'a2',
-        //     'price' => 50000,
-        //     'quantity' => 1,
-        //     'name' => "Orange"
-        // );
-
-        // Optional
         $item_details = [$item1_details];
 
         // Optional
@@ -123,17 +187,6 @@ class Midtrans extends BaseController
             'phone' => $phone,
             'country_code' => 'IDN',
         ];
-
-        // Optional
-        // $shipping_address = array(
-        //     'first_name'    => "Obet",
-        //     'last_name'     => "Supriadi",
-        //     'address'       => "Manggis 90",
-        //     'city'          => "Jakarta",
-        //     'postal_code'   => "16601",
-        //     'phone'         => "08113366345",
-        //     'country_code'  => 'IDN'
-        // );
 
         // Optional
         $customer_details = [

@@ -43,6 +43,7 @@ $routes->group('midtrans', static function ($routes) {
     $routes->post('finish', 'Midtrans::finish');
     $routes->post('unfinish', 'Midtrans::unfinish');
     $routes->get('finish/(:num)', 'Midtrans::finish/$1');
+    $routes->get('auto-billing', 'Midtrans::bill');
 });
 
 // View index
@@ -67,7 +68,7 @@ $routes->group('admin', static function ($routes) {
     $routes->post('save', 'Admin::save', ['filter' => 'role:admin']);
 });
 
-$routes->get('/autoAddTagihan', 'TagihanController::autoAddTagihan');
+// $routes->get('/auto-add-tagihan', 'TagihanController::autoAddTagihan');
 
 /*
  * --------------------------------------------------------------------
