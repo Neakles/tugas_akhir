@@ -111,12 +111,13 @@ class Admin extends BaseController
             // DB Transaction
             $this->db->transBegin();
 
+            $nis = 510035780004 . $this->request->getPost('nis');
             $syahriyah = $this->request->getPost('j_syahriyah');
             $nominal = ($syahriyah == 1) ? 250000 : 100000;
             $pass = password_hash('%Y%m%d', PASSWORD_DEFAULT);
             
             $data = [
-                'nis'           => $this->request->getPost('nis'),
+                'nis'           => $nis,
                 'fullname'      => $this->request->getPost('nama'),
                 'no_telp'       => $this->request->getPost('no_tlp'),
                 'email'         => $this->request->getPost('email'),
@@ -129,7 +130,7 @@ class Admin extends BaseController
                 // "password_hash" => '$2y$10$ZlDJEiTYaNyynkOt6mxqIuBCSL1jcd5dCBa.Gll4AIxrDIdPni5li',           //12345678
                 'password_hash' => $pass,
                 'active' => 1,
-                'created_at' => date('Y-m-d H-i-s'),
+                'created_at' => date('Y-m-d H:i:s'),
             ];
 
             $this->userModel->set($data);

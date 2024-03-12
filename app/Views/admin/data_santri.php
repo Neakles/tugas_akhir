@@ -95,9 +95,11 @@
                                                         <?= csrf_field() ?>
                                                         <div class="row justify-content-center mt-3 mb-4">
                                                             <div class="col">
-                                                                <label for="nis" class="form-label">Nomor Induk Santri
-                                                                </label>
-                                                                <input type="text" class="form-control" id="nis" name="nis" placeholder="Masukkan Nomor Induk Santri" required>
+                                                                <label for="nis" class="form-label">Nomor Induk Santri (NIS)</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-text">510035780004</div>
+                                                                    <input type="text" maxlength="6" class="form-control" id="nis" name="nis" placeholder="Masukkan NIS" required>
+                                                                </div>
                                                             </div>
                                                             <div class="col">
                                                             </div>
@@ -121,7 +123,7 @@
                                                         <div class="row justify-content-center mb-4">
                                                             <div class="col">
                                                                 <label for="no_tlp" class="form-label">No HP Santri</label>
-                                                                <input type="number" class="form-control" id="no_tlp" name="no_tlp" placeholder="Masukkan No Telepon Santri" required>
+                                                                <input type="text" maxlength="13" minlength="10" class="form-control" id="no_tlp" name="no_tlp" placeholder="Masukkan No Telepon Santri" required>
                                                             </div>
                                                             <div class="col">
                                                                 <label for="email" class="form-label">Email</label>
@@ -161,7 +163,7 @@
                                                             <div class="col">
                                                                 <label for="no_wali" class="form-label">No Telepon Wali Santri
                                                                 </label>
-                                                                <input type="number" class="form-control" id="no_wali" name="no_wali" placeholder="Masukkan No Telepon Wali Santri" required>
+                                                                <input type="number" maxlength="13" minlength="10" class="form-control" id="no_wali" name="no_wali" placeholder="Masukkan No Telepon Wali Santri" required>
                                                             </div>
                                                         </div>
 
@@ -276,27 +278,58 @@
                                                                     </select>
                                                                 </div>
                                                             </div>
+
+                                                            <script>
+                                                                document.getElementById('gender').addEventListener('change', function () {
+                                                                    // Panggil fungsi untuk memuat atau memfilter opsi "kamar" berdasarkan "gender"
+                                                                    loadKamarOptions(this.value);
+                                                                });
+                                                            </script>
+
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label for="kamar">Kamar</label>
                                                                     <select id="kamar" name="kamar" class="form-control" required>
                                                                         <option value="" selected disabled>Pilih Kamar</option>
+                                                                        <?php foreach ($kamar_santri as $kamar) { ?>
+                                                                            <option value="<?= $kamar->id_kamar; ?>"><?= $kamar->nama_kamar; ?></option>
+                                                                        <?php } ?>
                                                                         <!-- script for ajax in layout/index -->
                                                                     </select>
                                                                 </div>
                                                             </div>
+
+                                                            <script>
+                                                                function loadKamarOptions(selectedGender) {
+                                                                  // Lakukan pengecekan terhadap nilai "gender"
+                                                                  if (selectedGender === '1') {
+                                                                      // Untuk 1 adalah opsi "kamar" laki-laki
+                                                                      var kamarSelect = document.getElementById('kamar');
+                                                                      kamarSelect.innerHTML = '<option value="kamar-laki-laki">Laki-laki</option>'; 
+                                                                  }  else if (selectedGender ==='2'){
+                                                                      // Untuk 2 adalah opsi "kamar" perempuan
+                                                                      var kamarSelect = document.getElementById('kamar');
+                                                                      kamarSelect.innerHTML = '<option value="kamar-perempuan">Perempuan</option>'; 
+                                                                  } else {
+                                                                      // Jika "gender" tidak dipilih atau tidak valid, atur opsi "kamar" menjadi kosong
+                                                                      var kamarSelect = document.getElementById('kamar');
+                                                                      kamarSelect.innerHTML = '<option value="" selected disable>Pilih Kamar</option>';
+                                                                  }
+                                                                } 
+                                                            </script>
+
                                                         </div>
 
                                                         <div class="row justify-content-center mb-4">
                                                             <div class="col">
                                                                 <label for="text" class="form-label">Nama Wali Santri
                                                                 </label>
-                                                                <input type="wali" class="form-control" id="wali" name="wali" placeholder="Masukkan Nama Wali Santri" required>
+                                                                <input type="wali" class="form-control" id="wali" name="wali" placeholder="" value="<?= $user_list->wali ?>" required>
                                                             </div>
                                                             <div class="col">
                                                                 <label for="no_wali" class="form-label">No Telepon Wali Santri
                                                                 </label>
-                                                                <input type="number" class="form-control" id="no_wali" name="no_wali" placeholder="Masukkan No Telepon Wali Santri" required>
+                                                                <input type="number" class="form-control" id="no_wali" name="no_wali" placeholder="" value="<?= $user_list->no_wali ?>" required>
                                                             </div>
                                                         </div>
 
@@ -330,5 +363,15 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    const input = document.getElementById("no_tlp");
+    input.addEventListener("keyup", (event) => {
+        if (event.target.value.length > 13) {
+            event.target.value = event.target.value.substring(0, 13);
+        }
+    });
+</script>
 
 <?= $this->endSection() ?>
